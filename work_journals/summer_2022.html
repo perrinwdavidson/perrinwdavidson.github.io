@@ -11,10 +11,16 @@
 	p {text-align: justify;}
 	blockquote {text-align: center;}
 	.center {
-		position: absolute;
+		/*position: absolute;*/
 		left: 50%;
 		top: 50%;
-		transform: translate(-50%, -50%);
+		/*transform: translate(-50%, -50%);*/
+	}
+	.center-wrapper {
+  		display: flex;
+ 	 	flex-direction: column;
+  		justify-content: center;
+  		min-height: 100%;
 	}
 </style>
 	
@@ -46,6 +52,7 @@ tr:nth-child(even) {
 	
 <body style="width: 60em;">
 	
+<div class="center-wrapper">
 <div class="center"> 
 	
   <section>
@@ -154,6 +161,8 @@ tr:nth-child(even) {
 	</h4>
   </section>
 
+</div>
+	
 </div>
 	
 </body>
