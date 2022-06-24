@@ -68,7 +68,7 @@ tr:nth-child(even) {
       The goals of this week were to:
 	    
 	<ol>
-		<li>calculate and plot sea-ice fraction (sic) and surface wind (w) speed differences between the Last Glacial Maximum (LGM) and Pre-Industrial (PI) for individual models & the inter-model mean </li>
+		<li>calculate and plot sea-ice fraction (\(sic\)) and surface wind (\(w\)) speed differences between the Last Glacial Maximum (LGM) and Pre-Industrial (PI) for individual models & the inter-model mean </li>
       		<li>read four papers, focusing on two themes:
 			<ul>
 				<li>disequilibrium mechanisms, comparing Hamme (2017) to Loose (2016)</li>
@@ -85,7 +85,7 @@ tr:nth-child(even) {
 	
 	<p>
 		
-		I first determined which products from the Coupled Model Intercomparison Project 5 (CMIP5) outputted the two variables that we care about: the sic and the w.
+		I first determined which products from the Coupled Model Intercomparison Project 5 (CMIP5) outputted the two variables that we care about: the \(f_{sic}\) and the \(w\).
 		In order to have a consistent comparison across both the LGM and PI, I only used those model products that outputted both variables for both time periods of interest. This left 7 models:
 		<p></p>
 		<table>
@@ -132,7 +132,7 @@ tr:nth-child(even) {
 		</table>
 		<p></p>
 		After storing all model data - each varying in latitude, longitude, and time dimension but all having a monthly resolution starting in the first month and ending in the last month of the respective years stated above - a climatological mean for each month was calculated over the entirety of the model run.
-		A basic quality control was run over the CMIP5 data. All longitude data was put into the [0, 360] if not already. Additionally, if the sic was out of 100, this was corrected to be out of 1, and we calculated w from the model meridional and zonal wind magntiudes using:
+		A basic quality control was run over the CMIP5 data. All longitude data was put into the [0, 360] if not already. Additionally, if the \(f_{sic}\) was out of 100, this was corrected to be out of 1, and we calculated \(w\) from the model meridional and zonal wind magntiudes using:
 			\[
 				w = \sqrt{u^2 + v^2}.
 			\]
