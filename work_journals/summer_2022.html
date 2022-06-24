@@ -39,6 +39,10 @@
     <h2>
 	    Week 1 (21/06 to 24/06)
     </h2>
+	  
+    <h3> 
+	    Goals
+    </h3>
     <p>
 	
       The goals of this week were to:
@@ -47,17 +51,65 @@
 		<li>calculate and plot sea-ice fraction (sic) and surface wind (w) speed differences between the Last Glacial Maximum (LGM) and Pre-Industrial (PI) for individual models & the inter-model mean </li>
       		<li>read four papers, focusing on two themes:
 			<ul>
-				<li>disequilibrium mechanisms -- comparing Hamme (2017) to Loose (2016)</li>
-				<li>gas exchange parameterizations -- comparing Nicholson (2011, 2016) to Liang (2013)</li>
+				<li>disequilibrium mechanisms, comparing Hamme (2017) to Loose (2016)</li>
+				<li>gas exchange parameterizations, comparing Nicholson (2011, 2016) to Liang (2013)</li>
 			</ul>
 		</li>
 	</ol>
-      In order to do this, we calculated the wind speed following:
-      \[
-        w = \sqrt{u^2 + v^2}.
-      \]
   
     </p>
+	
+	<h3>
+		Forcing Comparisons
+	</h3>
+	
+	<p>
+		
+		I first determined which products from the Coupled Model Intercomparison Project 5 (CMIP5) outputted the two variables that we care about: the sic and the w.
+		In order to have a consistent comparison across both the LGM and PI, I only used those model products that outputted both variables. This left 7 models:
+		<table>
+  			<tr>
+				<th>Institution</th>
+			    	<th>Model</th>
+			    	<th>Time Period</th>
+  			</tr>
+  			<tr>
+    				<td>NCAR</td>
+    				<td>CCSM4</td>
+    				<td>1800-1900</td>
+  			</tr>
+			<tr>
+    				<td>LASG-CESS</td>
+    				<td>FGOALS-g2</td>
+    				<td>550-649</td>
+  			</tr>
+			<tr>
+    				<td>MRI</td>
+    				<td>MRI-CGCM3</td>
+    				<td>2501-2600</td>
+  			</tr>
+			<tr>
+    				<td>MIROC</td>
+    				<td>MIROC-ESM</td>
+    				<td>4600-4699</td>
+  			</tr>
+			<tr>
+    				<td>CNRM-CERFACS</td>
+    				<td>CNRM-CM5</td>
+    				<td>1800-1999</td>
+  			</tr>
+			<tr>
+    				<td>MPI-M</td>
+    				<td>MPI-ESM-P</td>
+    				<td>1850-1949</td>
+  			</tr>
+			<tr>
+    				<td>IPSL</td>
+    				<td>IPSL-CM5A-LR</td>
+    				<td>2601-2800</td>
+  			</tr>
+		</table>
+	</p>
   </section>
 
 </div>
