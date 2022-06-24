@@ -17,6 +17,21 @@
 		transform: translate(-50%, -50%);
 	}
 </style>
+	
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
   
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -67,7 +82,7 @@
 		
 		I first determined which products from the Coupled Model Intercomparison Project 5 (CMIP5) outputted the two variables that we care about: the sic and the w.
 		In order to have a consistent comparison across both the LGM and PI, I only used those model products that outputted both variables. This left 7 models:
-		<table style="width: 60em;">
+		<table>
   			<tr>
 				<th>Institution</th>
 			    	<th>Model</th>
