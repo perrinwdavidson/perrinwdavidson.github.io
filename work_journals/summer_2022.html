@@ -1,196 +1,212 @@
+<!-- begin html document -->
 <html>
-	
+
+<!-- begin header -->
 <head>
-	
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
-	
+
+<!-- set style -->
 <style>
-	body {font-family: "Computer Modern Sans", sans-serif;}
-	h1 {text-align: center;}
-	h2 {text-align: center;}
-	p {text-align: justify;}
-	blockquote {text-align: center;}
-	html,
-	body {
-  		height: 100%;
-	}
-	.center {
-		/*position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);*/
-		margin: 0 auto;
-  		padding-left: 50%;
-  		padding-right: 50%;
-  		width: 70%;
-	}
-	.center-wrapper {
-  		display: flex;
- 	 	flex-direction: column;
-  		justify-content: center;
-  		min-height: 100%;
-	}
-</style>
-	
-<style>
-	html { overflow-y: scroll; }
-</style>	
-<style>
+
+/* set container characteristics */
+html {
+	height: 100%;
+	overflow-y: scroll;
+}
+body {
+	font-family: "Computer Modern Sans", sans-serif;
+	height: 100%;
+}
+h1 {text-align: center;}
+h2 {text-align: center;}
+p {text-align: justify;}
+blockquote {text-align: center;}
 table {
   border-collapse: collapse;
   width: 100%;
 }
-
-td, th {
+th {
   border: 1px solid #000000;
   text-align: center;
   padding: 8px;
 }
-
+td {
+  border: 1px solid #000000;
+  text-align: center;
+  padding: 8px;
+}
 tr:nth-child(even) {
   background-color: #056BB8;
 }
-	
 img {
 	width: 100%;
 	padding: 1em;
 }
+
+/* define classes */
+.center {
+	margin: 0 auto;
+	padding-left: 50%;
+	padding-right: 50%;
+	width: 70%;
+}
+.center-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 100%;
+}
+
 </style>
-  
+
+<!-- set links -->
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+
+<!-- mathjax -->
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-	
+
 </head>
-	
+
+<!-- begin body -->
 <body style="width: 60em;">
-	
+
+<!-- begin centered body -->
 <div class="center-wrapper">
-<div class="center"> 
-	
-  <section>
-    <h1 style="font-size: 2.5em;">
-	    Summer 2022 Work Journal
-    </h1>
-    <hr style="width: 40em;">
-  </section>  
-	
-  <section>
-    <h2>
-	    Week 1 (21/06 to 24/06)
-    </h2>
-	  
-    <h3> 
-	    Goals
-    </h3>
-    <p>
-	
-      The goals of this week were to:
-	    
-	<ol>
-		<li>calculate and plot sea-ice fraction (\(f_{sic}\)) and surface wind (\(w\)) speed differences between the Last Glacial Maximum (LGM) and Pre-Industrial (PI) for individual models & the inter-model mean </li>
-      		<li>read four papers, focusing on two themes:
-			<ul>
-				<li>disequilibrium mechanisms, comparing Hamme (2017) to Loose (2016)</li>
-				<li>gas exchange parameterizations, comparing Nicholson (2011, 2016) to Liang (2013)</li>
-			</ul>
-		</li>
-	</ol>
-  
-    </p>
-	
-	<h3>
-		Forcing Comparisons
-	</h3>
-	
-	<h4>
-		Methods
-	</h4>
-	
-	<p>
-		
-		I first determined which products from the Coupled Model Intercomparison Project 5 (CMIP5) outputted the two variables that we care about: the \(f_{sic}\) and the \(w\).
-		In order to have a consistent comparison across both the LGM and PI, I only used those model products that outputted both variables for both time periods of interest. This left 7 models:
-		<p></p>
-		<table>
-  			<tr>
-				<th>Institution</th>
-			    	<th>Model</th>
-			    	<th>Time Period</th>
-  			</tr>
-  			<tr>
-    				<td>NCAR</td>
-    				<td>CCSM4</td>
-    				<td>1800-1900</td>
-  			</tr>
-			<tr>
-    				<td>LASG-CESS</td>
-    				<td>FGOALS-g2</td>
-    				<td>550-649</td>
-  			</tr>
-			<tr>
-    				<td>MRI</td>
-    				<td>MRI-CGCM3</td>
-    				<td>2501-2600</td>
-  			</tr>
-			<tr>
-    				<td>MIROC</td>
-    				<td>MIROC-ESM</td>
-    				<td>4600-4699</td>
-  			</tr>
-			<tr>
-    				<td>CNRM-CERFACS</td>
-    				<td>CNRM-CM5</td>
-    				<td>1800-1999</td>
-  			</tr>
-			<tr>
-    				<td>MPI-M</td>
-    				<td>MPI-ESM-P</td>
-    				<td>1850-1949</td>
-  			</tr>
-			<tr>
-    				<td>IPSL</td>
-    				<td>IPSL-CM5A-LR</td>
-    				<td>2601-2800</td>
-  			</tr>
-		</table>
-		<p></p>
-		After storing all model data - each varying in latitude, longitude, and time dimension but all having a monthly resolution starting in the first month and ending in the last month of the respective years stated above - a climatological mean for each month was calculated over the entirety of the model run.
-		A basic quality control was run over the CMIP5 data. All longitude data was put into the [0, 360] if not already. Additionally, if the \(f_{sic}\) was out of 100, this was corrected to be out of 1, and we calculated \(w\) from the model meridional and zonal wind magntiudes using:
-			\[
-				w = \sqrt{u^2 + v^2}.
-			\]
-		Then, all missing data was removed from the datasets and then linearly interpolated to the UVic grid. All negative CMIP5 data was also removed. Lastly, we average per month over the entire ensemble, giving the final ensemble mean.
-		
-	<h4>
-		Results
-	</h4>
-	
-		The UVic monthly data is presented below:
-			<img src="images/summer_2022/uvic_sic.png" alt="UVic LGM f_sic">
-			<img src="images/summer_2022/uvic_ws.png" alt="UVic LGM w">
-		The ensemble mean data is presented below:
-			<img src="images/summer_2022/ensembleMean_sic.png" alt="Ensemble mean LGM f_sic">
-			<img src="images/summer_2022/ensembleMean_ws.png" alt="Ensemble mean LGM w">
-	</p>
-	<p>
-		From these arrays, we calculate the absolute delta, \(\Delta\), following in the case of the wind:
-			\[
-				\Delta w = w_\text{Ensemble} - w_\text{UVic}.
-			\]
-		These differences are plotted below:
-			<img src="images/summer_2022/absDiff_ensembleMean_sic.png" alt="Difference LGM f_sic" >
-			<img src="images/summer_2022/absDiff_ensembleMean_ws.png" alt="Difference LGM w">
-	</p>
-	<h4 style="color: red;">
-		N.B. It is important to note the NCAR data has misplaced NaN data present straight after reading from the .nc data downloaded from the WHOI server. 
-	</h4>
-  </section>
+
+	<div class="center">
+
+		<!-- header -->
+		<section>
+
+    		<h1 style="font-size: 2.5em;">
+	    		Summer 2022 Work Journal
+    		</h1>
+    		<hr style="width: 40em;">
+
+  		</section>
+
+		<!-- week 1 main text -->
+  		<section>
+
+    		<h2>
+	    		Week 1 (21/06 to 24/06)
+    		</h2>
+
+			<!-- goals -->
+    		<h3>
+	    		Goals
+    		</h3>
+    		<p>
+      			The goals of this week were to:
+				<ol>
+					<li>calculate and plot sea-ice fraction (\(f_{sic}\)) and surface wind (\(w\)) speed differences between the Last Glacial Maximum (LGM) and Pre-Industrial (PI) for individual models & the inter-model mean </li>
+      				<li>read four papers, focusing on two themes:
+						<ul>
+							<li>disequilibrium mechanisms, comparing Hamme (2017) to Loose (2016)</li>
+							<li>gas exchange parameterizations, comparing Nicholson (2011, 2016) to Liang (2013)</li>
+						</ul>
+					</li>
+				</ol>
+    		</p>
+
+			<!-- forcing comparisons -->
+			<h3>
+				Forcing Comparisons
+			</h3>
+			<h4>
+				Methods
+			</h4>
+			<p>
+				I first determined which products from the Coupled Model Intercomparison Project 5 (CMIP5) outputted the two variables that we care about: \(f_{sic}\) and \(w\).
+				In order to have a consistent comparison across both the LGM and PI, I only used those model products that outputted both variables for both time periods of interest. This left 7 models:
+				<p></p>
+				<table>
+	  				<tr>
+						<th>Institution</th>
+				    	<th>Model</th>
+				    	<th>Time Period</th>
+	  				</tr>
+	  				<tr>
+	    				<td>NCAR</td>
+	    				<td>CCSM4</td>
+	    				<td>1800-1900</td>
+	  				</tr>
+					<tr>
+	    				<td>LASG-CESS</td>
+	    				<td>FGOALS-g2</td>
+	    				<td>550-649</td>
+	  				</tr>
+					<tr>
+	    				<td>MRI</td>
+	    				<td>MRI-CGCM3</td>
+	    				<td>2501-2600</td>
+	  				</tr>
+					<tr>
+	    				<td>MIROC</td>
+	    				<td>MIROC-ESM</td>
+	    				<td>4600-4699</td>
+	  				</tr>
+					<tr>
+	    				<td>CNRM-CERFACS</td>
+	    				<td>CNRM-CM5</td>
+	    				<td>1800-1999</td>
+	  				</tr>
+					<tr>
+	    				<td>MPI-M</td>
+	    				<td>MPI-ESM-P</td>
+	    				<td>1850-1949</td>
+	  				</tr>
+					<tr>
+	    				<td>IPSL</td>
+	    				<td>IPSL-CM5A-LR</td>
+	    				<td>2601-2800</td>
+	  				</tr>
+				</table>
+				<p></p>
+				After storing all model data - each varying in latitude, longitude, and time dimension but all having a monthly resolution starting in the first month and ending in the last month of the respective years stated above - a climatological mean for each month was calculated over the entirety of the model run.
+				A basic quality control was run over the CMIP5 data.
+				All longitude data was put into the [0, 360] if not already.
+				Additionally, if the \(f_{sic}\) was out of 100, this was corrected to be out of 1, and we calculated \(w\) from the model meridional and zonal wind magntiudes using:
+					\[
+						w = \sqrt{u^2 + v^2}.
+					\]
+				Then, all missing data was removed from the datasets and then linearly interpolated to the UVic grid.
+				All negative CMIP5 data was also removed.
+				Lastly, we average per month over the entire ensemble, giving the final ensemble mean.
+			</p>
+
+			<!-- results -->
+			<h4>
+				Results
+			</h4>
+			<p>
+				The UVic monthly data is presented below:
+				<img src="images/summer_2022/uvic_sic.png" alt="UVic LGM f_sic">
+				<img src="images/summer_2022/uvic_ws.png" alt="UVic LGM w">
+				The ensemble mean data is presented below:
+				<img src="images/summer_2022/ensembleMean_sic.png" alt="Ensemble mean LGM f_sic">
+				<img src="images/summer_2022/ensembleMean_ws.png" alt="Ensemble mean LGM w">
+				From these arrays, we calculate the absolute delta, \(\Delta\), following in the case of the wind:
+					\[
+						\Delta w = w_\text{Ensemble} - w_\text{UVic}.
+					\]
+				These differences are plotted below:
+				<img src="images/summer_2022/absDiff_ensembleMean_sic.png" alt="Difference LGM f_sic" >
+				<img src="images/summer_2022/absDiff_ensembleMean_ws.png" alt="Difference LGM w">
+			</p>
+
+			<!-- notes of concern -->
+			<h4 style="color: red;">
+				N.B. It is important to note the NCAR data has misplaced NaN data present straight after reading from the .nc data downloaded from the WHOI server.
+			</h4>
+
+		</section>
+
+	</div>
 
 </div>
-	
-</div>
-	
+
 </body>
 
 </html>
