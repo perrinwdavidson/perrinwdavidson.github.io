@@ -198,39 +198,70 @@ img {
 			<p>
 				First, I present the UVic monthly \(f_{sic}\) below, which are the monthly forcing files for the TMs:
 				<img src="images/summer_2022/uvic_sic.png" alt="UVic LGM f_sic">
+				Ranging from 0 to 1, we can see that while the northern hemisphere has relatively the same distribution of ice year-round, the southern hemisphere has a slight ice melt most prominent during December and January.
+				Note that there is little gradient across the ice fields in both the hemispheres, rather having a binary ice (1) to no ice (0) for most of the fields.
+			</p>
+			<p>
 				The monthly averaged forcing files for \(w\) are then presented below, also used to force the UVic model-derived TMs:
 				<img src="images/summer_2022/uvic_ws.png" alt="UVic LGM w">
+				We can see that there are strong wind currents around \(45^\circ\)N/S.
+				There is a lack of winds (0 m s\(^{-1}\)) around the Equator and near the northern pole.
 			</p>
 			<p>
 				Now, I present ensemble mean data below, calculated from the 7 CMIP5 data products as discussed above.
 				First, I plot \(f_{sic}\):
 				<img src="images/summer_2022/ensembleMean_sic.png" alt="Ensemble mean LGM f_sic">
+				Unlike the UVic forcing files, we can see that there is a large gradient in the northern and southern hemispheres.
+				Additionally, there is much more seasonality present in both hemispheres.
+				However, we can see that the extent of the ice fields are similar the UVic forcing files.
+			</p>
+			<p>
 				Next, we look at \(w\):
 				<img src="images/summer_2022/ensembleMean_ws.png" alt="Ensemble mean LGM w">
+				Unlike the UVic forcing files, we can see that there are clearly more than 3 regimes of wind latitudinally.
+				Each of these latitudinal bands vary only slightly with season, with the greatest winds in the Northern Atlantic ocean.
 			</p>
 			<p>
 				Applying the definition of \(\Delta\) to the data presented above, we get the differences for \(f_{sic}\):
 				<img src="images/summer_2022/absDiff_ensembleMean_sic.png" alt="Difference LGM f_sic">
+				Most importnatly, we can see that largest difference is in the southern hemisphere, where the ensemble has a greater average (at maximum, 1) for most of the ice field, but the presence of a strong gradient is shown by the negative \(\Delta\) on its perimeter, of nearly 1 as well.
+				There is little change in the northern hemisphere, except for the ensemble mean having a slightly higher \(f_{sic}\) than the forcing files, of about 0.5.
+			</p>
+			<p>
 				Similarly, we get the differences for \(w\):
 				<img src="images/summer_2022/absDiff_ensembleMean_ws.png" alt="Difference LGM w">
+				We can see that the largest differences are in both the southern and northern hemispheres around \(45^\circ\)N/S in the Pacific Ocean, where the ensemble has a higher average of about 6 (m s\(^{-1}\)).
+				Additionally, there is a negative difference of about -5 (m s\(^{-1}\)) along the Equator.
 			</p>
 			<p>
 				Now, we look at the ensemble minimums are presented below, first for \(f_{sic}\):
 				<img src="images/summer_2022/ensembleMin_sic.png" alt="Minimum LGM f_sic">
+				
+			</p>
+			<p>
 				The minimums for \(w\) are next presented below:
 				<img src="images/summer_2022/ensembleMin_ws.png" alt="Minimum LGM w">
+
 			</p>
 			<p>
 				The ensemble maximums are presented below, first for \(f_{sic}\):
 				<img src="images/summer_2022/ensembleMax_sic.png" alt="Maximum LGM f_sic">
+
+			</p>
+			<p>
 				The maximums for \(w\) are next presented below:
 				<img src="images/summer_2022/ensembleMax_ws.png" alt="Maximum LGM w">
+
 			</p>
 			<p>
 				Applying the definition of spread from above, I now present the ensemble spreads for \(f_{sic}\):
 				<img src="images/summer_2022/ensembleSpread_sic.png" alt="Spread LGM f_sic">
+
+			</p>
+			<p>
 				I also present the spread for \(w\):
 				<img src="images/summer_2022/ensembleSpread_ws.png" alt="Spread LGM w">
+
 			</p>
 
 			<!-- notes of concern -->
@@ -239,14 +270,6 @@ img {
 				Getting the data for the PI should not be tricky, as I only need to change the paths.
 				The data analysis is done, and I should have this done when we meet on Monday.
 			</h4>
-
-			<!-- discussion -->
-			<h4>
-				LGM Discussion
-			</h4>
-			<p>
-
-			</p>
 
 		</section>
 
