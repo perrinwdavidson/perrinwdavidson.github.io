@@ -171,8 +171,7 @@ img {
 					\[
 						w = \sqrt{u^2 + v^2}.
 					\]
-				Then, all missing data was removed from the datasets and then linearly interpolated to the UVic grid.
-				All negative CMIP5 data was also removed.
+				Then, all missing data was removed from the datasets and then linearly interpolated to the UVic grid. For \(f_{sic}\), all values less than 0 and greater than 1 were truncated to 0 and 1, respectively.
 				Lastly, we average per month over the entire ensemble, giving the final ensemble mean.
 				From these arrays, we calculate the absolute delta, \(\Delta\), following in the case of the wind:
 					\[
