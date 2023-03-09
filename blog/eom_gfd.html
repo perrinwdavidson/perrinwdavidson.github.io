@@ -29,7 +29,56 @@ h2 {text-align: center;}
 
 <h2>Newton's Second Law</h2>
 <p>
+From any physics course, we know that Newton's Second Law for a parcel $P$ contained within our reference frame $R$ can be stated as:
+\begin{equation}
+	\bm{F} = m\bm{a},
+	\label{eq:newtons}
+\end{equation}
+where we have that $\bm{F}$ is the sum of all forces acting on $P$ with units [M][D][T]$^{-2} \sim $ [N], $m$ is the mass of $P$, and $\bm{a}$ is the acceleration of $P$. \par
 
+Now, for $P$ finite-sized (say a box of size $V$ still with mass $m$), then we are good to use this formulation.
+However, we are interested in discretizing our fluid into volumes of infinitesimal size, $\textrm{d}V$. 
+Defining the density of $P$ to be $\rho$, we note here that $\rho V = m$, so we can update \eqref{eq:newtons} to be, taking $P$ now to be infinitesimal (and thus $V \to \textrm{d}V \to 0$):
+\begin{equation}
+	\bm{F} = \rho \bm{a}\textrm{d}V.
+\end{equation}
+We can redefine our sum of forces as $\bm{\tilde{F}}=\bm{F}/\textrm{d}V \sim $ [N][D]$^{-3}$ and therefore get the updated Newton's Second Law for a Fluid Parcel as:
+\begin{equation}
+	\bm{\tilde{F}} = \rho \bm{a}.
+\end{equation}
+Next, we need to think about all of the forces that are acting on $P$. 
+The ones that we will consider here are: the pressure gradient force, the viscous force, and the gravitational force:
+\begin{equation}
+	\bm{\tilde{F}} = \bm{\tilde{F}}_p + \bm{\tilde{F}}_v + \bm{\tilde{F}}_g = \rho \bm{a}.
+\end{equation}
+I will briefly go through these forces now:
+\begin{itemize}
+	\item \textbf{Pressure Gradient:} As $P$ is ``pushed'' from higher to lower pressures $(p\sim$ [N][D]$^{-2})$, we can write this as: \[
+			\bm{\tilde{F}}_p = - \nabla p
+	.\] 
+	\item \textbf{Viscous:} We can represent a fluid's resistance to deformation by something like a momentum diffusion process (similar to Fick's Second Law applied to momentum instead of concentration):
+		\[
+			\bm{\tilde{F}}_v = \mu \nabla ^2 \bm{u}
+		,\]
+		where $\mu\sim$ [N][T][D]$^{-2}$ is dynamic viscosity.
+	\item \textbf{Gravitational:}  The force of a planetary body's gravity pulling $P$ toward it's centre is given by:
+		 \[
+			 \bm{\tilde{F}}_g = -\rho g\bm{\hat{k}} = -\rho\nabla \Phi_g,
+		\]
+		where we define $\Phi_g \sim $ [D]$^2$[T]$^{-2}$ to be the gravitational potential of the body.
+\end{itemize}
+Now, we note that acceleration of $P$ can be given by the material derivative:
+\begin{equation}
+	\bm{a} = \frac{\textrm{D}\bm{u}}{\textrm{D}t} = \frac{\partial \bm{u}}{\partial t} + \bm{u} \cdot \nabla\bm{u}. 
+\end{equation}
+Next, we need to deal with our reference frame $R$, specifically that we are in a non-inertial reference frame  (i.e., our fluid is on a sphere, spinning).
+Therefore, we need to develop some theory to help in accurately describing motion in this reference frame. 
+To do this, let's define vectors $\in \R^2: \bm{f}=[f_1,f_2, f_3]^T$ and $\bm{g}=[g_1, g_2,g_3]^T$ spanned by $[\bm{\hat{\imath}},\bm{\hat{\jmath}},\bm{\hat{k}}]^T$.
+We now will relate each through a rotation of $\theta$, assuming that one is in an inertial reference frame and one a non-interial, rotating reference frame:
+\begin{equation}
+	\bm{f}= \begin{bmatrix} \sin \theta & \cos \theta & 0 \\ \cos \theta & -\sin\theta & 0 \\ 0 & 0 & 1 \end{bmatrix},
+\end{equation}
+where we here related those vectors specifically spanned by $\bm{\hat{\imath}}$ and $\bm{\hat{\jmath}}$.
 </p>
 </div>
 </body>
