@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.801: Problem Set 4</title>
+
+<style>
+h1 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.801: Problem Set 4</h1>
+
+<hr style="width: 60em;">
+
+<h3>Setting up the problem</h3>
+
+We are given a domain defined as:
+\begin{equation}
+	0 < x < L_x \quad \text{ and } \quad 0 < y < 2L_y.
+\end{equation}
+We are further given an Ekman pumping field of the form:
+\begin{equation}
+	w_{Ek} = - \frac{\pi \tau_x}{\rho_0 f L_y}\sin\left[\frac{\pi y}{L_y}\right].
+\end{equation}
+This induces a "double gyre", which is a subtropical gyre in the south (anti-cyclonic) and a subpolar gyre in the north (cyclonic).
+Now, in this problem set we want to construct the 3-layer, quasi-geostrophic model given by the following vorticity equations (neglecting planetary vorticity):
+\begin{align}
+	q_1 &= \beta y - F\left(\psi_1 - \psi_2\right), \\
+	q_2 &= \beta y + F\left(\psi_1 + \psi_2 - 2\psi_2\right), \\
+	q_3 &= \beta y + F\left(\psi_2 - \psi_3\right),
+\end{align}
+where we have $F =  f_0^2 / g' H$ and we relate the streamfunctions via assuming the depth-integrated flow is in Sverdrup balance:
+\begin{equation}
+	\Psi_{geo} = H\left(\psi_1 + \psi_2 + \psi_3\right).
+\end{equation}
+We define $g'$ as the reduced gravity between the layers.
+Furthermore, we will define three regions for which we will derive both the streamfunctions, $\psi^j_i$, and the potential vorticity, $q^j_i$, valid in each region.
+Note the convention used here, in which $i, j \in \left[1, 2, 3\right]$ and $i$ indexes the level and $j$ the region in which the variable is valid.
+We illustrate the regions in Fig. 1.
+<figure>
+	<img src="images/regions.png" style="width:40%">
+	<figcaption> Fig. 1: The three regions for which we will derive the valid streamfunctions and potential vorticity equations in each layer.</figcaption>
+</figure>
+We note regions II and III are so called "pool" regions, for which there will be homogenized potential vorticity in the second and third layers.
+
+<h3>Problem 1 (Geostrophic Streamfunction)</h3>
+
+We are first given the geostrophic streamfunction is defined as:
+\begin{equation}
+	\Psi_{geo} = \frac{f}{\beta}\int_{\text{eastern boundary}}^x \text{d}x w_{Ek}.
+\end{equation}
+We can preform this integral, assuming the eastern boundary is $L_x$, to get:
+\begin{equation}
+	\Psi_{geo} = \frac{\pi \tau_x L_x}{\beta \rho_0 L_y}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right].
+\end{equation}
+Now, we take the following values, which we will use for the remainder of the problem set:
+\begin{align}
+	\tau_x &\sim 1 \times 10^{-1} \: \left[\text{kg} \text{ m}^{-1} \text{s}^{-2}\right], \\	
+	L_y &\sim 3 \times 10^{6} \: \left[\text{m}\right], \\
+	L_x &\sim 3 \times 10^{6} \: \left[\text{m}\right], \\
+	\beta &\sim 2 \times 10^{-11} \: \left[\text{s}^{-1} \text{m}^{-1}\right], \\
+	\rho_0 &\sim 1 \times 10^{3} \: \left[\text{kg} \text{ m}^{-3}\right], \\
+	f_0 &\sim 1 \times 10^{-4} \: \left[\text{s}^{-1}\right], \\
+	g' &\sim 2 \times 10^{-2} \: \left[\text{m} \text{ s}^{-2}\right] .
+\end{align}
+We plot both the Eckman pumping field and the geostrophic streamfunction in Fig. 2 with these values. 
+<figure>
+	<img src="images/prob1.png" style="width:100%">
+	<figcaption> Fig. 2: The Eckman pumping field, $w_{Ek}$ and the corresponding geostrophic streamfunction, $\Psi_{geo}$. </figcaption>
+</figure>
+For the sake of simplicity, we will follow Marshall and Speer and define:
+\begin{equation}
+	\Psi_{Sv} = \frac{\pi \tau_x L_x}{\beta \rho_0 L_y} \sim \text{max}\left[\Psi_{geo}\right] \sim 7.85 \:\left[\text{Sv}\right],
+\end{equation}
+so we will deal with the geostrophic streamfunction of the form:
+\begin{equation}
+    \Psi_{geo} = \Psi_{Sv}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right].
+\end{equation}
+
+<h3>Problem 2 (Region I)</h3>
+
+We will begin to build the full three-layer model by first assuming the flow is confined to the top layer. 
+Mathematically, we can write this as:
+\begin{align}
+	\psi^1_1 &= \frac{\Psi_{geo}}{H}, \\
+	\psi^1_2 &= 0, \\
+	\psi^1_3 &= 0.
+\end{align}
+Therefore, we have the following 6 equations describing the flow in the Region I, for the streamfunctions:
+\begin{align}
+	\psi^1_1 &= \frac{\Psi_{Sv}}{H}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right], \\
+	\psi^1_2 &= 0, \\
+	\psi^1_3 &= 0,
+\end{align}
+and for potential vorticity:
+\begin{align}
+	q^1_1 &= \beta y - \frac{F\Psi_{Sv}}{H}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right], \\
+	q^1_2 &= \beta y + \frac{F\Psi_{Sv}}{H}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right], \\
+	q^1_3 &= \beta y.
+\end{align}
+In order to plot these values, we will first calculate $F$ and $H$, as we are assuming all layer thicknesses are the same. 
+First, we assume, from the problem:
+\begin{equation}
+	\frac{F \Psi_{Sv}}{\beta L_y H} = 2.
+\end{equation}
+As we know the definition of $F$, we can rearrange to get, for the values given above:
+ \begin{equation}
+	H = \left(\frac{f_0^2\pi\tau_xL_x}{2g'\rho_0\beta^2L_y^2}\right)^{1 / 2} \sim 181 \:\left[\text{m}\right],
+\end{equation}
+and therefore calculate:
+\begin{equation}
+	F = \frac{f_0^2}{g'H} \sim  2.76 \times 10^{-9} \: \left[\text{m}^{-2}\right].
+\end{equation}
+Next, we need to determine the boundaries of Region I, as shown in Fig. 1. 
+To do this, we will note the curve the demarcates Region I is given by equating $q^1_2$ with the reference value of QGPV at the center of the basin, i.e.:
+\begin{equation}
+	q_2^1 = \beta y + F\psi_1^1 = \beta L_y.
+\end{equation}
+We can think of this as the PV homogenization in the "pool region" that will be discussed in the next section.
+So, we can solve this given our solution for $\psi_1^1$ from above, giving:
+\begin{equation}
+	\frac{y}{L_y} + \frac{F\Psi_{Sv}}{\beta L_y H}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right] = 1,
+\end{equation}
+from which we solve for $x$ (as for $y$ it is currently a transcendental equation) to select dependent $x$ based on prescribed independent $y$ values.
+Noting the coefficient in the second term on the LHS is assumed to be 2, we get:
+\begin{equation}
+	x = L_x \left(1 - \frac{1 - y / L_y}{2\sin\left[\pi y / L_y\right]}\right).
+\end{equation}
+We plot the resulting bounds in Fig. 3.
+<figure>
+	<img src="images/prob2a.png" style="width:40%">
+	<figcaption> Fig. 3: The bounds between Region I and Region II, as quantified above and graphically represented in Fig. 1.</figcaption>
+</figure>
+Now, we plot $\psi_1^1$ in Fig. 4 (but not $\psi_2^1$ or $\psi_3^1$ as these are 0). 
+<figure>
+	<img src="images/prob2b.png" style="width:40%">
+	<figcaption> Fig 4: The streamfunction $\psi_1^1$ (left) over the entire domain (right) over Region I in which it is valid.</figcaption>
+</figure>
+As confirmed by the maths, this is simply the geostrophic streamfunction normalized to the height of the layers, $H.$
+Next, we will plot the entire domain solution for $q^1_i$ in Fig. 5 below. 
+<figure>
+	<img src="images/prob2c.png" style="width:100%">
+	<figcaption> Fig 5: The QGPV $q_i^1$ over the entire domain, where the dashed red line separates the pool region (left, closed region) to the shadow zone (right, open region) }.</figcaption>
+</figure>
+We note the "pool region" which is defined above in $q^1_2$ by those contours which only intersect with the western boundary and the "shadow zone" by those contours which intersect the eastern boundary.
+The dashed red line demarkates these different regions, and is defined by the Region I boundary above.
+
+<h3>Problem 3 (Region II)</h3>
+
+
+
+<h3>Problem 4 (Region III)</h3>
+
+</div>
+</body>
+</html>

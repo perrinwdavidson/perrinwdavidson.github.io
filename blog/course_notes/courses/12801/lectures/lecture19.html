@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.801: Lecture 19</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.801: Lecture 19</h1>
+
+<hr style="width: 60em;">
+
+<h2>The Setup</h2>
+
+<p>
+There are two paradigms of ocean circulation:
+<ol>
+	<li> [Laminary flow]: This is the steady-state flow that was considered by Sverdrup.</li>
+	<li> [Turbulent flow]: This is the idea that the ocean is fundamentally turbulent. Such people that are in this camp are researchers like Victor Starr (though a meteorologist).</li>
+</ol>
+Now, we note that in the oceans, and geostrophic theory, we have boundaries, and therefore, we have a different regime in the ACC than in other parts of the world.
+To make this explicit, we can say that:
+\begin{equation}
+	\frac{\textrm{D}q}{\textrm{D}t} = 0,
+\end{equation}
+where:
+\begin{equation}
+	q = \partial_xv - \partial_yu + f.
+\end{equation}
+Then, we will consider a Taylor Column is as follows:
+\begin{equation}
+	\frac{\textrm{D}}{\textrm{D}t}\left(\xi + f\right)= 2\Omega \frac{\partial w}{\partial z}, 
+\end{equation}
+where we have the $\partial_z w$ the "Vortex Stretching" term and behaves:
+\begin{align}
+ \text{Stretch:} \quad \partial_zw > 0 &\quad \rightarrow \quad \text{Counter Clockwise / Cyclonic} \\ 
+ \text{Compress:} \quad \partial_zw < 0 &\quad \rightarrow \quad \text{Clockwise / Anti-Cyclonic}
+\end{align}
+We have a westward phase propogation which is characteristic of Rossby Waves.
+</p>
+
+<h2>Theory (QGPV)</h2>
+
+<p>
+We have the GQPV as follows:
+\begin{equation}
+	q = \nabla^2\Psi + \beta y + \frac{\partial }{\partial z}\left(\frac{f_0^2}{N^2}\frac{\partial \Psi}{\partial z} \right).
+\end{equation}
+Now, we are going to use:
+\begin{equation}
+	\frac{\textrm{D}q}{\textrm{D}t} = 0,
+\end{equation}
+and we will linearize. Specifically, we are going to theorize there is a mean flow $\overline{u}\left(z\right)$ and a planetary vorticity gradient $\beta$.
+Then, we have:
+\begin{align}
+	u &= \overline{u} + u', \\
+	q &= \overline{q} + q'.
+\end{align}
+From here, we have:
+\begin{equation}
+\frac{\partial q'}{\partial t} + \overline{u}\frac{\partial q'}{\partial x} + v'\frac{\partial \overline{q}}{\partial y} = 0.
+\end{equation}
+The second term leads to baroclinic instability and the third term leads to Rossby waves.
+We \start with $\overline{u}=0$, which is to say there is no large scale mean flow in the ocean.
+Then, we get \hat{t} $\beta=\frac{\partial \overline{q}}{\partial y}.$
+This gives use the Rossby Wave equation:
+\begin{equation}
+	\boxed{
+	\frac{\partial q'}{\partial t} + \beta v'=0.}
+\end{equation}
+From here, we note \hat{t}:
+\begin{equation}
+	q'=\nabla^2\Psi'+\beta y + \frac{\partial }{\partial z}\left(F\left(z\right) \frac{\partial \Psi'}{\partial z} \right),
+\end{equation}
+where $F = fo^2 / N^2 .$
+We are considering a stratified ocean of depth $D$, which means we have some $N^2$.
+We further let $w=0$ at the top and bottom of the ocean.
+Now, we know:
+\begin{equation}
+	b'=f_0 \frac{\partial \Psi'}{\partial z}, 
+\end{equation}
+and:
+\begin{equation}
+	\frac{\partial b'}{\partial t} +wN^2=0.
+\end{equation}
+This then means $b'=0$ at the top and  $\Psi_z=0$ at the top and bottom, as well. These are known as Neumann Boundary conditions.
+We want to look for plane wave solutions, i.e. solutions of the form:
+\begin{equation}
+	\Psi' = \hat{\Psi}\exp\left[i\left(kx+ly-\omega t\right)\right],
+\end{equation}
+where we have:
+\begin{align}
+	L_x &= \frac{2 \pi}{k}, \\
+	L_y &= \frac{2 \pi}{l}.
+\end{align}
+Now, we can get all of the terms in the derivatives for the ansatz above and get:
+\begin{equation}
+	q' = \left[-\left(k^2+l^2\right)+\frac{\partial }{\partial z}F \frac{\partial }{\partial z}\right]\hat{\Psi}. 
+\end{equation}
+We can then further get:
+\begin{equation}
+q' = -i\omega\left[-K^2 + \frac{\partial }{\partial z}\left(F \frac{\partial \hat{\Psi}}{\partial z} \right) \right] + \beta k \hat{\Psi} = 0.
+\end{equation}
+Rearranging this equation, we get:
+\begin{equation}
+	\omega \left[\frac{\partial }{\partial z}\left(F \frac{\partial \hat{\Psi}}{\partial z}\right) - K^2\hat{\Psi}\right] - k\beta \hat{\Psi} = 0.
+\end{equation}
+We have the BCs:
+\begin{equation}
+	\frac{\partial \hat{\Psi}}{\partial z} = 0 \quad \text{ at } \quad z = 0, -D. 
+\end{equation}
+From the BCs, we can see we have a solution of the form:
+\begin{equation}
+	\hat{\Psi} = \cos\left[\frac{m \pi z}{D}\right] \quad \text{ for } \quad m = 1, 2, 3, \ldots
+\end{equation}
+Now, we will let $N^2= $ const. and therefore $F= $ const. Substituting in this equation in to our equation above, we get:
+\begin{equation}
+	-\omega\left[\frac{f_0^2}{N^2}\frac{m^2\pi^2}{D^2}+K^2\right]-\beta k = 0.
+\end{equation}
+This then gives the dispersion relation for baroclinic Rossby waves:
+\begin{equation}
+	\omega = - \frac{\beta k}{K^2 + K_m^2} \quad \text{ for } \quad K_m = m \pi \left(\frac{f_0}{ND}\right).
+\end{equation}
+This is a "Rigid Lid" approximation for the ocean, which is not a good approximation for the atmosphere.
+From above, we note  $K_m$ are known as the "Deformation Wave Numbers" and are the inverses of the Rossby Radius of Deformation: $K_m = 1 / L_{R_m}$.
+For $m=0$, we have the "barotropic" mode and then we go to the "$m$th barclinic mode". 
+We can estimate these radii from $N / f_0 = 0$ and $D = 50$ [km], we get: $L_{R_1} = 48 $ [km], $L_{R_2} = 24$ [km].
+</p>
+Now, if we make the "long-wave approximation" given by: $K^2 \ll K_m^2$, then we have:
+\begin{equation}
+	\frac{\omega}{k} = -\frac{\beta}{K_m^2} = - \beta L_{R_1}^2.
+\end{equation}
+This is the speed of long baroclinic, 1st mode Rossyby waves. 
+It turns out almost of the energy in teh ocean is in the 1st mode.
+There is something called an inverse cascade and energy cascades to the 1st baroclinic mode.
+
+<p>
+
+</p>
+</div>
+</body>
+</html>
