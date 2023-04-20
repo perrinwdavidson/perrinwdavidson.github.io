@@ -293,7 +293,18 @@ We could, as with $\psi_i$, compare Fig. 10  $q_1$ with Fig. 5 and see a large s
 
 <h3>Problem 6 ($N$-layers)</h3>
 
-
+Lastly, we discuss how to extend this solution to $N$ layers.
+To do this, we will again assume  the same height $H$ and reduced gravity, i.e. same $F$, for all layers.
+Then, we know  \hat{t} we have to have the condition the summation of all QGPV in each layer must add up to the Sverdrup balance, i.e. the terms of the form $F\left(\psi_i + \psi_j + \ldots\right)$ will sum to zero leving only $\beta y$ on the RHS.
+Taking all of this into consideration, we have for any given layer $i \in \left[2, N-2\right]$:
+\begin{equation}
+	q_i = \beta y + F\left(\psi_{i-1}-2\psi_i+\psi_{i+1}\right),
+\end{equation}
+with the boundaries:
+\begin{align}
+	q_1 &= \beta y - F\left(\psi_1 - \psi_2\right) \\
+	q_N &= \beta y + F\left(\psi_{N-1} - \psi_N\right).
+\end{align}
 
 <hr style="width: 60em;">
 
