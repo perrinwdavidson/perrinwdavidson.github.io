@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.802: Problem Set 3</title>
+
+<style>
+h1 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.802: Problem Set 3</h1>
+
+<hr style="width: 60em;">
+
+<h3>Problem 1</h3>
+
+<p>
+<b>(a)</b> 
+We want to derive an approximation for the potential vorticity of a 1-layer homogenous model on the $\beta$-plane with a constant depth $H$ in the absence of external forcing (i.e. it is conserved):
+\begin{equation}
+	\frac{\textrm{D}}{\textrm{D}t}\left[\frac{f + \zeta}{h}\right] = 0,
+\end{equation}
+where we define the following terms:
+\begin{align}
+	\zeta &= \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}, \\
+	f &= f_0 + \beta y, \\
+	h &= H + \eta,
+\end{align}
+and the derivative is the material derivative, defined as $\partial_t + \underline{u}\cdot\nabla$.
+To derive this approximation, we first note and suppose a few things:
+\begin{align}
+	|\eta| &\ll |H|, \\
+	|\zeta| &\ll |f_0|, \\
+	|\beta y| &\ll |f_0|.
+\end{align}
+We further remember the following useful Taylor expansion:
+\begin{equation}
+	\frac{1}{1 - x} = \sum_{n=0}^{\infty} x^n.
+\end{equation}
+So, we first can see:
+\begin{equation}
+	\frac{f + \zeta}{h} = \frac{\zeta + f}{H}\frac{1}{\left(1 + \eta / H\right)}.
+\end{equation}
+Then, we can apply the Taylor expansion from above to the second fraction and only consider first order terms, which gives:
+\begin{equation}
+	\frac{\zeta + f}{H}\left(1 - \frac{\eta}{H}\right) = \frac{1}{H}\left(\zeta + f - \zeta \frac{\eta}{H} - f_0\frac{\eta}{H} - \beta y \frac{\eta}{H}\right).
+\end{equation}
+By the suppositions above, we can reduce this to:
+\begin{equation}
+	\frac{1}{H}\left(\zeta + f - f_0 \frac{\eta}{H}\right).
+\end{equation}
+As $1 / H$ and $f_0$ are constants, by plugging in the above equation to the material derivative, we can simplify this expression to:
+\begin{equation}
+	\frac{\textrm{D}}{\textrm{D}t}\left[\zeta + \beta y - f_0 \frac{\eta}{H}\right] = 0.
+\end{equation}
+</p>
+
+<p>
+<b>(b)</b> 
+We now want to linearize the equation from above about a rest state, i.e. $\overline{\underline{u}} = \overline{\eta} = 0$ via perturbation quantities of order $\epsilon \ll 1$, i.e.:
+\begin{align}
+	u\left(x, y, t\right) &= \epsilon u'\left(x, y, t\right), \\
+	v\left(x, y, t\right) &= \epsilon v'\left(x, y, t\right), \\
+	\eta\left(x, y, t\right) &= \epsilon \eta'\left(x, y, t\right),
+\end{align}
+where we let:
+\begin{align}
+	u' &= - \frac{f_0}{g} \partial_y \eta, \\
+	v' &= \frac{f_0}{g} \partial_x \eta.
+\end{align}
+Plugging these perturbation quantities into the equation of interest, we get the following:
+\begin{align}
+	\frac{\textrm{D}}{\textrm{D}t}\left[\zeta + \beta y - f_0 \frac{\eta}{H}\right] = \partial_t\left[\epsilon\partial_xv' - \epsilon\partial_yu' - \epsilon\frac{f_0}{H}\eta' \right] + \epsilon \beta v'\partial_yy =0,
+\end{align}
+where we have neglected all terms higher than $\epsilon$, and noting that $\partial_{x_i} x_j = \delta_{ij}$ (for $x_i,x_j$ coordinates $x,y$), we get the linearized equation:
+\begin{equation}
+	\partial_{tx}v' - \partial_{ty}u' + \beta v'  - \frac{f_0}{H} \partial_t \eta' = 0.	
+\end{equation}
+Now, we can plug in our geostrophic equations for $u', v'$ giving:
+\begin{equation}
+	\frac{g}{f_0} \partial_{tx x}\eta + \frac{g}{f_0}\partial_{t y y} \eta' + \frac{g}{f_0}\beta\partial_x\eta' - \frac{f_0}{H}\partial_t \eta' = 0.
+\end{equation}
+Noting that this is an equation only of sea surface anamoly $\eta'$, we assume a solution of the form  $\eta' \sim \eta_0 \exp\left[i\left(kx+ly-\omega t\right)\right]$.
+Plugging this into our linear equation of $\eta'$ and solving for $\omega$ we get the dispersion relation:
+\begin{equation}
+	\omega = - \frac{\beta k}{K^2 + k_d^2},
+\end{equation}
+where $K^2 = k^2 + l^2$ is the horizontal wave number and $k_d^2 = \left(f_0^2 / gH\right)$ is the Rossby Deformation Radius.
+We note that this is the dispersion relation for Rossby waves with a finite deformation radius linearized around a rest state (i.e., $\overline{\underline{u}}=0.$)
+<h3>Problem 2</h3>
+
+<p><b>(a)</b> 
+We remember the governing equations for Poincaré waves:
+\begin{align}
+	\partial_t u' - f_0v' &= -g \partial_x \eta', \\
+	\partial_t v' + f_0u' &= -g \partial_y \eta', \\
+	\partial_t \eta' + H\left(\partial_x u' + \partial_y v' \right) &= 0,
+\end{align}
+which is a linarization of the rotating, flat-bottomed $f$-plane shallow water equations about a state of rest.
+We then note that we can derive PDEs just of $u$ and $v$ alone by taking the time derivative, consequently eliminating the opposite variable gives equations, and again taking $\eta \sim \eta_0 \exp\left[i\left(kx+ly-\omega t\right)\right]$:
+\begin{align}
+\partial_{tt}v + f_0^2v &= -gf\partial_x\eta - g\partial_{ty}\eta = \left(-gl\omega - \text{i}gf_0k\right) \eta_0\exp\left[i\left(kx+ly-\omega t\right)\right], \\
+\partial_{tt}u + f_0^2u &= -gf\partial_x\eta - g\partial_{ty}\eta = \left(-gk \omega  - \text{i}gf_0l\right) \eta_0\exp\left[i\left(kx+ly-\omega t\right)\right].
+\end{align}
+Now, for $l = 0$, we note that the terms above, from the mass conservation equation, the ansatz for $\eta$ (which together give a term of the form $\omega \sim kH$), and taking the non-zero parts (imaginary for $v$ or real for $u$) of the velocity equations, we get:
+\begin{align}
+	u &= \frac{\omega \eta_0}{kH}\cos\left[kx-\omega t\right] \sim -\frac{\omega}{kH}\cos\left[kx\right]\cos\left[\omega t\right], \\
+	v &=  \frac{f_0 \eta_0}{kH}\sin\left[kx-\omega t\right] \sim -\frac{f_0}{kH}\sin\left[kx\right]\cos\left[\omega t\right],
+\end{align}
+where the last identity is derived from assuming a comination of Poincaré waves of the form:
+\begin{align}
+	\sin(\cos)\left[kx + \omega t\right]  +  \sin(\cos)\left[kx - \omega t\right] &= 2\sin(\cos)\left[kx\right]\cos(\cos)\left[\omega t\right], \\
+\end{align}
+Now, we note that Gill (1982) also considers the solution with initial conditions given by:
+\begin{equation}
+	\eta = -\eta_0 \text{sgn}\left[x\right],
+\end{equation}
+which, for the equation:
+\begin{equation}
+	\partial_{tt} \eta - c^2\left(\partial_{x x}\eta + \partial_{y y}\eta\right) + f^2\eta = 0,
+\end{equation}
+derived from the linearized governing equations above, we get solutions of the form, again for $l=0$:
+\begin{align}
+	u &= \frac{2\omega\eta_0}{kH\pi}\int_0^\infty \text{d}k \frac{k\cos\left[kx\right]\sin\left[\omega t\right]}{k^2 + a^{-2}}, \\
+	v &= \frac{2f_0\eta_0}{kH\pi}\int_0^\infty \text{d}k \frac{k\cos\left[kx\right]\cos\left[\omega t\right]}{k^2 + a^{-2}},
+\end{align}
+for $c^2 = gH$.
+In particular, $u$ has solutions of the form:
+\begin{equation}
+	u = \begin{cases}
+		(g \eta_0 / c)J_0\left(f_0\left(t^2 - x^2 / c^2\right)^{1 / 2}\right) & |x| < ct, \\
+    		0 & |x| > ct,
+	    \end{cases}
+\end{equation}
+for $J_0$ a Bessel function of order zero and $a = (gH)^{1 / 2} / |f|$.
+</p>
+
+<p><b>(b)</b> 
+We now discuss the implications of Poincaré waves on linearized PV (i.e., $\zeta - f_0 \eta' / H$).
+We start by noting that the wave dispersion for these waves can be found by first assuming that:
+\begin{equation}
+	\eta' \sim \eta_0\exp\left[\text{i}\left(kx+ly - \omega t\right)\right].
+\end{equation}
+Plugging this into our linearized rotating, flat-bottomed $f$-plane shallow water equations about a state of rest, we get:
+\begin{equation}
+	\omega^2 = f_0^2 + c^2K^2.	
+\end{equation}
+The Poincaré waves are therefore governed by the linearized PV defined by, as in the $f$-plane as discussed above: $\zeta - f_0 \eta' / H$.
+This then means that these waves do not affect linearized PV, given that they are derived from the same linearization as that performed for the PV.
+We can further see this in the dispersion relation, as we get a linear equation that is a summation of the $f$-plane and the affect of vorticity $\zeta$, which comes from  $K^2$.
+</p>
+
+<h3>Problem 3</h3>
+
+<p><b>(a)</b> 
+We will again linearize our conservation of potential vorticity equation, this time, however, we assume a uniform zonal flow, $\overline{u}$.
+This leads to the perturbation quantities:
+\begin{align}
+u\left(x, y, t\right) &= \overline{u} + \epsilon u'\left(x, y, t\right), \\
+	v\left(x, y, t\right) &= \epsilon v'\left(x, y, t\right), \\
+	\eta\left(x, y, t\right) &= \epsilon \eta'\left(x, y, t\right),
+\end{align}
+where we again let:
+\begin{align}
+	u' &= - \frac{f_0}{g} \partial_y \eta, \\
+	v' &= \frac{f_0}{g} \partial_x \eta.
+\end{align}
+Plugging these new perturbation quantities into the equation of interest, we get the following:
+\begin{align}
+	\frac{\textrm{D}}{\textrm{D}t}\left[\zeta + \beta y - f_0 \frac{\eta}{H}\right] = \partial_t\left[\epsilon\partial_xv' - \epsilon\partial_yu' - \epsilon\frac{f_0}{H}\eta' \right] + \overline{u}\left(\epsilon\partial_{x x}v' - \epsilon \partial_{xy}u' -  \epsilon \frac{f_0}{H}\partial_x\eta'\right) + \beta v'\partial_yy = 0,
+\end{align}
+where we have again neglected all terms higher than $\epsilon$, which leads to the new linearized equation:
+\begin{equation}
+	\partial_{tx}v' - \partial_{ty}u' + \beta v' - \frac{f_0}{H} \partial_t \eta' + \overline{u}\partial_{x x}v' - \overline{u}\partial_{xy}u' - \overline{u} \frac{f_0}{H}\partial_x\eta' = 0.	
+\end{equation}
+Plugging in our geostrophic equations for $u', v'$, we get:
+\begin{equation}
+	\frac{g}{f_0} \partial_{tx x}\eta + \frac{g}{f_0}\partial_{t y y} \eta' + \frac{g}{f_0}\beta\partial_x\eta' - \frac{f_0}{H}\partial_t \eta' + \overline{u}\partial_{x x x}\eta' + \frac{g}{f_0} \overline{u} \partial_{x yy} \eta' - \overline{u} \frac{f_0}\partial_x\eta' = 0.
+\end{equation}
+Noting that this is an equation only of sea surface anamoly $\eta'$, we assume a solution of the form  $\eta' \sim \eta_0 \exp\left[i\left(kx+ly-\omega t\right)\right]$.
+Plugging this into our linear equation of $\eta'$ and solving for $\omega$ we get the dispersion relation:
+\begin{equation}
+	\omega = \frac{k\left(\overline{u}K^2 - \beta\right)}{K^2 + k_d^2} = \overline{u} k - k \frac{\beta + \overline{u}k_d^2}{K^2 + k_d^2},
+\end{equation}
+We note that this is the dispersion relation for Rossby waves with a finite deformation radius linearized around a constant, mean zonal state (i.e., $\underline{u}\not=0.$)
+</p>
+
+<p><b>(b)</b>
+The corresponding components of the phase speed and group velocity are:
+\begin{equation}
+	c_p^x = \frac{\omega}{k} = \overline{u} - \frac{\beta + \overline{u}k_d^2}{K^2 + k_d^2} \quad, \quad c_p^y = \overline{u}\frac{k}{l} - \frac{k}{l}\left(\frac{\overline{u}K^2 - \beta}{K^2 + k_d^2} \right),
+\end{equation}
+and
+\begin{equation}
+c_g^x = \overline{u} - \frac{\left(\beta + \overline{u}k_d^2\right)\left(k^2 - l^2 - k_d^2\right)}{\left(K^2 + k_d^2\right)^2} \quad , \quad c_g^y = \frac{2kl\left(\beta + \overline{u}k_d^2\right)}{\left(K^2 + k_d^2\right)^2}
+\end{equation}
+</p>
+
+<p><b>(c)</b> 
+From these equations, we can see that the uniform velocity field provides more than a simple Doppler shift of frequency
+or just an addition to the phase speed. We can see from $c_p^x$ that the waves are stationary for $K^2 = \beta / \overline{u}$.
+This is to say that the current speed required to hold waves of a particular wavenumber stationary is $\overline{u} = \beta / K^2$.
+We note that this is more than just the magnitude of the phase speed of waves of that wavenumber in the absence of a current.
+Instead, as the current does not provide a uniformation translation but instead modified the basic PV gradient.
+Specifically, we can see that the $\eta_0$ field is sloping: $\eta' = -(f_0 / g) \overline{u} y$ which means that the ambient PV increases with $y$ and  $q = \left(\beta + Uk_d^2\right)y$.
+</p>
+
+<h3>Problem 4</h3>
+
+<p><b>(a)</b>
+We note that our equation used to solve for the dispersion relation is no longer homogeneous. 
+Instead, we have that the RHS is given by:
+\begin{equation}
+	-\frac{g}{f_0}\lambda\left(\partial_{x x}\eta' + \partial_{yy}\eta'\right),
+\end{equation}
+which gives for our standard $\eta'$ anstaz:
+ \begin{equation}
+	\lambda K^2.
+\end{equation}
+This then means that our dispersion is given by:
+\begin{equation}
+	\omega = \frac{\lambda K^2 + k\left(\overline{u}K^2 - \beta\right)}{K^2 + k_d^2},
+\end{equation}
+</p>
+
+<p><b>(b)</b> 
+We can see that we have a offset of the form:
+\begin{equation}
+	\lambda\frac{K^2}{K^2 + k_d^2}.
+\end{equation}
+Therefore, we can see that the damping will act proportional to the ratio of the horizontal wave number to the relative contributions of the wavenumber and the Deformation Radius.
+This then means that we will see a damping will modify the waves along the horizontal wave number propogation, "pushing" the waves further than previously and therefore damping the PV faster.
+</p>
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
