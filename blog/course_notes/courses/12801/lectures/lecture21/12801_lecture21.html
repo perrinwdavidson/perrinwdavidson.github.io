@@ -81,6 +81,35 @@ The doppler shifted Rossby Wave speed is given by:
 \end{equation}
 and we can see this from linearizing conserved PV about a zonal mean (see Q1 and Q3 in <a href="https://perrinwdavidson.github.io/blog/course_notes/courses/12802/problem_sets/ps3/12802_ps3.html">12.802.PS3</a>) 
 
+<h3>Interaction of waves and turbulence in a simple model</h3>
+
+The setup for this model looks like Fig. 3.
+<figure>
+	<img src="images/1_5layermodel.png" style="width:60%">
+	<figcaption> Fig. 3: The scenario we are considering in the 1.5 layer model.</figcaption>
+</figure>
+
+The equations of motion that we are consideration is:
+\begin{equation}
+	q_1 = \nabla^2 + \beta y - \tilde{F}\psi_1,
+\end{equation}
+and then we have that $\psi_2 = 0$, which gives the name for 1.5 layer model.
+ We are interestin in matching the timescale.
+ To do this, we consider the particle velocity of QGPV $u_{rms}$, then the timescale is:
+ \begin{equation}
+ ku_{rms} \sim \text{ inverse time scale},
+ \end{equation}
+ Then, we know that the rossby wave dispersion relation is:
+ \begin{equation}
+ 	\omega_{rossby} = \frac{k\beta}{K^2 + k_d^2}.
+ \end{equation}
+So, to match these values, we can see how to do this in the following figure, Fig. 4.
+<figure>
+	<img src="images/time_matching.png" style="width:60%">
+	<figcaption> Fig. 4: Time matching.</figcaption>
+</figure>
+
+
 
 <hr style="width: 60em;">
 
