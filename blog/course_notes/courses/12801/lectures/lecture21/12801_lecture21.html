@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.802: Lecture 21</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+figure {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.801: Lecture 21 </h1>
+
+<hr style="width: 60em;">
+
+<h3>The Setup</h3>
+
+Below is a description of the waves that we will be considering in this lecture, in Fig. 1.
+<figure>
+	<img src="images/waves.png" style="width:60%">
+	<figcaption> Fig. 1: (a) The resting, linear wave (b) The turbulent, non-linear ocean.</figcaption>
+</figure>
+The picture that we are looking at in the ocean is presented in Fig. 2.
+<figure>
+	<img src="images/setup.png" style="width:60%">
+	<figcaption> Fig. 2: The scenario we are considering in this equation.</figcaption>
+</figure>
+
+<h3>Rossby Waves Review</h3>
+
+We have the following set-up for linear Rossby waves:
+\begin{align}
+	\partial_b + wN^2 &= 0, \\
+	\partial_t q + \beta v &= 0,
+\end{align}
+where $b = f \partial_z\psi$, which gives:
+\begin{equation}
+	q = \nabla^2\psi + \beta y + f_0^2 \partial_z\left[\frac{1}{N^2}\partial_z\psi\right].
+\end{equation}
+Theb, we assume a solution of the form:
+\begin{equation}
+\psi = \psi_0\exp\left[\text{i}(kx + ly - \omega t)\right],
+\end{equation}
+and then we get, for $F = f_0^2 / N^2$ and $K^2 = k^2 + l^2$, we have:
+ \begin{equation}
+	K_m = m\pi\left(\frac{f_0}{ND} \right).
+\end{equation}
+The solution for the 1st baroclinic Rossby wave speed is then given by:
+\begin{equation}
+	c_{R_1} = - \frac{\beta}{K^2 + \left( \pi f / N D \right)^2}
+\end{equation}
+We note that the wavelength is $2 \pi / L$ and we make the long-wave approximation $L \gg (N D / f)$.
+The doppler shifted Rossby Wave speed is given by:
+\begin{equation}
+	u_d = u - c_{R_1},
+\end{equation}
+and we can see this from linearizing conserved PV about a zonal mean (see Q1 and Q3 in <a href="https://perrinwdavidson.github.io/blog/course_notes/courses/12802/problem_sets/ps3/12802_ps3.html">12.802.PS3</a>) 
+
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
