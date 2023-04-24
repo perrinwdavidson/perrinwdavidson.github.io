@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.802: Problem Set 3</title>
+
+<style>
+h1 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.802: Problem Set 3</h1>
+
+<hr style="width: 60em;">
+
+<h3>Problem 1</h3>
+
+<p>
+<b>(a)</b> We want to derive an approximation for the potential vorticity of a 1-layer homogenous model on the $\beta-$plane a constant depth $H$ in the absence of external forcing (i.e. it is conserved):
+\begin{equation}
+	\frac{\textrm{D}}{\textrm{D}t}\left[\frac{f + \zeta}{h}\right] = 0,
+\end{equation}
+where we define the following terms:
+\begin{align}
+	\zeta &= \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}, \\
+	f &= f_0 + \beta y, \\
+	h &= H + \eta,
+\end{align}
+and the derivative is the material derivative, defined as $\partial_t + \underline{u}\cdot\nabla$.
+To derive this approximation, we first note and suppose a few things:
+\begin{align}
+	|\eta| &\ll |H|, \\
+	|\zeta| &\ll |f_0|, \\
+	|\beta y| &\ll |f_0|.
+\end{align}
+We further remember the following useful Taylor expansion:
+\begin{equation}
+	\frac{1}{1 - x} = \sum_{n=0}^{\infty} x^n.
+\end{equation}
+So, we first can see:
+\begin{equation}
+	\frac{f + \zeta}{h} = \frac{\zeta + f}{H}\frac{1}{\left(1 + \eta / H\right)}.
+\end{equation}
+Then, we can apply the Taylor expansion from above to the second fraction and only consider first order terms, which gives:
+\begin{equation}
+	\frac{\zeta + f}{H}\left(1 - \frac{\eta}{H}\right) = \frac{1}{H}\left(\zeta + f - \zeta \frac{\eta}{H} - f_0\frac{\eta}{H} - \beta y \frac{\eta}{H}\right).
+\end{equation}
+By the suppositions above, we can reduce this to:
+\begin{equation}
+	\frac{1}{H}\left(\zeta + f - f_0 \frac{\eta}{H}\right).
+\end{equation}
+As $1 / H$ and $f_0$ are constants, by plugging in the above equation to the material derivative, we can simplify this expression to:
+\begin{equation}
+	\frac{\textrm{D}}{\textrm{D}t}\left[\zeta + \beta y - f_0 \frac{\eta}{H}\right] = 0.
+\end{equation}
+</p>
+<p>
+<b>(b)</b> We now want to linearize the equation from above about a rest state, i.e. $\overline{\underline{u}} = \overline{\eta} = 0$ via perturbation quantities of order $\epsilon \ll 1$, i.e.:
+\begin{align}
+	u\left(x, y, t\right) &= \epsilon u'\left(x, y, t\right), \\
+	v\left(x, y, t\right) &= \epsilon v'\left(x, y, t\right), \\
+	\eta\left(x, y, t\right) &= \epsilon \eta'\left(x, y, t\right).
+\end{align}
+Plugging these quantities  
+
+</p>
+
+<h3>Problem 2</h3>
+
+
+
+<h3>Problem 3</h3>
+
+
+
+<h3>Problem 4</h3>
+
+
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>

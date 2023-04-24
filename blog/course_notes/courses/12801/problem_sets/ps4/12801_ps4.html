@@ -48,7 +48,7 @@ We are further given an Ekman pumping field of the form:
 	w_{Ek} = - \frac{\pi \tau_x}{\rho_0 f L_y}\sin\left[\frac{\pi y}{L_y}\right].
 \end{equation}
 This induces a "double gyre", which is a subtropical gyre in the south (anti-cyclonic) and a subpolar gyre in the north (cyclonic).
-Now, in this problem set we want to construct the 3-layer, quasi-geostrophic model given by the following vorticity equations (neglecting planetary vorticity):
+Now, in this problem set we want to construct the 3-layer, quasi-geostrophic model given by the following vorticity equations (neglecting relative vorticity):
 \begin{align}
 	q_1 &= \beta y - F\left(\psi_1 - \psi_2\right), \\
 	q_2 &= \beta y + F\left(\psi_1 + \psi_2 - 2\psi_2\right), \\
@@ -66,7 +66,7 @@ We illustrate the regions in Fig. 1.
 	<img src="images/regions.png" style="width:40%">
 	<figcaption> Fig. 1: The three regions for which we will derive the valid streamfunctions and potential vorticity equations in each layer.</figcaption>
 </figure>
-We note regions II and III are so called "pool" regions, for which there will be homogenized potential vorticity in the second and third layers.
+We note regions II and III are so called "pool" regions for specific combinations of $i, j$ on $q$, for which there will be homogenized potential vorticity in the second and third layers.
 
 <h3>Problem 1 (Geostrophic Streamfunction)</h3>
 
@@ -91,7 +91,7 @@ Now, we take the following values, which we will use for the remainder of the pr
 We plot both the Eckman pumping field and the geostrophic streamfunction in Fig. 2 with these values. 
 <figure>
 	<img src="images/prob1.png" style="width:100%">
-	<figcaption> Fig. 2: The Eckman pumping field, $w_{Ek}$ and the corresponding geostrophic streamfunction, $\Psi_{geo}$. </figcaption>
+	<figcaption> Fig. 2: The Eckman pumping field, $w_{Ek}$, and the corresponding geostrophic streamfunction, $\Psi_{geo}$. </figcaption>
 </figure>
 For the sake of simplicity, we will follow Marshall and Speer and define:
 \begin{equation}
@@ -137,7 +137,7 @@ and therefore calculate:
 	F = \frac{f_0^2}{g'H} \sim  2.76 \times 10^{-9} \: \left[\text{m}^{-2}\right].
 \end{equation}
 Next, we need to determine the boundaries of Region I, as shown in Fig. 1. 
-To do this, we will note the curve the demarcates Region I is given by equating $q^1_2$ with the reference value of QGPV at the center of the basin, i.e.:
+To do this, we will note the curve that demarkates Region I is given by equating $q^1_2$ with the reference value of QGPV at the center of the basin, i.e.:
 \begin{equation}
 	q_2^1 = \beta y + F\psi_1^1 = \beta L_y.
 \end{equation}
@@ -159,13 +159,13 @@ We plot the resulting bounds in Fig. 3.
 Now, we plot $\psi_1^1$ in Fig. 4 (but not $\psi_2^1$ or $\psi_3^1$ as these are 0). 
 <figure>
 	<img src="images/prob2b.png" style="width:40%">
-	<figcaption> Fig 4: The streamfunction $\psi_1^1$ (left) over the entire domain (right) over Region I in which it is valid.</figcaption>
+	<figcaption> Fig 4: The streamfunction $\psi_1^1$.</figcaption>
 </figure>
 As confirmed by the maths, this is simply the geostrophic streamfunction normalized to the height of the layers, $H.$
 Next, we will plot the entire domain solution for $q^1_i$ in Fig. 5 below. 
 <figure>
 	<img src="images/prob2c.png" style="width:100%">
-	<figcaption> Fig 5: The QGPV $q_i^1$ over the entire domain, where the dashed red line separates the pool region (left, closed region) to the shadow zone (right, open region) }.</figcaption>
+	<figcaption> Fig 5: The QGPV $q_i^1$ over the entire domain, where the dashed red line separates the pool region (left, closed region) to the shadow zone (right, open region).</figcaption>
 </figure>
 We note the "pool region" which is defined above in $q^1_2$ by those contours which only intersect with the western boundary and the "shadow zone" by those contours which intersect the eastern boundary.
 The dashed red line demarkates these different regions, and is defined by the Region I boundary above.
@@ -295,7 +295,7 @@ We could, as with $\psi_i$, compare Fig. 10  $q_1$ with Fig. 5 and see a large s
 
 Lastly, we discuss how to extend this solution to $N$ layers.
 To do this, we will again assume  the same height $H$ and reduced gravity, i.e. same $F$, for all layers.
-Then, we know  \hat{t} we have to have the condition the summation of all QGPV in each layer must add up to the Sverdrup balance, i.e. the terms of the form $F\left(\psi_i + \psi_j + \ldots\right)$ will sum to zero leving only $\beta y$ on the RHS.
+Then, we know that we have to have the condition the summation of all QGPV in each layer must add up to the Sverdrup balance, i.e. the terms of the form $F\left(\psi_i + \psi_j + \ldots\right)$ will sum to zero leaving only a term dependent on $\beta y$ on the RHS.
 Taking all of this into consideration, we have for any given layer $i \in \left[2, N-2\right]$:
 \begin{equation}
 	q_i = \beta y + F\left(\psi_{i-1}-2\psi_i+\psi_{i+1}\right),
