@@ -107,32 +107,71 @@ From the problem, we plot the piece-wise "observed" data (other than the actual 
 \end{equation}
 from the problem.
 We can clearly see that there is a large discrepency propogated through time between the expected $\delta^{13}C$ values in both emission scenario and the observation record.
-This is due to the absence of either both the ocean and the biosphere (solid line) and just the biosphere (dashed line). This so called "Seuss Effect" is greatly exaggerated in these scenarios given the lack of these resevoirs.
+This is due to the absence of either both the ocean and the biosphere (solid line) and just the biosphere (dashed line). This so called "Suess Effect" is greatly exaggerated in these scenarios given the lack of these resevoirs.
 </p>
 <p>
-
+Similar to $\delta^{13}C$, we can see from the bottom panel of Fig. 1, that $\Delta^{14}C$ is nearly a translated Heaviside function given the rapid rate of bomnb testing for a decade in the mid 20th century. 
+The long decay constant all makes it so that the decay has a negligible effect on the reduction of the isotope in the atmosphere. 
+Compared to the data, the dotted line in the bottom panel of Fig. 1, we see that the lack of either resevoir sink has a much larger effect than  $\delta^{13}C$, with a change nearly two orders of magnitude greater ($\mathcal{O}(10^0)$ vs. $\mathcal{O}(10^2)$), leading to the quasi-exponential change in the atmospheric resevoir. 
 </p>
-
 
 <h3>Problem 2</h3>
 
-
-
 <figure>
 	<img src="images/prob2.png" style="width:50%">
-	<figcaption> Fig. 2: </figcaption>
+	<figcaption> 
+		Fig. 2: Depth profile of bomb radiocarbon used to calculate the penetration depth recreated by visual inspection of the original plot from Bard <i>et al.</i> (1989).
+		The solid black line is the bomb radiocarbon at the time of measurement and the dashed line is the pre-industrial value at that depth.
+		For horizontal lines: the dashed line is the penetration depth in the year of measurment and the dot-dashed line is the penetration depth at the mean age.
+		The green line is a depth of 100 [m] used for later sensitivity tests.
+		The inset plot is the difference between the two measurements used in the calculating the penetration depth. 
+	</figcaption>
 </figure>
 
+<h4>Center of Mass</h4>
+<p>
+We define the "center of mass" equation to define the mean of multiple variables in this problem set. 
+We define the center of mass for a variable $x$ with corresponding "mass" (or measurement) $m$ as:
+\begin{equation}
+	\overline{x} = \int \text{d}x \: x\cdot m(x) \bigg/ \int \text{d}x \: m(x).
+\end{equation}
+</p>
 
+<h4>Mean Age</h4>
+
+Applying this formula to the emissions defined by $\widehat{F}$, we get that:
+\begin{equation}
+	\overline{\tau} = \int \text{d}t \: t\cdot \widehat{F}(x) \bigg/ \int \text{d}t \: \widehat{F}(t) \simeq 2001.
+\end{equation}
+We note that we could also find the time at which 50$\%$ of total emissions had been emitted using the quadratic formulate for a quadratic polynomial of the form:
+\begin{equation}
+	\left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)t^2 + r_0t - (440 / 2) = 0,
+\end{equation}
+for which the positive part of the quadratic formula gives $\overline{\tau} \simeq  1998$, but for sake of consistency with later calculations, we use the center of mass calculation.
+This line is plotted as the vertical dot-dashed red line in the top panel of Fig. 1 and Fig. 3. 
+
+<h4>Mean Penetration Depth</h4>
+
+We now apply the center of mass calculation, which is graphically represented in the inset plot of Fig. 2, to determine the mean penetration depth of the radiocarbon. 
+We get, for $\Delta\delta^{13}C(z)$ the difference between the two observed profiles:
+\begin{equation}
+	\overline{Z} = \int \text{d}z \: z\cdot \Delta\delta^{13}C(z) \bigg/ \int \text{d}z \: \Delta\delta^{13}C(z) \simeq -231 \:\left[\text{m}\right].
+\end{equation}
 
 <h3>Problem 3</h3>
 
-
+I am not done with typing up my work (I apologize for this being late), but I will have the rest of this typed up and the problem set submitted within the next few hours.
 
 <figure>
 	<img src="images/prob3.png" style="width:50%">
-	<figcaption> Fig. 3: </figcaption>
-</figure>
+	<figcaption> 
+		Fig. 3: The change in surface ocean $\delta^{13}C$ DIC over $\Delta t$. 
+		The solid blue line is the expected value if anthropogenic emissions partitioned into the atmosphere and the ocean to match the observed increase in atmospheric emissions.
+		The dashed blue line is the observed (given) rate of change for $\delta^{13}C$. 
+		The dot-dashed red line is the mean age $\overline{\tau}$. 
+		The inset plot is the difference between the expected and observed given the emissions scenario of interest.
+	</figcaption>
+</figure
 
 
 
@@ -142,7 +181,12 @@ This is due to the absence of either both the ocean and the biosphere (solid lin
 
 <figure>
 	<img src="images/prob4_5.png" style="width:50%">
-	<figcaption> Fig. 4: </figcaption>
+	<figcaption> 
+		Fig. 4: The blue is the change in biospheric $C$ to account for the observed $\delta^{13}C$ change in the ocean of interest in this problem.
+		The red is the corresponding change in the biosopheric $\delta^{13}C$ given this accumulation of $C$ from the atmopshere.
+		There are two scenarios presented here. The first is for a penetration depth calculated in Problem 2 which are the solid lines. 
+		The second is for a hypothetical scenario with a pentration depth of -100 [m], such that the change in biospheric carbon is equal to observational data from Rockström <i>et al. </i> (2021, the green marker), which are the dashed lines.
+	</figcaption>
 </figure>
 
 
