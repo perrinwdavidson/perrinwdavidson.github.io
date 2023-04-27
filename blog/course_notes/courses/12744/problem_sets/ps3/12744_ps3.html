@@ -13,6 +13,7 @@ h1 {text-align: center;}
   text-align: center;
 }
 figure {text-align: center;}
+figcaption {text-align: justify}
 </style>
 
 <script>
@@ -41,9 +42,72 @@ MathJax = {
 
 <figure>
 	<img src="images/prob1.png" style="width:50%">
-	<figcaption> Fig. 1: A range of scenarios for both $\delta^{13}$C and $\Delta^{14}$C between 1950 and 2020.</figcaption>
+	<figcaption> 
+		Fig. 1: A range of scenarios for both $\delta^{13}C$ and $\Delta^{14}C$ between 1950 and 2020 for differing emission scenarios.
+		(top) The total emitted carbon into the atmosphere, $C_a$, for a scenario in which all anthropogenic emissions were into the atmosphere (solid black line), an approximation of an observed emission scenario for the green marker (dashed black line), and the pre-industrial level (dotted black line).
+		(middle) The resulting  $\delta^{13}C$ scenarios for the atmosphere only (solid blue line) and observed (dash-dot for that given in problem and dotted, for data from Graven <i>et al. </i> 2017). The dashed line is the scenario in which all additional anthropogenic carbon not left in the atmosphere was placed in the ocean (corresponding to the dashed black line in the top plot).
+		(bottom) An approximated forcing for $\Delta_{14}C$ without the biosphere or ocean resevoirs (solid red line), as well as data (thick dotted, again from Graven <i>et al. </i> 2017). The thin dashed line is the 0 line.
+	</figcaption>
 </figure>
 
+<h4>Calculations</h4>
+<p>
+We first want to assume a model in which all anthropogenic forcings are placed into the atmosphere, which we define as follows:
+\begin{equation}
+	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_a \circ \delta^{13}C_{a}\right)(t)\right] = F(t)\delta^{13}C_a,
+\end{equation}
+where $\left(C_a \circ \delta^{13}C_{a}\right)(t)$ is the weighted product of total carbon in a resevoir denoted by the subscript and the isotope for the same resevoir.
+Here, we define $F$ as the emission forcing given by:
+\begin{equation}
+	F(t) = \left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)t + r_0,
+\end{equation}
+which provides:
+\begin{equation}
+	\widehat{F}(t) = \int\text{d}F = \frac{1}{2}\left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)\tilde{t}^2 + r_0\tilde{t},
+\end{equation}
+for $C_T$ the total emissions over the period $\Delta t$ (i.e., 1950 to 2020), $r_0$ the initial rate of emission (1 [Gt y$^{-1}$]), and $\tilde{t} = t - 1950$.
+This is simply the primitive of the linear increase described in the problem, modified to make the rate self-contained with the total emissions discussed in the problem. 
+Specifically, we change $C_T$, which we do in the top panel (solid and dashed lines) of Fig. 1, to induce different emission scenarios. The solid line scenario is for  $C_T = 440$ [Gt y$^{-1}$] and the dashed line is for  $C_T = 881 - 612 = 269$ [Gt y$^{-1}$].
+</p>
+<p>
+Now, we can define the mixing relationship used to calculate the isotope values by integrating the first equation, using Separation of Variables to get:
+\begin{equation}
+	\int_{t'\in\left[t_0,t\right]} \text{d}\left[\left(C_a \circ \delta^{13}C_{a}\right)(t')\right] = \int_{t_0}^t \text{d}t' \text{F}(t')\delta^{13}C_a,
+\end{equation}
+which gives:
+\begin{equation}
+C_a(t)\delta^{13}C_a(t) = C_a(t_0)\delta^{13}C_a(t_0) + \widehat{F}(t)\delta^{13}C_{p},
+\end{equation}
+where $\delta^{13}C_p$ is the constant isotope value for anthropogenic emissions and we assume $t_0=1950$ is at pre-industrial levels.
+We present the solutions for the two different emission scenarios in the middle plot of Fig. 1 (solid and dashed).
+</p>
+<p>
+Next, we define a piece-wise forcing function for $\Delta^{14}C$ of the form:
+\begin{equation}
+\Delta^{14}C_s(t) = \begin{cases}
+				-20 & 1950 \le t < 1955 \\
+				-20 + 75 \tilde{t} & 1955 \le  t < 1965 \\
+				730 & 1965 \le t
+		      \end{cases}
+\end{equation}
+This is based on analysis and discussion from Graven <i>et al. </i> (2017).
+We then correct for decay by:
+\begin{equation}
+	\Delta^{14}C(t) = \Delta^{14}C_s(t)\exp\left[\lambda\left(t_p - \widehat{t}\right)\right],
+\end{equation}
+where $t_p$ is the data of production (starting in 1955 and ending in 1965), $\widehat{t} = t - 1955$, and $\lambda = \ln 2 / 5730$ [y$^{-1}$].
+We plot $\Delta^{14}C(t)$ in the bottom plot of Fig. 1. 
+</p>
+
+<h4>Comparison to Data</h4>
+<p>
+From the problem, we plot the piece-wise "observed" data (other than the actual observational data, in the dotted line in the middle panel of Fig. 1) in the dot-dash line in the middle plot of Fig. 1, for which we use the following equation:
+\begin{equation}
+	\delta^{13}C(t) = -6.6 -0.025\tilde{t},
+\end{equation}
+from the problem.
+
+</p>
 
 
 <h3>Problem 2</h3>
@@ -76,7 +140,6 @@ MathJax = {
 	<img src="images/prob4_5.png" style="width:50%">
 	<figcaption> Fig. 4: </figcaption>
 </figure>
-
 
 
 <hr style="width: 60em;">
