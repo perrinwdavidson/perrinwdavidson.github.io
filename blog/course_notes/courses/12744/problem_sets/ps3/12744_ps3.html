@@ -54,16 +54,16 @@ MathJax = {
 <p>
 We first want to assume a model in which all anthropogenic forcings are placed into the atmosphere, which we define as follows:
 \begin{equation}
-	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_a \circ \delta^{13}C_{a}\right)(t)\right] = F(t)\delta^{13}C_a,
+	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_a \circ \delta^{13}C_{a}\right)(t)\right] = F(t)\delta^{13}C_p,
 \end{equation}
-where $\left(C_a \circ \delta^{13}C_{a}\right)(t)$ is the weighted product of total carbon in a resevoir denoted by the subscript and the isotope for the same resevoir.
+where $\left(C_a \circ \delta^{13}C_{a}\right)(t)$ is the weighted product of total carbon in a resevoir denoted by the subscript and the isotope for the same resevoir and $\delta^{13}C_p$ is the isotope value of emissions.
 Here, we define $F$ as the emission forcing given by:
 \begin{equation}
 	F(t) = \left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)\tilde{t} + r_0,
 \end{equation}
 which provides:
 \begin{equation}
-	\widehat{F}(t) = \int\text{d}F = \frac{1}{2}\left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)\tilde{t}^2 + r_0\tilde{t},
+	\widehat{F}(t) = \int\text{d}t' \: F(t') = \frac{1}{2}\left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)\tilde{t}^2 + r_0\tilde{t},
 \end{equation}
 for $C_T$ the total emissions over the period $\Delta t$ (i.e., 1950 to 2020), $r_0$ the initial rate of emission (1 [Gt y$^{-1}$]), and $\tilde{t} = t - 1950$.
 This is simply the primitive of the linear increase described in the problem, modified to make the rate self-contained with the total emissions discussed in the problem. 
@@ -160,7 +160,7 @@ We get, for $\Delta\delta^{13}C(z)$ the difference between the two observed prof
 We also note that this value is of course integrated over the time since the bomb testing ceased (in our model we assume that this is in 1965). 
 Therefore, we can define a rate:
 \begin{equation}
-	r_{\overline{Z}} = \frac{\overline{Z}}{1986 - 1965} \simeq -11 \: \left[\text{m}\right].
+	r_{\overline{Z}} = \frac{\overline{Z}}{1986 - 1965} \simeq -11 \: \left[\text{m y}^{-1}\right].
 \end{equation}
 
 <h4>Mean Penetration Depth over $\overline{\tau}$</h4>
@@ -209,7 +209,7 @@ where DIC$_T$ is the total resevoir of DIC in the ocean (38,000 [Gt C]).
 <p>
 Now, we imagine a model in which there is some flux of anthropogenic emissions into the ocean, which can be described by the set of equations:
 \begin{align}
-	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_a \circ \delta^{13}C_{a}\right)(t)\right] &= \left(F(t) - G(t)\right)\delta^{13}C_a, \\
+	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_a \circ \delta^{13}C_{a}\right)(t)\right] &= \left(F(t) - G(t)\right)\delta^{13}C_p, \\
 	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_o \circ \delta^{13}C_{o}\right)(t)\right] &= G(t)\delta^{13}C_p,
 \end{align}
 where $G(t)$ is a function representing the transfer of anthropogenic carbon into the ocean, which is unknown. 
@@ -233,7 +233,7 @@ The inset is the difference between the two plots over time, and the dot-dashed 
 </p>
 <p>
 Now, we are interested in how this compares with the expected change in $\delta^{13}C$ with the observed surface marine DIC value (the dashed line in Fig. 3) over $\overline{\tau}$.
-We can see from the inset in Fig. 3 that the difference between the calculated and observed values is $\sim 2.1$ [‰].
+We can see from the inset in Fig. 3 that the magnitude of the difference between the calculated and observed values is $\sim 1.6$ [‰].
 Specifically, we can compare these by calculating the rate over $\overline{\tau}$, i.e. $r_{\Delta\delta^{13}C_d} = \Delta_{t_0}\delta^{13}C_d(\overline{\tau}) / \overline{\tau}$:
 \begin{align}
 	\text{Expected/Calculated} &: -5.3 \times 10^{-2} \: \left[‰ \: y^{-1}\right]\\
