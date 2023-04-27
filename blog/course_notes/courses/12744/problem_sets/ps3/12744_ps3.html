@@ -78,7 +78,7 @@ which gives:
 \begin{equation}
 C_a(t)\delta^{13}C_a(t) = C_a(t_0)\delta^{13}C_a(t_0) + \widehat{F}(t)\delta^{13}C_{p},
 \end{equation}
-where $\delta^{13}C_p$ is the constant isotope value for anthropogenic emissions and we assume $t_0=1950$ is at pre-industrial levels.
+where $\delta^{13}C_p$ is the constant isotope value for anthropogenic emissions and we assume $t_0=1950$ is at pre-industrial levels, making $C_a(t_0)$ the pre-industrial value of carbon in the atmosphere.
 We present the solutions for the two different emission scenarios in the middle plot of Fig. 1 (solid and dashed).
 </p>
 <p>
@@ -110,7 +110,7 @@ We can clearly see that there is a large discrepency propogated through time bet
 This is due to the absence of either both the ocean and the biosphere (solid line) and just the biosphere (dashed line). This so called "Suess Effect" is greatly exaggerated in these scenarios given the lack of these resevoirs.
 </p>
 <p>
-Similar to $\delta^{13}C$, we can see from the bottom panel of Fig. 1, that $\Delta^{14}C$ is nearly a translated Heaviside function given the rapid rate of bomnb testing for a decade in the mid 20th century. 
+Similar to $\delta^{13}C$, we can see from the bottom panel of Fig. 1, that $\Delta^{14}C$ is nearly a translated Heaviside function given the rapid rate of bomb testing for a decade in the mid 20th century. 
 The long decay constant all makes it so that the decay has a negligible effect on the reduction of the isotope in the atmosphere. 
 Compared to the data, the dotted line in the bottom panel of Fig. 1, we see that the lack of either resevoir sink has a much larger effect than  $\delta^{13}C$, with a change nearly two orders of magnitude greater ($\mathcal{O}(10^0)$ vs. $\mathcal{O}(10^2)$), leading to the quasi-exponential change in the atmospheric resevoir. 
 </p>
@@ -123,7 +123,6 @@ Compared to the data, the dotted line in the bottom panel of Fig. 1, we see that
 		Fig. 2: Depth profile of bomb radiocarbon used to calculate the penetration depth recreated by visual inspection of the original plot from Bard <i>et al.</i> (1989).
 		The solid black line is the bomb radiocarbon at the time of measurement and the dashed line is the pre-industrial value at that depth.
 		For horizontal lines: the dashed line is the penetration depth in the year of measurment and the dot-dashed line is the penetration depth at the mean age.
-		The green line is a depth of 100 [m] used for later sensitivity tests.
 		The inset plot is the difference between the two measurements used in the calculating the penetration depth. 
 	</figcaption>
 </figure>
@@ -141,13 +140,14 @@ We define the center of mass for a variable $x$ with corresponding "mass" (or me
 
 Applying this formula to the emissions defined by $\widehat{F}$, we get that:
 \begin{equation}
-	\overline{\tau} = \int \text{d}t' \: \tilde{t}\cdot \widehat{F}(t') \bigg/ \int \text{d}t' \: \widehat{F}(t') \simeq 2001 = 51 \:\left[\text{y}\right]
+	\overline{\tau} = \int \text{d}t' \: \tilde{t}\cdot \widehat{F}(t') \bigg/ \int \text{d}t' \: \widehat{F}(t') \simeq 51 \:\left[\text{y}\right].
 \end{equation}
-We note that we could also find the time at which 50$\%$ of total emissions had been emitted using the quadratic formulate for a quadratic polynomial of the form:
+which is approximately 2001.
+We note that we could also find the time at which 50$\%$ of total emissions had been emitted using the quadratic formula for a polynomial of the form:
 \begin{equation}
 	\left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)\tilde{t}^2 + r_0\tilde{t} - (440 / 2) = 0,
 \end{equation}
-for which the positive part of the quadratic formula gives $\overline{\tau} \simeq  1998$ or $48$ [y], but for sake of consistency with later calculations, we use the center of mass calculation.
+for which the positive part of the quadratic formula gives $\overline{\tau} \simeq 48$ [y] (or approximately 1998), but for sake of consistency with later calculations, we use the center of mass calculation.
 This line is plotted as the vertical dot-dashed red line in the top panel of Fig. 1 and Fig. 3. 
 
 <h4>Mean Penetration Depth</h4>
@@ -157,7 +157,6 @@ We get, for $\Delta\delta^{13}C(z)$ the difference between the two observed prof
 \begin{equation}
 	\overline{Z} = \int \text{d}z' \: z'\cdot \Delta\delta^{13}C(z') \bigg/ \int \text{d}z' \: \Delta\delta^{13}C(z') \simeq -231 \:\left[\text{m}\right].
 \end{equation}
-We will use this value in the rest of the problem and find that our calculations are <i>highly</i> sensitive to this calculation.
 We also note that this value is of course integrated over the time since the bomb testing ceased (in our model we assume that this is in 1965). 
 Therefore, we can define a rate:
 \begin{equation}
@@ -181,6 +180,7 @@ Next, we can apply this rate to find the penetration depth over the mean age of 
 		The dashed blue line is the observed (given) rate of change for $\delta^{13}C$. 
 		The dot-dashed red line is the mean age $\overline{\tau}$. 
 		The inset plot is the difference between the expected and observed given the emissions scenario of interest.
+		Note the kink at 1970. This is due to the removable discontinuity at this time given the time bounds for the observational equation given in the problem.
 	</figcaption>
 </figure>
 
@@ -188,19 +188,41 @@ Next, we can apply this rate to find the penetration depth over the mean age of 
 First, we can calculate the amount of DIC, which we call $C_d$, that can be exchange with the atmosphere. 
 To do this, we calculate the percentage of the total ocean that is covered by the penetration depth, as follows:
  \begin{equation}
- r_p = \frac{\text{SA}}{\text{V}}\langle\overline{Z}\rangle \simeq 0.16,
+ r_{p} = \frac{\text{SA}}{\text{V}}\langle\overline{Z}\rangle \simeq 0.16,
 \end{equation}
-where we have used values of SA $= 360 \times 10^{12}$ and V $= 1.29 \times  10 ^{18}$ from Sarmiento and Gruber (2006).
-Now, we imagine a model in which there is some flux of anthropogenic emissions into the ocean, which can be described by:
-\begin{equation}
-	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_o \circ \delta^{13}C_{o}\right)(t)\right] = G(t)\delta^{13}C_p,
+where we have used values of SA $= 360 \times 10^{12}$ $[\text{m}^{2}]$ and V $= 1.29 \times  10 ^{18}$ [m$^{3}$] from Sarmiento and Gruber (2006).
+However, we note that this assumes that the DIC is homogeneous in the ocean. 
+As given in the problem, we know that this is not the case, but rather that the $\delta^{13}C(z)$ decreases with a given power law relationship to 0 [‰].
+Backed by observational data (e.g., Schmitter and Lund 2015, Fig. 4) we know that conversely, $C_d(z)$, and here we assume therefore the amount of available DIC to exchange with the atmosphere, increases asymptotically with depth, which we assume is of the form:
+ \begin{equation}
+	f_d(z) = 1 - \exp\left[-z / L_z\right],
 \end{equation}
+where we define $L_z$ as the $e$-folding depth.
+We note that this is simply a fraction relating what we define as the available DIC from a non-homgeneous assumption to that of the homogeneous assumption.
+After tests with observational data (the green marker in Fig. 4), we conclude that $L_z = 1000$ [m].
+Therefore, we conclude that amount of aviable DIC is given by:
+ \begin{equation}
+ C_d = r_pf_d(\langle\overline{Z}\rangle)\text{DIC}_T \simeq 2.579 \times 10^{3} \:\left[\text{Gt C}\right],
+\end{equation}
+where DIC$_T$ is the total resevoir of DIC in the ocean (38,000 [Gt C]). 
+</p>
+<p>
+Now, we imagine a model in which there is some flux of anthropogenic emissions into the ocean, which can be described by the set of equations:
+\begin{align}
+	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_a \circ \delta^{13}C_{a}\right)(t)\right] &= \left(F(t) - G(t)\right)\delta^{13}C_a, \\
+	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_o \circ \delta^{13}C_{o}\right)(t)\right] &= G(t)\delta^{13}C_p,
+\end{align}
 where $G(t)$ is a function representing the transfer of anthropogenic carbon into the ocean, which is unknown. 
-Integrating this model with respect to time gives:
+Integrating the equation for the ocean with respect to time gives:
 \begin{equation}
-	\delta^{13}C(t) = \frac{C_d}{C_d + G(t)\Delta t}\delta^{13}C + \frac{G(t)\Delta t}{C_d + G(t)\Delta t}\delta^{13}C_p,
+	\delta^{13}C_o(t) = \frac{C_d}{C_d + G(t)\Delta t}\delta^{13}C_d + \frac{G(t)\Delta t}{C_d + G(t)\Delta t}\delta^{13}C_p,
 \end{equation}
 where we note that $G(t)\Delta t$ is the total amount (or change) of carbon that goes into the ocean from the atmosphere.
+We then integrate the equation for the atmosphere similarly and solve for $G(t)\Delta t$ to find:
+\begin{equation}
+G(t)\Delta t = \left( C_a(t)\delta^{13}C_a(t) - C_a(t_0)\delta^{13}C_a(t_0) - \widehat{F}(t | C_T = 269)\delta^{13}C_p \right) \frac{1}{\delta^{13}C_p},
+\end{equation}
+where we have corrected the primitive of the emissions rate to be scenario of interest here (the atmosphere and the ocean are the resevoirs, of which the ocean takes all carbon the atmosphere is observed to not to given the emissions scenario). 
 As we are interested in the <i>change</i> of $\delta^{13}C_d$, which we denote $\Delta_{t_0}\delta^{13}C$ where the $\Delta_{t_0}$ operator means the difference in the value at time $t$ and $t_0$, we can rearrange this equation to get:
 \begin{equation}
 	\Delta_{t_0}\delta^{13}C_d = \left(\Delta_{t_0}\delta^{13}C_o - \frac{G(t)\Delta t}{C_d + G(t)\Delta t}\delta^{13}C_p \right) \frac{C_d + G(t)\Delta t}{C_d},
@@ -218,22 +240,44 @@ Specifically, we can compare these by calculating the rate over $\overline{\tau}
 	\text{Observed} &: -1.2 \times 10^{-2} \: \left[‰ \: y^{-1}\right]
 \end{align}
 Clearly, there is a discrepency between the observation and the mass balance in the model that we have been considering up to this point.
-
+We see that there is more $\delta^{13}C$ in the ocean system than observed by a factor of $\sim 4 \text{ to }5.$ That is large!
 </p>
 
-<h3>Problem 4 & 5</h3>
+<h3>Problem 4 and 5</h3>
 
 <figure>
 	<img src="images/prob4_5.png" style="width:50%">
 	<figcaption> 
 		Fig. 4: The blue is the change in biospheric $C$ to account for the observed $\delta^{13}C$ change in the ocean of interest in this problem.
 		The red is the corresponding change in the biosopheric $\delta^{13}C$ given this accumulation of $C$ from the atmopshere.
-		There are two scenarios presented here. The first is for a penetration depth calculated in Problem 2 which are the solid lines. 
-		The second is for a hypothetical scenario with a pentration depth of -100 [m], such that the change in biospheric carbon is equal to observational data from Rockström <i>et al. </i> (2021, the green marker), which are the dashed lines.
 	</figcaption>
 </figure>
 
-We now address this contradiction between observation and mass balance.
+<p>
+We now address this contradiction between observation and mass balance. 
+To do this, we first imagine an ocean box model in which some portion of the anthropogenic carbon is partitioned into the biosphere, leading to a model of the form:
+\begin{equation}
+	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_o \circ \delta^{13}C_{o}\right)(t)\right] = \left(G(t) - H(t)\right)\delta^{13}C_p,
+\end{equation}
+where $H(t)$ is said additional function we are now considering.
+We can solve this as we have previosly and solve for $H(t)\Delta t$ to get to an equation of the form: 
+\begin{equation}
+	H(t)\Delta t = \left(C_d\Delta_{t_0}\delta^{13}C_d + G(t)\Delta t \Delta_{t_0}\delta^{13}C_p - \left( C_d + G(t)\Delta t\right)\Delta\delta^{13}C_o\right) \frac{1}{\delta^{13}C_p - \Delta_{t_0}\delta^{13}C_o},
+\end{equation}
+where we have updated $\Delta_{t_0}\delta^{13}C_d$ from the solution in Problem 3 (the solid line in Fig. 3) to the observed (the dashed line in Fig. 3). 
+We plot the solution to this equation in Fig. 4 in the blue solid line. 
+</p>
+<p>
+Lastly, to calculate the change in the biospheric $\delta^{13}C$, we consider a model in which there is a function input of anthropogenic carbon into the biosphere:
+\begin{equation}
+	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_b \circ \delta^{13}C_{b}\right)(t)\right] = H(t)\delta^{13}C_p,
+\end{equation}
+which, integrating this model with respect to time as before and taking the operator $\Delta_{t_0}$, gives:
+\begin{equation}
+	\Delta_{t_0}\delta^{13}C_b(t) = \frac{C_b}{C_b + H(t)\Delta t}\delta^{13}C_b + \frac{H(t)\Delta t}{C_d + H(t)\Delta t}\delta^{13}C_p - \delta^{13}C_b(t_0)
+\end{equation}
+We plot this solution as the solid red line in Fig. 4. 
+</p>
 
 <hr style="width: 60em;">
 
