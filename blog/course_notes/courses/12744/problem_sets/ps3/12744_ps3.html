@@ -59,7 +59,7 @@ We first want to assume a model in which all anthropogenic forcings are placed i
 where $\left(C_a \circ \delta^{13}C_{a}\right)(t)$ is the weighted product of total carbon in a resevoir denoted by the subscript and the isotope for the same resevoir.
 Here, we define $F$ as the emission forcing given by:
 \begin{equation}
-	F(t) = \left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)t + r_0,
+	F(t) = \left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)\tilde{t} + r_0,
 \end{equation}
 which provides:
 \begin{equation}
@@ -141,13 +141,13 @@ We define the center of mass for a variable $x$ with corresponding "mass" (or me
 
 Applying this formula to the emissions defined by $\widehat{F}$, we get that:
 \begin{equation}
-	\overline{\tau} = \int \text{d}t \: t\cdot \widehat{F}(x) \bigg/ \int \text{d}t \: \widehat{F}(t) \simeq 2001.
+	\overline{\tau} = \int \text{d}t' \: \tilde{t}\cdot \widehat{F}(t') \bigg/ \int \text{d}t' \: \widehat{F}(t') \simeq 2001 = 51 \:\left[\text{y}\right]
 \end{equation}
 We note that we could also find the time at which 50$\%$ of total emissions had been emitted using the quadratic formulate for a quadratic polynomial of the form:
 \begin{equation}
-	\left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)t^2 + r_0t - (440 / 2) = 0,
+	\left(\frac{2(C_T - \Delta t)}{\Delta t} + r_0\right)\tilde{t}^2 + r_0\tilde{t} - (440 / 2) = 0,
 \end{equation}
-for which the positive part of the quadratic formula gives $\overline{\tau} \simeq  1998$, but for sake of consistency with later calculations, we use the center of mass calculation.
+for which the positive part of the quadratic formula gives $\overline{\tau} \simeq  1998$ or $48$ [y], but for sake of consistency with later calculations, we use the center of mass calculation.
 This line is plotted as the vertical dot-dashed red line in the top panel of Fig. 1 and Fig. 3. 
 
 <h4>Mean Penetration Depth</h4>
@@ -155,12 +155,23 @@ This line is plotted as the vertical dot-dashed red line in the top panel of Fig
 We now apply the center of mass calculation, which is graphically represented in the inset plot of Fig. 2, to determine the mean penetration depth of the radiocarbon. 
 We get, for $\Delta\delta^{13}C(z)$ the difference between the two observed profiles:
 \begin{equation}
-	\overline{Z} = \int \text{d}z \: z\cdot \Delta\delta^{13}C(z) \bigg/ \int \text{d}z \: \Delta\delta^{13}C(z) \simeq -231 \:\left[\text{m}\right].
+	\overline{Z} = \int \text{d}z' \: z'\cdot \Delta\delta^{13}C(z') \bigg/ \int \text{d}z' \: \Delta\delta^{13}C(z') \simeq -231 \:\left[\text{m}\right].
+\end{equation}
+We will use this value in the rest of the problem and find that our calculations are <i>highly</i> sensitive to this calculation.
+We also note that this value is of course integrated over the time since the bomb testing ceased (in our model we assume that this is in 1965). 
+Therefore, we can define a rate:
+\begin{equation}
+	r_{\overline{Z}} = \frac{\overline{Z}}{1986 - 1965} \simeq -11 \: \left[\text{m}\right].
+\end{equation}
+
+<h4>Mean Penetration Depth over $\overline{\tau}$</h4>
+
+Next, we can apply this rate to find the penetration depth over the mean age of the bomb carbon:
+\begin{equation}
+\langle \overline{Z} \rangle = r_{\overline{Z}} \overline{\tau} \simeq -564 \: \left[\text{m}\right].
 \end{equation}
 
 <h3>Problem 3</h3>
-
-I am not done with typing up my work (I apologize for this being late), but I will have the rest of this typed up and the problem set submitted within the next few hours.
 
 <figure>
 	<img src="images/prob3.png" style="width:50%">
@@ -171,13 +182,46 @@ I am not done with typing up my work (I apologize for this being late), but I wi
 		The dot-dashed red line is the mean age $\overline{\tau}$. 
 		The inset plot is the difference between the expected and observed given the emissions scenario of interest.
 	</figcaption>
-</figure
+</figure>
 
+<p>
+First, we can calculate the amount of DIC, which we call $C_d$, that can be exchange with the atmosphere. 
+To do this, we calculate the percentage of the total ocean that is covered by the penetration depth, as follows:
+ \begin{equation}
+ r_p = \frac{\text{SA}}{\text{V}}\langle\overline{Z}\rangle \simeq 0.16,
+\end{equation}
+where we have used values of SA $= 360 \times 10^{12}$ and V $= 1.29 \times  10 ^{18}$ from Sarmiento and Gruber (2006).
+Now, we imagine a model in which there is some flux of anthropogenic emissions into the ocean, which can be described by:
+\begin{equation}
+	\frac{\textrm{d}}{\textrm{d}t}\left[\left(C_o \circ \delta^{13}C_{o}\right)(t)\right] = G(t)\delta^{13}C_p,
+\end{equation}
+where $G(t)$ is a function representing the transfer of anthropogenic carbon into the ocean, which is unknown. 
+Integrating this model with respect to time gives:
+\begin{equation}
+	\delta^{13}C(t) = \frac{C_d}{C_d + G(t)\Delta t}\delta^{13}C + \frac{G(t)\Delta t}{C_d + G(t)\Delta t}\delta^{13}C_p,
+\end{equation}
+where we note that $G(t)\Delta t$ is the total amount (or change) of carbon that goes into the ocean from the atmosphere.
+As we are interested in the <i>change</i> of $\delta^{13}C_d$, which we denote $\Delta_{t_0}\delta^{13}C$ where the $\Delta_{t_0}$ operator means the difference in the value at time $t$ and $t_0$, we can rearrange this equation to get:
+\begin{equation}
+	\Delta_{t_0}\delta^{13}C_d = \left(\Delta_{t_0}\delta^{13}C_o - \frac{G(t)\Delta t}{C_d + G(t)\Delta t}\delta^{13}C_p \right) \frac{C_d + G(t)\Delta t}{C_d},
+\end{equation}
+where we define $\Delta_{t_0}\delta^{13}C_o$ as the difference between the dashed line and the dash-dot line in the middle panel of Fig 1, that is the difference between the $\delta^{13}C_o$ when all emissions not stored in the atmosphere go into the ocean and the observed value in the atmosphere.
+The result is plotted in Fig 3. in the solid line ove time, compared to the observed value from the problem in the dashed line.
+The inset is the difference between the two plots over time, and the dot-dashed line is the mean age as calculated in Problem 2. 
+</p>
+<p>
+Now, we are interested in how this compares with the expected change in $\delta^{13}C$ with the observed surface marine DIC value (the dashed line in Fig. 3) over $\overline{\tau}$.
+We can see from the inset in Fig. 3 that the difference between the calculated and observed values is $\sim 2.1$ [‰].
+Specifically, we can compare these by calculating the rate over $\overline{\tau}$, i.e. $r_{\Delta\delta^{13}C_d} = \Delta_{t_0}\delta^{13}C_d(\overline{\tau}) / \overline{\tau}$:
+\begin{align}
+	\text{Expected/Calculated} &: -5.3 \times 10^{-2} \: \left[‰ \: y^{-1}\right]\\
+	\text{Observed} &: -1.2 \times 10^{-2} \: \left[‰ \: y^{-1}\right]
+\end{align}
+Clearly, there is a discrepency between the observation and the mass balance in the model that we have been considering up to this point.
 
+</p>
 
 <h3>Problem 4 & 5</h3>
-
-
 
 <figure>
 	<img src="images/prob4_5.png" style="width:50%">
@@ -189,6 +233,7 @@ I am not done with typing up my work (I apologize for this being late), but I wi
 	</figcaption>
 </figure>
 
+We now address this contradiction between observation and mass balance.
 
 <hr style="width: 60em;">
 
