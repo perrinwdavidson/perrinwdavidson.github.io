@@ -240,21 +240,25 @@ Instead, we have that the RHS is given by:
 \end{equation}
 which gives for our standard $\eta'$ anstaz:
  \begin{equation}
-	\lambda K^2.
+	 -\text{i}\lambda K^2.
 \end{equation}
 This then means that our dispersion is given by:
 \begin{equation}
-	\omega = \frac{\lambda K^2 + k\left(\overline{u}K^2 - \beta\right)}{K^2 + k_d^2},
+	\omega = \frac{k\left(\overline{u}K^2 - \beta\right) -\text{i}\lambda K^2}{K^2 + k_d^2},
 \end{equation}
 </p>
 
 <p><b>(b)</b> 
 We can see that we have a offset of the form:
 \begin{equation}
-	\lambda\frac{K^2}{K^2 + k_d^2}.
+	-\text{i}\lambda\frac{K^2}{K^2 + k_d^2}.
 \end{equation}
 Therefore, we can see that the damping will act proportional to the ratio of the horizontal wave number to the relative contributions of the wavenumber and the Deformation Radius.
-This then means that we will see a damping will modify the waves along the horizontal wave number propogation, "pushing" the waves further than previously and therefore damping the PV faster.
+This then means that we will see a damping will modify the waves along the horizontal wave number propogation, damping (given the negative/removal of energy) the waves further than previously and therefore damping the PV faster.
+We also note that, given that it is an imaginary term, either $\omega$ or $k$ must be complex to satisfy the equations of motion. 
+Additionally, we note that this solution therefore gives the damping term $\propto \exp\left[-\text{i}\omega t\right]\exp\left[-\text{i}\left(k_r + \text{i}k_i\right)\right]$, for a respective wavenumber $k = k_r + \text{i}k_i$.
+We can see that this "pushes" (this is really a translation) the solution greater than it would otherwise be in the direction of $k$.
+This thereby acts to damp the wave.
 </p>
 
 <hr style="width: 60em;">

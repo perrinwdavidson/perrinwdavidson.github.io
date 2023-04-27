@@ -289,6 +289,7 @@ There is not a single pool region in $q_1$, as opposed to the large homogenzed Q
 This then means the shadow region of $q_2$ is smaller than $q_3$. 
 Remarkably, demonstrating the strength of this model formulation, we again see the close agreement between the QGPV contours across the interfaces. 
 We could, as with $\psi_i$, compare Fig. 10  $q_1$ with Fig. 5 and see a large similarity with only a minor discontinuity. Super cool!
+In both cases we can imagine a elliptical cone-like shape that decreases in cross-sectional area with depth in which we have homogenized QGPV as well as the region of validity for streamfunctions.
 </p>
 
 <h3>Problem 6 ($N$-layers)</h3>
@@ -305,6 +306,13 @@ with the boundaries:
 	q_1 &= \beta y - F\left(\psi_1 - \psi_2\right) \\
 	q_N &= \beta y + F\left(\psi_{N-1} - \psi_N\right).
 \end{align}
+We can solve these equations in a similar, iterative manner as for the three layer model, in which we:
+<ol>
+	<li>Assume an decreasing pool region size with depth of homogeneous QGPV discussed in Q5 that can be found by assuming the $i$th streamfunction, $\psi_i \sim \psi_{i-1} \sim \beta L_y$ and solve for the corresponding set of points $(x, y)$  </li>
+	<li>Solve for $\psi_i \sim \psi_{i-1} + \psi_{i+1}$, for $i \in \left[2, N-1\right]$, the subsequently $\psi_1$ and $\psi_N$ assuming QGPV homogenization and the boundary conditions</li>
+	<li>Solve for $q_i$ for $i \in \left[1, N\right]$ given $\psi_{i}$ and/or $\psi_{i-1}, \psi_{i+1}$</li>
+	<li>Compile solutions in regions of validity given the boundaries found in 1.</li>
+</ol>
 
 <hr style="width: 60em;">
 
