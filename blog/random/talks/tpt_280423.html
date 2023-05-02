@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Transition Path Theory and the Atmosphere: Jordan Finkel (28.04.23)</title>
+
+<style>
+h1 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>Transition Path Theory and the Atmosphere: Jordan Finkel (28.04.23)</h1>
+
+<hr style="width: 60em;">
+
+<p>
+We define the <b>commitor probability</b> as, for two stable states $A$ and $B$:
+\begin{equation}
+	q_B^+(x) = \mathbb{P} \{ X(t) \text{ next hits } B \text{ rather than } A \: | \: X(0) = x  \}.
+\end{equation}
+We can also define the <b>infinitesimal generator</b>:
+\begin{equation}
+\mathcal{L}f(x) = \lim_{\Delta t \to 0} \frac{\mathbb{E}\left[f(X(\Delta t))\right]-f(x)}{\Delta t} = \nu \cdot \nabla f + \frac{\sigma \sigma^T}{2}:\nabla \nu.
+\end{equation}
+There are a few quantities hat we care about:
+\begin{align}
+\text{First passage time} &: \tau_B^+ = \min\{t \ge  0 \: : C(t) \in B \}, \\
+\text{Commitor} &: q_B^+ = \mathbb{P}\left[ \tau^+_B < \tau_A^+ \right], \\
+    \text{Backward Commitor} &: q_B^- = \mathbb{P}\left[\tau_A^+ < \tau_B^+ \right].
+\end{align}
+It might be possible to use: "Dynamic Time Warping" with our paleoclimate data.
+</p>
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
