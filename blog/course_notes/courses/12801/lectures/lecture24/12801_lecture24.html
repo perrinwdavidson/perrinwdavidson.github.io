@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.801: Lecture 24</title>
+
+<style>
+h1 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.801: Lecture 24</h1>
+
+<hr style="width: 60em;">
+
+<h2>Abyssal, Thermohaline Circulation</h2>
+
+<h3>The Setup</h3>
+We will be talking about thermohaline circulation, which looks like the diagram presented in Fig. 1
+<figure>
+	<img src="images/thc.png" style="width:60%">
+	<figcaption> Fig. 1: The Thermohaline Circulation that we will be considering in this lecture.</figcaption>
+</figure>
+
+<h3>Observations</h3>
+We know that $N / f \sim 30$ in the ocean, and a decrease in bouyancy is indicative of deep convection, which we plot in Fig. 2.
+<figure>
+	<img src="images/convection_n2.png" style="width:60%">
+	<figcaption> Fig. 2: Convection and the effect on $N^2$.</figcaption>
+</figure>
+Further, we know that the circulation looks like, in the deep water regions, as presented in Fig. 3.
+<figure>
+	<img src="images/deep_circ.png" style="width:60%">
+	<figcaption> Fig. 3: Deep water circulation in the ocean. Red is warm water, green is medium temperature, and blue is cool water.</figcaption>
+</figure>
+
+<h3>The Theory and Result</h3>
+Stommel started by saying that if there is downwelling, as presented in Fig. 3 into the deep ocean, there has to be upwelling by mass conservation in order to match this downwelling.
+We can think of this as stretching of Taylor columns.
+
+The result was that, as Taylor columns want to have minum stretching (so go North), then we have (for a flat ocean) for Sverdup balance:
+\begin{equation}
+	\beta v = \partial_z w,
+\end{equation}
+which was integrated to some mid-depth and then we get:
+\begin{equation}
+\beta \int_{-D}^{\text{mid-depth}} \text{d}z \: v = f w_{\text{mid-depth}} > 0.
+\end{equation}
+The result, found by Stommel and Aarons in a tank experiment, is presented in Fig. 4.
+<figure>
+	<img src="images/stommel_aarons.png" style="width:60%">
+	<figcaption> Fig. 4: This is Stommel-Aarons experiment that shows that the water is moving down the western boundary away from the source region.
+	(a) The Taylor columns wanting to go north, while (b) Shows the need to balance deep water downwelling. (c) Demonstrates the resulting theory and observation of circulation to balance this circulation.</figcaption>
+</figure>
+Now, we can see that this is what only makes intuitive sense. 
+This is because of the basics in Fig. 5.
+<figure>
+	<img src="images/pressure_systems.png" style="width:60%">
+	<figcaption> Fig. 5: Pressure systems that are used to justify the western boundary movement of water.</figcaption>
+</figure>
+To summarize, we see that Taylor column preferentially choose the western boundary, as this will make a Low Pressure system, given the PV rotation of the columns, and then this pumps the water up, as we want. 
+If it was on the east, then we would make a High Pressure system, causing downwelling which is what we do not want.
+
+<h3>Bottom Intensification</h3>
+
+We first say that $\partial_z b > 0$. 
+Then, we see that, with the RHS being diapycnal mixing via the $\kappa$:
+ \begin{equation}
+	w N^2 = \partial_z\left[\kappa \partial_z b\right],
+\end{equation}
+the trick is determining what the $\kappa$ term is.
+This is represented by the blue cross arrows in the deep in Fig. 3.
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>

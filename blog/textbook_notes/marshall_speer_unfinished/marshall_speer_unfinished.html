@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ocean Circulation (Unfinished)</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+h3 {text-align: center;}
+figure {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+.theorem {
+display: block;
+font-style: italic;
+}
+.theorem:before {
+content: "Theorem. ";
+font-weight: bold;
+font-style: normal;
+}
+.theorem[text]:before {
+content: "Theorem " attr(text) " ";
+}
+.proof {
+display: block;
+font-style: normal;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.exercise {
+display: block;
+font-style: normal;
+}
+.exercise:before {
+content: "Exercise. ";
+font-style: normal;
+}
+.exercise[text]:before {
+content: "(Exercise " attr(text) ") ";
+}
+.claim {
+display: block;
+font-style: italic;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition {
+display: block;
+font-style: italic;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>Ocean Circulation (Unfinished)</h1>
+<h3>(John Marshall and Kevin Speer, 2023)</h3>
+<hr style="width: 60em;">
+
+<h2>Chapter 1 – Ocean Circulation and water masses</h2>
+
+Some keys facts about the ocean:
+<ol>
+	<li> Salinity (all dissolved matter): 3.5% of ocean water </li>
+	<li> Pure water: 96.5% </li>
+	<li> Surface area: $3.61 \times  10^{14}$ [m$^{2}$]</li>
+	<li> Mean depth: $3.7 \times 10^3 $ [m]</li>
+	<li> Volume: $3.2 \times  10^{17}$ [m$^{3}$]</li>
+	<li> Mean density: $1.035 \times 10^3$ [kg m$^{-3}$]</li>
+	<li> Ocean mass: $1.3 \times  10 ^{21}$ [kg]</li>
+	<li> Ocean albido: 10%</li>
+</ol>
+We also see that the ocean is split into ocean gyres, with strong western boundary currents as seen from glider data.
+Some of these currents include:
+<ol>
+<li>Kuroshio in the North Pacific</li>
+<li>Gulf Stream in the North Atlantic</li>
+<li>Malvinas in the South Atlantic</li>
+<li>East Austrialian Current in the South Pacific</li>
+<li>Alguhas in the Indian</li>
+</ol>
+These cause an East-West asymmetry.
+<ol>
+<li>Pacific length scale: $1.4 \times 10^{6}$ [m]</li>
+<li>Topical velocity scale: $2 \times  10^{-1}$ [m s$^{-1}$]</li>
+<li>ACC length scale: $2.1 \times 10^{6}$ [m]</li>
+<li>ACC velocity scale: $3 \times  10^{-1}$ [m s$^{-1}$]</li>
+</ol>
+
+We also note that there are two main coordinate systems that we use.
+The first is Cartesian Coordinates, of the form $(x, y, z)$:
+\begin{equation}
+\underline{x} = x \widehat{x} + y \widehat{y} + z \widehat{z},		
+\end{equation}
+for the wide hat being the unit vector in each of the 3 dimensions. 
+We also use Spherical Coordinates $(\widehat{\lambda}, \widehat{\phi}, \widehat{r})$, which are diagramatically presented in Fig. 1.
+<figure>
+	<img src="images/spherical coordinates.png" style="width:60%">
+	<figcaption> Fig 1: Representation of the Cartesian to Spherical coordinates.</figcaption>
+</figure>
+<div class="claim">
+We claim that we can represent the coordinate $\underline{x}$ in spherical coordinates using the following increment relation:
+\begin{equation}
+	\delta \underline{x} = r \cos\left[\phi\right] \delta\lambda \widehat{\lambda} + r \delta\phi\widehat{ \phi} + \delta r\widehat{r}.
+\end{equation}
+<div class="proof">
+We know from the definition of arc length $S$ that we can relate the change in the angle, let's call it $ \omega$, to the radius, $r$, via:
+ \begin{equation}
+	\omega = \frac{S}{r}.
+\end{equation}
+So, then for the $y$-coordinate, we find:
+ \begin{equation}
+	\delta \phi = \frac{\delta y}{r} \Rightarrow \delta y = r \delta \phi.
+\end{equation}
+Similarly for the $x$-coordinate, and noting that the radius is modulated  $\cos\left[\phi\right]$, we get:
+\begin{equation}
+	\delta \lambda = \frac{\delta x}{r \cos\left[\phi\right]} \Rightarrow \delta x = r \cos\left[\phi\right] \delta \lambda.
+\end{equation}
+Lastly, we note that $z$ and  $r$ are simply translations by the Earth's radius $a$ via $z = r - a$, therefore:
+ \begin{equation}
+	\delta z = \delta r.
+\end{equation}
+And we note that we can extend these definitions to include the derivatives, as seen later, for Cartesian derivatives of the form:
+\begin{equation}
+	(u, v, w)\big|_{\text{Cartesian}} = \left(\frac{\textrm{D}x}{\textrm{D}t}, \frac{\textrm{D}y}{\textrm{D}t}, \frac{\textrm{D}z}{\textrm{D}t} \right) .
+\end{equation}
+</div>
+</div>
+An important derivative definition is as follows:
+<div class="definition" text="Material Derivative">
+We define the "Material Derivative" of a quantitity $c$ as:
+\begin{equation}
+	\frac{\textrm{D}c}{\textrm{D}t} = \partial_tc + \underline{u}\cdot\nabla c,
+\end{equation}
+for $\partial_t$ defining the internal rate of change of $c$ and  $\underline{u}\cdot \nabla $ defining the advection of $c$.
+<div class="proof">
+Let's define $c(x,y,z,t)$. Then, by the definition of the differential, we find that small variations in all four independent variables gives:
+ \begin{equation}
+	\delta c = \partial_tc\delta t + \partial_x c \delta x + \partial_yc\delta y + \partial_zc\delta z. 
+\end{equation}
+Then, we can define the velocities as:
+\begin{equation}
+	\delta x = u\delta t \quad,\quad \delta y = v \delta t \quad,\quad \delta z = w \delta t.
+\end{equation}
+After substitution, division by $\delta t$, and taking $\delta \to 0$, we get:
+\begin{equation}
+	\partial_t c\big|_{\text{Euler}} = \frac{\textrm{D}c}{\textrm{D}t},
+\end{equation}
+as defined above.
+</div>
+N.B.: We can find the Spherical Coordinates extension as:
+\begin{equation}
+	\frac{\textrm{D}c}{\textrm{D}t} = \partial_t c + \frac{u}{r \cos\left[\phi\right]}\partial_\lambda c + \frac{v}{r}\partial_\phi c + w \partial_r c,
+\end{equation}
+where we have defined:
+\begin{equation}
+	(u, v, w)\big|_{\text{Spherical}} = \left(r\cos\left[\phi\right]\frac{\textrm{D}\lambda}{\textrm{D}t}, r\frac{\textrm{D}\phi}{\textrm{D}t}, \frac{\textrm{D}r}{\textrm{D}t} \right). 
+\end{equation}
+</div>
+Next, we introduce the steamfunction $\psi$, which is defined as follows.
+<div class="definition" text="Streamfunction">
+ \begin{equation}
+	u = - \partial_y \psi \quad \text{ and }\quad v = \partial_x \psi.
+\end{equation}
+</div>
+We can determine the timescales associated with overturning circulation as follows:
+\begin{equation}
+	\tau = \frac{\text{volume}}{\text{volume flux}}.
+\end{equation}
+We can then imagine taking a slice orthoganol to which ever direction we care to determine the average flux through to get typical scales, e.g.:
+\begin{equation}
+	\overline{v} \sim \frac{\text{volume flux}}{\text{depth}\times \text{width}} \quad \text{ or }\quad \overline{w} \sim \frac{\text{volume flux}}{\text{width} \times \text{length}}.
+\end{equation}
+
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
