@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.802: Project Proposal</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.802: Project Proposal</h1>
+<h2>Kelvin-Helmholtz-like Instabilities in a Large Eddy Simulation</h2>
+<hr style="width: 60em;">
+
+<h3>Introduction</h3>
+
+We are interested in Kelvin-Helmholtz-like instabilities (KHI), which occur in a sheared, statified fluid.
+The Richardson number is used to classify this instability and is defined as:
+\begin{equation}
+	\text{Ri} = \frac{\partial_z B}{\left(\partial_z U\right)^2},
+\end{equation}
+for $B$ bouyancy and $U$ velocity.
+We also introduce the width of the stratification, $h$.
+In this project, we will be using Oceananigans.jl to simulate KHI in a Large Eddy Simulation (LES). 
+Specifically, we will be running a range of simulations of initial conditions for velocity shear and stratificiation, that is Ri and $h$, to determine the growth rate $\sigma$ of each instability.
+
+<h3>Description</h3>
+
+We will be using the Oceananigans.jl Nonhydrostatic model [Ramadhan <i>et al.</i>, 2018].
+Furthermore, we will be using the Anistrophic Minimum Dissipation turbulence closure for the large eddy simulation to model the effect of turbulent motions at scales smaller than the grid scale that we cannot explicitly resolve [Verstappen, 2018].
+We will be tracking buoyancy, $B$, as our tracer to demonstrate the instability. 
+Additionally, we will calculate the exponential growth rate $\sigma$ at a time step $i$ via:
+\begin{equation}
+\frac{E(t_i + \Delta \tau)}{E(t_i)} \sim \exp\left(2 \sigma \Delta \tau\right),
+\end{equation}
+which we obtain via linearization about a base state by some operator $L$, which successive application of to our modes $\phi_i$ for eigenvalue $\text{Re}(\lambda_1) > 0$ will lead to exponential amplification.
+
+<h3>Intended Outcomes</h3>
+
+The result will be a range of model simulations that calculate the simulated growth rate $\sigma$ as a function of initial conditions max Ri and $h$, where max Ri is the maximum Ri at the center of $h$.
+We will also present .mp4 demonstrating the growth of the instability through time. 
+
+<h3>Cited Works</h3>
+
+[Ramadhan <i>et al.</i>, 2018]: <i>Oceananigans.jl: Fast and friendly geophysical fluid dynamics on GPUs</i> <br>
+[Verstappen, 2018]: <i>How much eddy dissipation is needed to counterbalance the nonlinear production of small, unresolved scales in a large-eddy simulation of turbulence?</i>
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>

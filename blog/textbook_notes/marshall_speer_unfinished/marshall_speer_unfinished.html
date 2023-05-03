@@ -18,6 +18,8 @@ figure {text-align: center;}
 .theorem {
 display: block;
 font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
 }
 .theorem:before {
 content: "Theorem. ";
@@ -30,6 +32,8 @@ content: "Theorem " attr(text) " ";
 .proof {
 display: block;
 font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
 }
 .proof:before {
 content: "Proof. ";
@@ -38,6 +42,8 @@ font-style: italic;
 .exercise {
 display: block;
 font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
 }
 .exercise:before {
 content: "Exercise. ";
@@ -49,6 +55,8 @@ content: "(Exercise " attr(text) ") ";
 .claim {
 display: block;
 font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
 }
 .claim:before {
 content: "Claim. ";
@@ -58,6 +66,8 @@ font-style: normal;
 .definition {
 display: block;
 font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
 }
 .definition:before {
 content: "Definition. ";
@@ -122,9 +132,9 @@ These cause an East-West asymmetry.
 </ol>
 
 We also note that there are two main coordinate systems that we use.
-The first is Cartesian Coordinates, of the form $(x, y, z)$:
+The first is Cartesian Coordinates, of the form $(\widehat{\imath}, \widehat{\jmath}, \widehat{k})$:
 \begin{equation}
-\underline{x} = x \widehat{x} + y \widehat{y} + z \widehat{z},		
+\underline{x} = x \widehat{\imath} + y \widehat{\jmath} + z \widehat{k},		
 \end{equation}
 for the wide hat being the unit vector in each of the 3 dimensions. 
 We also use Spherical Coordinates $(\widehat{\lambda}, \widehat{\phi}, \widehat{r})$, which are diagramatically presented in Fig. 1.
@@ -193,11 +203,12 @@ where we have defined:
 </div>
 Next, we introduce the steamfunction $\psi$, which is defined as follows.
 <div class="definition" text="Streamfunction">
+We define the streamfunction $\psi$ as:
  \begin{equation}
 	u = - \partial_y \psi \quad \text{ and }\quad v = \partial_x \psi.
 \end{equation}
 </div>
-We can determine the timescales associated with overturning circulation as follows:
+We can determine the timescales associated with overturning circulation described by $\psi$ as follows:
 \begin{equation}
 	\tau = \frac{\text{volume}}{\text{volume flux}}.
 \end{equation}
