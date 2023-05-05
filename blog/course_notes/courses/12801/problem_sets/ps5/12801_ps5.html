@@ -13,6 +13,7 @@ h1 {text-align: center;}
   text-align: center;
 }
 figure {text-align: center;}
+figcaption {text-align: justify;}
 </style>
 
 <script>
@@ -90,17 +91,25 @@ Now, we take the following values, which we will use for the remainder of the pr
 	\tau_x &\sim 1 \times 10^{-1} \: \left[\text{kg} \text{ m}^{-1} \text{s}^{-2}\right], \\	
 	L_y &\sim 3 \times 10^{6} \: \left[\text{m}\right], \\
 	L_x &\sim 3 \times 10^{6} \: \left[\text{m}\right], \\
+	L &\sim 3 \times 10^{6} \: \left[\text{m}\right], \\
 	\beta &\sim 2 \times 10^{-11} \: \left[\text{s}^{-1} \text{m}^{-1}\right], \\
 	\rho_0 &\sim 1 \times 10^{3} \: \left[\text{kg} \text{ m}^{-3}\right], \\
 	f_0 &\sim 1 \times 10^{-4} \: \left[\text{s}^{-1}\right], \\
-	g' &\sim 2 \times 10^{-2} \: \left[\text{m} \text{ s}^{-2}\right] .
+	g' &\sim 2 \times 10^{-2} \: \left[\text{m} \text{ s}^{-2}\right], \\
+	y_1 &\sim \left( 7 / 8 \right) L  \: \left[\text{m}\right].
 \end{align}
 With all of this, we have thus determined the (nondimensionalized) forcing function, $\widehat{w_{Ek}}$, and the corresponding (nondimensionalized) geostrophic streamfunction for a single, homogeneous layer, $\widehat{\Psi_{geo}}$.
 These are plotted in Fig. 2. 
 <figure>
 	<img src="images/prob0.png" style="width:100%">
-	<figcaption> Fig. 2: The appropriately nondimensionalized wind-driven forcing function, $\widehat{w_{Ek}}$, and the corresponding geostrophic streamfuncion, $\widehat{\Psi_{geo}}$.</figcaption>
+	<figcaption> 
+		Fig. 2: The appropriately nondimensionalized wind-driven forcing function, $\widehat{w_{Ek}}$, and the corresponding geostrophic streamfuncion, $\widehat{\Psi_{geo}}$.
+		The dashed red line is the separation between the northern regime (N) and the southern regime (S) that is given in this problem and is defined as the latitudinal band at which Layer 2 outcrops.
+	</figcaption>
 </figure>
+We note that above $y_0$, as defined in Fig. 1 and not shown as it is out of the domain of interest in Fig. 2 (it is the $y$ boundary itself), the Eckman pumping field goes positive (as seen in subpolar gyres). 
+Therefore, we can see that the Taylor columns within the region of interest will move south, at which point subduction occurs at $y_1$. 
+This is what we are studying in this model, fundamentally.
 
 <h3>North of $y_1$</h3>
 
