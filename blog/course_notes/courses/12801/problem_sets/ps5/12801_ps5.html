@@ -573,6 +573,7 @@ We plot the solution fields to Layer 1 in Fig. 6 below.
 	<figcaption> 
 		Fig. 6: The solution fields for Layer 1 of the Shadow region (left) $\widehat{h_1^S}$ (middle) $\widehat{\psi_1^S}$ (right) $\widehat{q_1^S}$.
 		The dash red lines represent the bounds of the "sleeve" of ventilation derived above.
+		Note the $\log_{10}$ scale of the PV, used to better show the contours of the solution.
 	</figcaption>
 </figure>
 
@@ -613,7 +614,7 @@ which means that:
 \end{equation}
 Then, we can relate this to our depth of $h_2$ following:
 \begin{equation}
-	\widehat{h_2} = \frac{f}{f_0}\widehat{q_2} = \frac{8}{7 \widehat{y}}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {1 / 2},
+	\widehat{h_2} = \frac{f}{f_0}\frac{1}{\widehat{q_2}} = \widehat{y}\frac{8}{7}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {1 / 2},
 \end{equation}
 and from geostrophy we know that:
 \begin{equation}
@@ -623,18 +624,131 @@ Now, we need to find $h_1$.
 </p>
 <p>
 <i>Layer 1: </i>
-
-
+We now set out to find the solutions to: $h_1^P$, $\psi_1^P$, and $q_1^P$, and again drop the superscript $P$ for convience and reintroduce it at the end.
+We begin by finding $h_1$, which is done by recalling our Sverdrup balance equation, and assuming geostrophy to get:
+\begin{equation}
+	h_1\partial_x\left[H + h_1\right] + \frac{f}{q_2}\partial_x\left[H\right] = \frac{f^2}{\beta \gamma}w_{Ek},
+\end{equation}
+which becomes, after some simplifications applying our Chain Rule derivation:
+\begin{equation}
+	\partial_x\left[h_1^2 + \frac{f}{q_2}h_1\right] = \frac{f^2}{\beta \gamma}w_{Ek}.
+\end{equation}
+Integrating over $x$ gives a quadratic in $h_1$:
+\begin{equation}
+	h_1^2 + \frac{f}{q_2}h_1 - \frac{f}{\gamma}\Psi_{geo} = 0.
+\end{equation}
+Recalling our definition of the quadratic formula, this equation has a physical (i.e., positive) solution of the form:
+\begin{equation}
+h_1 = - \frac{f}{2q_2} + \left( \left( \frac{f}{2q_2} \right)^2 + \frac{f}{\gamma}\Psi_{geo}  \right)^{1 / 2},
+\end{equation}
+which we can simplify by nondimensionalization, noting the following:
+\begin{align}
+\frac{f}{2q_2} \cdot \frac{1}{H_0} &= \frac{\widehat{y}}{2\widehat{q_2}} = \frac{1}{2}\widehat{h_2}, \\
+\frac{f}{4\gamma}\Psi_{geo} \cdot \frac{1}{H_0} &= \frac{1}{2}(1-\widehat{x})\sin\left[\pi \widehat{y}\right], \\
+\end{align}
+which leads to:
+\begin{equation}
+\widehat{h_1} = - \frac{\widehat{y}}{2 \widehat{q_2}} + \left( \left( \frac{\widehat{y}}{2 \widehat{q_2}} \right)^2 + \frac{1}{2}(1-\widehat{x})\sin\left[\pi \widehat{y}\right]  \right)^ {1 / 2}.
+\end{equation}
+We additionally note that, by geostrophy:
+\begin{equation}
+	\psi_1 \sim H + h_1.
+\end{equation}
+Therefore, we get:
+\begin{equation}
+	q_1 = \frac{f}{h_1},
+\end{equation}
+which implies that:
+\begin{equation}
+\widehat{q_1} = \frac{\widehat{y}}{\widehat{h_1}}.
+\end{equation}
 </p>
 <p>
 <i>Solution Fields:</i>
+Bringing it all together, we finally have that, in Layer 1 in the Pool region:
+\begin{align}
+\widehat{h_1^P} &= -\widehat{y}\frac{4}{7}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {1 / 2} + \left(\left( \widehat{y}\frac{4}{7} \right)^2\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) + \frac{1}{2}(1-\widehat{x})\sin\left[\pi \widehat{y}\right] \right)^{1 / 2} ,\\
+\widehat{\psi_1^P} &= \left(\left( \widehat{y}\frac{8}{7} \right)^2\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) + 2(1-\widehat{x})\sin\left[\pi \widehat{y}\right] \right)^{1 / 2} ,\\
+\widehat{q_1^P} &= \frac{\widehat{y}}{-\widehat{y}\frac{4}{7}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {1 / 2} + \left(\left( \widehat{y}\frac{4}{7} \right)^2\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) + \frac{1}{2}(1-\widehat{x})\sin\left[\pi \widehat{y}\right] \right)^{1 / 2}} ,\\
+\end{align}
+These solutions are presented in Fig. 8 below.  
+<figure>
+	<img src="images/prob8.png" style="width:100%">
+	<figcaption> 
+		Fig. 8: The solution fields for Layer 1 of the Pool region (left) $\widehat{h_1^P}$ (middle) $\widehat{\psi_1^P}$ (right) $\widehat{q_1^P}$.
+		The dash red lines represent the bounds of the "sleeve" of ventilation derived above.
+	</figcaption>
+</figure>
 
-
+We then have the solution to Layer 2 in the Pool region:
+\begin{align}
+	\widehat{h_2^P} &= \widehat{y}\frac{8}{7}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {1 / 2}, \\
+	\widehat{\psi_2^P} &= \widehat{y}\frac{4}{7}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {1 / 2} + \left(\left( \widehat{y}\frac{4}{7} \right)^2\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) + \frac{1}{2}(1-\widehat{x})\sin\left[\pi \widehat{y}\right] \right)^{1 / 2} ,\\
+	\widehat{q_2^P} &= \frac{7}{8}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {-1 / 2}. \\
+\end{align}
+These solutions are presented in Fig. 8 below.  
+<figure>
+	<img src="images/prob7.png" style="width:100%">
+	<figcaption> 
+		Fig. 9: The solution fields for Layer 2 of the Pool region (left) $\widehat{h_2^P}$ (middle) $\widehat{\psi_2^P}$ (right) $\widehat{q_2^P}$.
+		The dash red lines represent the bounds of the "sleeve" of ventilation derived above.
+	</figcaption>
+</figure>
 </p>
 
-
 <h3>Full Solutions</h3>
-
+We now present and discuss the full solutions, starting with the streamfunction of the lower layer presented in Fig. 10. 
+<figure>
+	<img src="images/psi_2.png" style="width:60%">
+	<figcaption> 
+		Fig. 10: The streamfunction (approximate, and $h_2$) of the lower layer. 
+		The shaded region is the pool region of constant potential vorticity for which we found solutions above and for which the solutions plotted are not valid.
+	</figcaption>
+</figure>
+In Fig. 10, we can see that ther egion east of the shadow zone is at rest. 
+Additionally, the flow in this layer is anticyclonic, which exits from the western boundary in the north and reenters in the south.
+We note that this solution assumes that the western boundary layer accepts the interior flow and returns it (as was required by our solution). 
+However, the boundary layer is not this simple and there is bound to be more complicated characteristics which we will neglect for this solution.
+<figure>
+	<img src="images/psi_1.png" style="width:60%">
+	<figcaption> 
+		Fig. 11: The streamfunction of the flow in the upper loayer. 
+		We note the kink in the streamlines as they pass across the shadow zone boundary. 
+		The shaded region is again the pool region, for which the solutions plotted are not valid.
+	</figcaption>
+</figure>
+In Fig. 11, we see that the streamfunction in the upper layer crosses the shadow zone boundary, yet there is a kink in the solution.
+This is due to the fact that in the west, the upper layer shares the Sverdup balance with the lower layer while in the east (of the shadow zone boundary) Layer 1 has the entirety of the balance.
+On the boundary, the kink is discontinuous and implies that the tangential velocity in both layers is discontinuous on the boundary.
+This is because the upper layer flow must be discontinuous to make Sverdrup transport continuous everywhere (a stipulation of the assumption).
+<figure>
+	<img src="images/q_2.png" style="width:60%">
+	<figcaption> 
+		Fig. 12: The potential vorticity of the lower layer.
+		It is important to note the decrease in the variation of $q_2$ in the ventilated region.
+		The shaded region is again the pool region, for which the solutions plotted are not valid.
+	</figcaption>
+</figure>
+In Fig. 12, We see that $q_2$ is conserevd south of the outcrop line, $f_1$.
+We further note the weakening of the variation in $q_2$ in the region of the ventilation south of the outcrop line.
+We note that the thickess of layer 2 varies more when there is only one region that carries all of the Sverdrup transport (i.e., in the northern regime or the shadow zone). 
+<figure>
+	<img src="images/h_y.png" style="width:60%">
+	<figcaption> 
+		Fig. 13: A meridional cross section showing the layer thicknesses, $h_1$ and $h_2$.
+	</figcaption>
+</figure>
+Fig. 13 shows a meridional cross section of the thicknesses. 
+We can see the flattening of the base of the thermocline within the shadow zone and the consistent increase in the slope of the interface between the two layers. 
+<figure>
+	<img src="images/h_x.png" style="width:60%">
+	<figcaption> Fig. 14: A zonal cross section showing the layer thicknesses, $h_1$ and $h_2$.
+	</figcaption>
+</figure>
+In Fig. 14, we show a zonal cross section of the layer thicknesses. 
+We can see that the BC is satisfied by having $h_1 \to 0$ near the eastern boundary.
+The rapid variation in $h_2$ causes a strong east to west gradient in $q_2$ in the shadow zone, where we see that $h_1\to  0$.
+Overall, from these cross sections, we can see a "bowl" of the total thickness $H$ on the western boundary and a ledge in the shadow zone of $H$.
 <hr style="width: 60em;">
 
 </div>
