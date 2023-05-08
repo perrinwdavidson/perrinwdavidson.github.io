@@ -14,6 +14,30 @@ h1 {text-align: center;}
 }
 figure {text-align: center;}
 figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
 </style>
 
 <script>
@@ -38,106 +62,578 @@ MathJax = {
 
 <hr style="width: 60em;">
 
+<h3>Governing Equations</h3>
+
+The Ventilated Thermocline model of layers $N + 1$ is Sverdrupian. 
+Therefore, we assume geostrophy, given in each layer $n$ by:
+\begin{align}
+	\rho_n f u_n &= -\partial_yp_n, \\
+	\rho_n f v_n &= \partial_xp_n,
+\end{align}
+and that each layer is hydrostatic:
+\begin{equation}
+	\rho_n g = -\partial_zp_n.
+\end{equation}
+We also assume incompressibility:
+\begin{equation}
+	\partial_xu_n + \partial_yv_n + \partial_zw_n = 0.
+\end{equation}
+We can obtain the Sverdup vorticity equation from the geostrophy and incompressibility equations to get:
+\begin{equation}
+	\partial_x\left[-\frac{1}{\rho_n f}\partial_yp_n\right] + \partial_y\left[\frac{1}{\rho_nf}\partial_xp_n\right] + \partial_zw_n = 0,
+\end{equation}
+which can be rearranged as follows:
+\begin{equation}
+	\frac{1}{\rho_n}\partial_y\left[\frac{1}{f}\right]\partial_x\left[p_n\right] + \partial_z\left[w_n\right] = 0,
+\end{equation}
+which leads to:
+\begin{equation}
+	f \partial_zw_n = \beta v_n.
+\end{equation}
+Integrating over each layer of thickness $h_n$, summing up all $N+1$ layers, and noting that $w_1 = w_{Ek}$ gives the general Sverdrup relation for this model:
+ \begin{equation}
+	f \sum_n \left[w_n -w_{n+1}\right] = fw_{Ek} = \beta \sum_n v_n h_n.
+\end{equation}
+We assume conservation of potential vorticity (as we assume that there are no unbalanced sources or sinks of PV) away from the Eckman layer. 
+Additionally, we make the following approximation to the shallow water potential vorticity equation:
+\begin{equation}
+	Q = \frac{\zeta + f}{h},
+\end{equation}
+by noting that:
+\begin{equation}
+	\zeta = \partial_xv - \partial_yu\sim \frac{U}{L} = \frac{10^{-1}}{10^6} = 10^{-7} \: \left[\text{s}^{-1}\right] \ll 10^{-4} \: \left[\text{s}^{-1}\right] \sim f,
+\end{equation}
+which gives the potential vorticity we employ in this model ignoring the relative vorticity:
+\begin{equation}
+	q = \frac{f}{h}.
+\end{equation}
+Therefore, in these layers far away from the Eckman layer we have:
+\begin{equation}
+	\frac{\textrm{D}q_n}{\textrm{D}t} = \partial_t\frac{f}{h_n} + \underline{u}_n\cdot \nabla \left[\frac{f}{h_n}\right] = u_n\partial_x\left[\frac{f}{h_n}\right] + v_n\partial_y\left[\frac{f}{h_n}\right].
+\end{equation}
+This is to say that once a layer is away from the direct action of the wind (i.e., the Eckman pumping), then the potential vorticity is "shielded" and therefore conserved.
+
 <h3>The Setup</h3>
 
-We assume a domain defined as: 
+We assume a square domain of length $L$ in both the $x$ and $y$ directions. 
+We also nondimensionalize the coordinates as follows:
 \begin{equation}
-	x \in \left[0, L_x\right] \quad \text{ and } \quad y \in \left[0, L_y \right].
+	\widehat{x} = \frac{x}{L} \quad \text{ and }\quad \widehat{y} = \frac{y}{L}.
 \end{equation}
-This gives a domain that is similar to the one presented in Fig. 1.
-<figure>
-	<img src="images/setup.png" style="width:60%">
-	<figcaption> Fig. 1: The domain of two layers (with a resting abyssal layer) considered in the Ventilated Thermocline model.</figcaption>
-</figure>
-For simplicity later, we nondimensionalize as follows:
-\begin{equation}
-	\widehat{x} = \frac{x}{L_x} \quad \text{ and } \quad \widehat{y} = \frac{y}{L_y}.
-\end{equation}
-We are further assume an Ekman pumping field of the form:
-\begin{equation}
-	w_{Ek} = - \frac{\pi \tau_x}{\rho_0 f L_y}\sin\left[\frac{\pi y}{L_y}\right],
-\end{equation}
-where we can additionally define:
-\begin{equation}
-	|w_{Ek}| = \frac{\pi \tau_x}{\rho_0 f L_y} \sim \text{max}\left[w_{Ek}\right] \simeq 1.05 \times  10^{-6} \: \left[\text{m}\: \text{s}^{-1}\right],
-\end{equation}
-from which we can introduce the nondimensionalized Eckman pumping field as:
-\begin{equation}
-	\widehat{w_{Ek}} = \frac{w_{Ek}}{|w_{Ek}|}.
-\end{equation}
-We then know that the geostrophic streamfunction is defined as:
-\begin{equation}
-	\Psi_{geo} = \frac{f}{\beta}\int_{\text{eastern boundary}}^x \text{d}x \: w_{Ek},
-\end{equation}
-where we are integrating from the eastern boundary, where we assume that $\Psi$ is 0.
-We can preform this integral, assuming the eastern boundary is $L_x$, to get:
-\begin{equation}
-	\Psi_{geo} = \frac{\pi \tau_x L_x}{\beta \rho_0 L_y}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right].
-\end{equation}
-For convenience in the future, we let:
-\begin{equation}
-	\Psi_{Sv} = \frac{\pi \tau_x L_x}{\beta \rho_0 L_y} \sim \text{max}\left[\Psi_{geo}\right] \simeq 15.7 \: \left[\text{Sv}\right],
-\end{equation}
-following the notes, giving:
-\begin{equation}
-	\Psi_{geo} = \Psi_{Sv}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right],
-\end{equation}
-and we correspondingly introduce the nondimensionalized streamfunction by as:
-\begin{equation}
-	\widehat{\Psi_{geo}} = \frac{\Psi_{geo}}{\Psi_{Sv}}.
-\end{equation}
-Now, we take the following values, which we will use for the remainder of the problem set:
+Furthermore, we assume the following values for scalars in this problem set:
 \begin{align}
 	\tau_x &\sim 1 \times 10^{-1} \: \left[\text{kg} \text{ m}^{-1} \text{s}^{-2}\right], \\	
-	L_y &\sim 3 \times 10^{6} \: \left[\text{m}\right], \\
-	L_x &\sim 3 \times 10^{6} \: \left[\text{m}\right], \\
 	L &\sim 3 \times 10^{6} \: \left[\text{m}\right], \\
 	\beta &\sim 2 \times 10^{-11} \: \left[\text{s}^{-1} \text{m}^{-1}\right], \\
 	\rho_0 &\sim 1 \times 10^{3} \: \left[\text{kg} \text{ m}^{-3}\right], \\
 	f_0 &\sim 1 \times 10^{-4} \: \left[\text{s}^{-1}\right], \\
-	g' &\sim 2 \times 10^{-2} \: \left[\text{m} \text{ s}^{-2}\right], \\
-	y_1 &\sim \left( 7 / 8 \right) L  \: \left[\text{m}\right].
+	\gamma &\sim 2 \times 10^{-2} \: \left[\text{m} \text{ s}^{-2}\right], \\
 \end{align}
-With all of this, we have thus determined the (nondimensionalized) forcing function, $\widehat{w_{Ek}}$, and the corresponding (nondimensionalized) geostrophic streamfunction for a single, homogeneous layer, $\widehat{\Psi_{geo}}$.
+where we define $\gamma$ as the reduced gravity.
+Additionally, we assume that the Northern and Southern regimes of this model are demarcated by $\widehat{y_1}$, which is assumed to be:
+\begin{equation}
+	\widehat{y_1} = \frac{y_1}{L} = \frac{7}{8}.
+\end{equation}
+We also note that given in the problem is the following:
+\begin{equation}
+	\frac{2f}{\gamma H_0^2}\Psi_{Sv} = 4.
+\end{equation}
+Lastly, we assume that the northernmost part of the domain is defined by the latitudinal band of $f_0$, as defined above (following Pedloskly, 1996). 
+We then note that this means we have:
+\begin{equation}
+	\frac{f}{f_0} = \frac{2\Omega Ry}{2\Omega RL} = \widehat{y},
+\end{equation}
+for $\sin\left[\phi\right] = Ry$ with $R$ the radius of the Earth, given the geometry of the problem.
+We will use this as our nondimensional $y$-coordinate.
+In this way, we treat $f$ as a function that varies in $y$, i.e. $f(y)$. 
+An important parameter to note is the outcropping value of $f$, namely:
+ \begin{equation}
+	f_1 = f(y_1).
+\end{equation}
+Additionally, note that this implies:
+\begin{equation}
+	\frac{f_1}{f_0} = \frac{y_1}{L} = \frac{7}{8}.
+\end{equation}
+
+<h3>Mathematical Preliminaries</h3>
+
+We recall the following definition:
+<div class="definition" text="Chain Rule">
+For two functions $u(x), v(x)$:
+\begin{equation}
+	\partial_x\left[u(x)\cdot v(x)\right] = \partial_x\left[u(x)\right]\cdot v(x) + u(x)\cdot \partial_x\left[v(x)\right].
+\end{equation}
+</div>
+We note now that for $u(x) = v(x) = w(x)$, we have that, by the Chain Rule:
+ \begin{equation}
+	\partial_x\left[w(x)^2\right] = 2w(x) \cdot \partial_x\left[w(x)\right].
+\end{equation}
+We will employ this note throughout the problem set.
+Next, we also recall the following formula:
+<div class="definition" text="Quadratic Formula">
+A polynomial of the form $ax^2 + bx + c = 0$ has roots defined by:
+ \begin{equation}
+ x^\ast = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+\end{equation}
+</div>
+We will use this later to solve for layer thicknesses. 
+
+<h3>Geostrophic Flow</h3>
+
+Now, we assume an Eckman pumping field of the form:
+\begin{equation}
+	w_{Ek}(\widehat{y}) = -\frac{\pi \tau_x}{\rho_0fL}\sin\left[\pi \widehat{y}\right],
+\end{equation}
+which we can nondimensionalize as follows:
+\begin{equation}
+	\widehat{w_{Ek}}(\widehat{y}) = w_{Ek}(\widehat{y}) \frac{\rho_0f_0L}{\pi \tau_x} = \frac{-\sin\left[\pi \widehat{y}\right]}{\widehat{y}}.
+\end{equation}
+We then know that the geostrophic streamfunction is defined as:
+\begin{equation}
+	\Psi_{geo} = \frac{f}{\beta}\int_{L}^x \text{d}x \: w_{Ek}(\widehat{y}),
+\end{equation}
+where we are integrating from the eastern boundary assumed to be $L$, where we assume that $\Psi$ is 0.
+We can preform this integral to get:
+\begin{equation}
+	\Psi_{geo} = \frac{\pi \tau_x}{\beta \rho_0}\left(1 - \widehat{x}\right)\sin\left[\pi \widehat{y}\right].
+\end{equation}
+For convenience in the future, we let:
+\begin{equation}
+	\Psi_{Sv} = \frac{\pi \tau_x}{\beta \rho_0} \sim \text{max}\left[\Psi_{geo}\right] \simeq 15.7 \: \left[\text{Sv}\right],
+\end{equation}
+following the notes, giving:
+\begin{equation}
+	\Psi_{geo} = \Psi_{Sv}\left(1 - \widehat{x}\right)\sin\left[\pi \widehat{y}\right],
+\end{equation}
+and we correspondingly introduce the nondimensionalized streamfunction by as:
+\begin{equation}
+	\widehat{\Psi_{geo}} = \frac{\Psi_{geo}}{\Psi_{Sv}} = \left(1 - \widehat{x}\right)\sin\left[\pi \widehat{y}\right].
+\end{equation}
+With all of this, we have thus determined the (nondimensionalized) forcing function, $\widehat{w_{Ek}}$, and the corresponding (nondimensionalized) geostrophic streamfunction, $\widehat{\Psi_{geo}}$.
 These are plotted in Fig. 2. 
 <figure>
-	<img src="images/prob0.png" style="width:100%">
+	<img src="images/prob0.png" style="width:80%">
 	<figcaption> 
 		Fig. 2: The appropriately nondimensionalized wind-driven forcing function, $\widehat{w_{Ek}}$, and the corresponding geostrophic streamfuncion, $\widehat{\Psi_{geo}}$.
-		The dashed red line is the separation between the northern regime (N) and the southern regime (S) that is given in this problem and is defined as the latitudinal band at which Layer 2 outcrops.
+		The dashed red line is given by $\widehat{y_1}$, the separation between the northern regime (N) and the southern regime (S) that is given in this problem and is defined as the latitudinal band at which Layer 2 outcrops.
 	</figcaption>
 </figure>
-We note that above $y_0$, as defined in Fig. 1 and not shown as it is out of the domain of interest in Fig. 2 (it is the $y$ boundary itself), the Eckman pumping field goes positive (as seen in subpolar gyres). 
-Therefore, we can see that the Taylor columns within the region of interest will move south, at which point subduction occurs at $y_1$. 
-This is what we are studying in this model, fundamentally.
+We note that at $f_0$ there is a change in the sign of the Eckman pumping, though as our domain does not extend past this, we do not consider the effect this has on our solution fields (i.e., the Taylor columns sweeping northeast instead of southwest as in our problem of interest).
 
-<h3>North of $y_1$</h3>
+<h3>Northern Regime</h3>
 
-We then know that all of the transport is carried in Layer 2, as $h_1$ is by assumption 0 north of $y_1$ and the abyssal layer is at rest.
-Now, we start by assuming Sverdrup Balance in Layer 2, giving:
-\begin{equation}
-	\beta v_2 = f \partial_z w_{Ek}.
+<p>
+By definition, only Layer 2 – and thus fields of interest $h_2^N$, $\psi_2^N$, and $q_2^N$ – occupies this regime.
+We will drop the superscript $N$ for the time being for clarity but will add it back in at the section.
+We calculate these fields now, using the 1-layer model. 
+We start with the hydrostatic equation, integrating for every layer, $n$, as follows:
+ \begin{equation}
+	\int_{p(x,y)'_n}^{p(z)_n} \text{d}p''_n = - \rho_n g \int_{0}^z\text{d}z''
 \end{equation}
-Proper integration by Separation of Variables gives:
+for $p'(x,y)$ being the perturbation pressure due to pressure gradients and $p(z)$ being the pressure due to the hydrostatic assumption in the layer. 
+We can then get from this that:
 \begin{equation}
-	\beta v_2 \int_{z=-h_2}^{z=0} \text{d}z = f \int_{w_{Ek}=0}^{w_{Ek}=w_{Ek}} \text{d}w_{Ek},
+	p_n = p'_n = g\rho_nz.
 \end{equation}
-leading to:
+Then, we know that on isobars separating the $n$th layer from the  $(n-1)$st layer, i.e. $z=z_{n-1}$, we have that $p_n = p_{n-1}$.
+Therefore, we get that:
 \begin{equation}
-	\beta v_2 h_2 = f w_{Ek}.
+	p'_n - g\rho_n z_{n-1} = p'_{n-1} - g\rho_{n-1} z_{n-1},
 \end{equation}
-Now, we integrate over the entire $x$ domain in order to calculate the meridional volume transport that must take place by mass conservation:
+which then gives:
 \begin{equation}
-	v_2h_2\int_{L}^x \text{d}x = \frac{f}{\beta}\int_{L}^x \text{d}x \: w_{Ek} = \Psi_{geo},
+	\left( p'_n - p'_{n -1} \right) = \rho_0 z_{n-1}\gamma_{n-1},
 \end{equation}
-where we have defined $\Psi_{geo}$ as the geostrophic component of the Sverdrup steamfunction, as calculated above.
-Next, we 
+where we have that $\gamma_{n-1}$ is the reduced gravity defined as:
+\begin{equation}
+	\gamma_{n-1} = \frac{\rho_n - \rho_{n-1}}{\rho_0},
+\end{equation}
+and we have decomposed the density as follows:
+\begin{equation}
+	\rho_n = \rho_0 + \sigma_n,
+\end{equation}
+for $\sigma_n$ the density anomaly in layer $n$.
+Then, we can assume that for some $n=N+1$ layer (the total number of layers that we are considering in this model) is at rest. 
+Therefore, we get that  $p'_{N+1} = 0$. 
+This then means that we can define, summing upwards and using the equations above, the pressure in the $n$th layer as:
+ \begin{equation}
+	p'_n = -\rho_0\sum_{i=n}^N \gamma_i z_i \quad \text{ where } \quad z_i = -\sum_{j=1}^i h_j.
+\end{equation}
+We can think of this as summing the respective pressure gradients from the layer of interest to the resting abyss, propogating the pressure gradient upwards to get that pressure gradient force which is felt by the layer of interest.
+</p>
+<p>
+Now, to be concrete, let's assume that $N+1=3$. 
+Therefore, as we are in the Northern regime and there is only Layer 2, we get, applying the equations above (but dropping the perturbation notation for clarity):
+ \begin{equation}
+	p_2=-\rho_0\gamma_2h_2.
+\end{equation}
+Then, we can derive the Thermal Wind equations for this layer by substituting in our pressure to the geostrophic equations as follows:
+\begin{align}
+	\rho_0 f u_2 &= -\partial_y\left[\rho_0 \gamma_2 h_2\right], \\
+	\rho_0 f v_2 &= \partial_x\left[\rho_0 \gamma_2 h_2\right].
+\end{align}
+We now employ the density decomposition and note that $\sigma_2 \sim 10$ [kg m$^{-3}$] $\ll 10^3$ [kg m$^{-3}$] $\sim \rho_0$, meaning that  $\rho_0 / \rho_2 \sim 1.$
+This then leads to the equations:
+\begin{align}
+	u_2 &= - \frac{\gamma_2}{f} \partial_y\left[h_2\right], \\
+	v_2 &= \frac{\gamma_2}{f}\partial_x\left[ h_2\right].
+\end{align}
+We immediately note that these equations above nearly satisfy the definition of the streamfunction for:
+\begin{equation}
+	\psi_2 \sim h_2,
+\end{equation}
+where we not that this is not exactly a streamfuntion given the prefactor $\gamma / f$ in the Thermal Wind-derived relationships, but it plays a similar function in the Ventilated Thermocline model.
+Now, we can plug in our new equation for $v_2$ into our Sverdrup balance equation for a single layer $(n=2)$, and employing our results from the Chain Rule, we get:
+\begin{equation}
+	h_2\partial_x\left[h_2\right] = \frac{1}{2}\partial_x\left[h_2^2\right] = \frac{f^2}{\beta \gamma_2}w_{Ek}(\widehat{y}),
+\end{equation}
+giving:
+\begin{equation}
+	\partial_x\left[h_2\right] = \frac{2f^2}{\beta \gamma_2}w_{Ek}(\widehat{y}).
+\end{equation}
+</p>
+<p>
+Finally, we integrate with respect to $x$ as such:
+ \begin{equation}
+	\int_{h_2(L)}^{h_2(x)} \text{d}h'_2= \int_{L}^x \text{d}x' \: w_{Ek}(\widehat{y}).
+\end{equation}
+Noting our definition of the geostrophic streamfunction $\Psi_{geo}$ from above, we then get, for $H_0$ the total thickness of both layers at the eastern boundary (and for which only $h_2$ exists on $f_1$):
+\begin{equation}
+h_2^2 = H_0^2 + \frac{2f}{\gamma_2}\Psi_{Sv}(1-\widehat{x})\sin\left[\pi \widehat{y}\right],
+\end{equation}
+which gives the non-dimensional thickness of the northern regime, noting the definition for the coefficient outfront from the problem as presented above:
+\begin{equation}
+	\widehat{h_2^N} = \frac{h^N_2}{H_0} = \left(1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]  \right)^{1 / 2}.
+\end{equation}
+Furthermore, we remember our definition of the streamfunction in this regime and get the nondimensional variant:
+\begin{equation}
+	\widehat{\psi_2^N} = \frac{h_2^N}{H_0}= \left(1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]  \right)^{1 / 2}.
+\end{equation}
+Lastly, we employ our definition of PV to get that in this regime:
+\begin{equation}
+	\widehat{q_2^N} = \frac{f H_0}{f_0 h_2^N} = \widehat{y}\left(1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]  \right)^{-1 / 2}.
+\end{equation}
+</p>
+We plot these solutions in Fig. 2 below. 
+<figure>
+	<img src="images/prob1.png" style="width:100%">
+	<figcaption> 
+		Fig. 2: The solution fields for the Northern regime (left) $\widehat{h_2^N}$ (middle) $\widehat{\psi_2^N}$ (right) $\widehat{q_2^N}$.
+		The red dashed line represents $\widehat{f_1}$, which is the outcrop line assumed in this problem and presented above.
+	</figcaption>
+</figure>
+
+<h3>Southern Regime</h3>
+
+We now move onto the Southern regime, which is for solutions in which there are two layers (and the abyssal layer) below the outcrop line $\widehat{f_1}$.
+We begin by finding the solution fields in the "sleeve" of circulation in the Ventilation region.
+
+<h4>Ventilated Region</h4>
+<p>
+<i>Layer 2:</i>
+We set out to find the following field solutions: $h_2^V$, $\psi_2^V$, and $q_2^V$. 
+We will drop the superscript $V$ for clarity for now but will add it back in at the end of the section.
+By our hydrostatic balance equation, we now have multiple layers in play. Therefore, again dropping the perturbation notation for clarity:
+\begin{equation}
+	p_2 = \rho_0\gamma_2 H,
+\end{equation}
+which implies a Thermal Wind relationship for this region and layer of:
+\begin{align}
+	u_2 &= -\frac{\gamma_2}{f}\partial_y\left[H\right], \\
+	v_2 &= \frac{\gamma_2}{f}\partial_x\left[H\right], \\
+\end{align}
+again assuming that density differences are small compared to the reference density, implying that:
+\begin{equation}
+	\psi_2 \sim H.
+\end{equation}
+Next, as we are sufficiently away from the Eckman layer, we have that PV is conserved. 
+Therefore, we can substitute these velocity equations into our relationship for PV conservation found previously to get, for $n=2$:
+\begin{equation}
+	-\partial_y\left[H\right]\partial_x\left[\frac{f}{h_2}\right] + \partial_x\left[H\right]\partial_y\left[\frac{f}{h_2}\right] = 0,
+\end{equation}
+which we can clearly see is the Jacobian:
+\begin{equation}
+	J\left[\frac{f}{h_2}, H\right] = 0, 
+\end{equation}
+which we can take the integral with respect to both $x$ and $y$ of to get a primitive of the form:
+ \begin{equation}
+	\frac{f}{h_2} = G(H),
+\end{equation}
+where $G(H)$ is some arbitrary function yet to be determined from boundary conditions. 
+First, we know that $f = f_1$ when $h_1=0$. 
+Therefore, we get that $H = h_2$ when  $f=f_1$. 
+So, this implies that:
+ \begin{equation}
+	G(H) =\frac{f_1}{H} = \frac{f}{h_2},
+\end{equation}
+which leads us to the relation:
+\begin{equation}
+	h_2 = H \frac{f}{f_1} = \frac{8}{7}H\widehat{y},
+\end{equation}
+where we note that:
+\begin{equation}
+	\frac{f}{f_1} = \frac{f_0}{f_1}\frac{f}{f_0} = \frac{8}{7}\widehat{y},
+\end{equation}
+from the definition of the outcrop line from above.
+Now, we need to find $H$.
+</p>
+<p>
+<i>Layer 1: </i>
+We set out to find the following field solutions: $h_1^V$, $\psi_1^V$, and $q_1^V$. As before, we drop the superscript $V$ for clarity, for the time being. 
+We again use our hydrostatic balance equation to get:
+\begin{equation}
+	p_1 = \rho_0\left( \gamma_2H + \gamma_1h_1 \right),
+\end{equation}
+which gives the Layer 1 Thermal Wind equations, again assuming that the density anamoly is smalled compared to the reference density and also assuming that $\gamma_i = \gamma$ for all $i$:
+\begin{align}
+	u_1 &= -\frac{\gamma}{f}\partial_y\left[H + h_1\right], \\
+	v_1 &= \frac{\gamma}{f}\partial_x\left[H + h_1\right], \\
+\end{align}
+where we note that:
+\begin{equation}
+	\psi_1 \sim H + h_1.
+\end{equation}
+Using the Sverdrup potential vorticity equation, and our definition of $v_2$ from previous calculations, we get:
+\begin{equation}
+	\frac{f}{\beta}w_{Ek}(\widehat{y}) = h_1\left( \frac{\gamma}{f}\partial_x\left[H + h_1\right] \right) + h_2\left( \frac{\gamma}{f}\partial_xH \right),
+\end{equation}
+which gives, applying our Chain Rule note from above again:
+\begin{equation}
+	\frac{2f^2}{\beta \gamma}w_{Ek}(\widehat{y}) = \partial_x\left[H^2 + h_1^2\right].
+\end{equation}
+Integrating this with respect to $x$, from the eastern boundary $L$ to the west boundary of  $x=0$, gives:
+ \begin{equation}
+	H^2 + h_1^2 = H_0^2 + \frac{2f}{\gamma}\Psi_{geo},
+\end{equation}
+which becomes, after some algebra:
+\begin{equation}
+H = \left( \frac{H_0^2 + \left( 2f / \gamma \right) \Psi_{geo}}{1 + \left( 1 - \left( f / f_1 \right)  \right)^2 } \right) ^ {1 / 2}.
+\end{equation}
+We then note that:
+\begin{equation}
+	h_1 = H - h_2 = H\left(1 - \frac{f}{f_1} \right) = H\left( 1 - \frac{8}{7}\widehat{y} \right).
+\end{equation}
+Finally, after pulling out the $H_0$ to nondimensionalize, and noting some standard definitions given in the problem above, we get:
+\begin{equation}
+\widehat{H} = \frac{H}{H_0} = \left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {1 / 2}.
+\end{equation}
+</p>
+
+<p>
+<i>Regions of Validity: </i>
+We note that these solutions are only valid in a "sleeve" of circulation, between a western pool region and an eastern shadow zone 
+We define the bounds of this sleeve now, which will be implicit functions $\widehat{x}(\widehat{y})$.
+First, the eastern boundary is set when $H^V = H_0$, as we know that on the eastern boundary this must be the case.
+Therefore, we have:
+\begin{equation}
+	1 = \left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {1 / 2},
+\end{equation}
+which after some algebra gives:
+\begin{equation}
+	\widehat{x_s}(\widehat{y}) = 1 - \frac{\left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 }{4 \sin\left[\pi \widehat{y}\right]}.
+\end{equation}
+Next, the western boundary is found when $\widehat{H^V} = \widehat{H^V}(0, \widehat{y_1})$, which is defined as:
+\begin{equation}
+\widehat{H^V}(0, \widehat{y_1}) = 1 + 4\sin\left[\frac{7}{8}\pi\right] = \widehat{H^W}.
+\end{equation}
+So, we get:
+\begin{equation}
+	\widehat{H^W} =  \left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {1 / 2},
+\end{equation}
+which, again after some algebra, gives:
+\begin{equation}
+	\widehat{x_p}(\widehat{y}) = 1 - \frac{\widehat{H^W}\left( 1 + \left( 1 - \left( 8\widehat{y} / 7 \right)  \right) ^2\right) -1 }{4 \sin\left[\pi\widehat{y}\right]}.
+\end{equation}
+We plot the demarcations of each region in Fig. 3 below. 
+<figure>
+	<img src="images/prob2.png" style="width:40%">
+	<figcaption> Fig. 3: Demarcations of each region of the Ventilated Thermocline model, as defined by the outcropping latitude (given) and equations derived above.</figcaption>
+</figure>
+</p>
+
+<p>
+<i>Solution Fields:</i>
+
+Putting everthing together we get the following nondimensionalized solution fields for Layer 1 in the Ventilation Region:
+\begin{align}
+	\widehat{h_1^V} &= \frac{h_1^V}{H_0} = \widehat{H^V}\left( 1 - \frac{8}{7}\widehat{y} \right) = \left( 1 - \frac{8}{7}\widehat{y} \right)\left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {1 / 2}, \\
+	\widehat{\psi_1^V} &= \frac{\psi_1^V}{H_0} = \left( \widehat{H^V}  + \widehat{h_1^V}\right) = \left(2 - \frac{8}{7}\widehat{y} \right)\left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {1 / 2}, \\
+	\widehat{q_1^V} &= \frac{H_0}{f_0}q_1^V = \frac{\widehat{y}}{\widehat{h_2^V}} = \widehat{y} \left( 1 - \frac{8}{7}\widehat{y} \right)^{-1}\left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {-1 / 2}. \\
+\end{align}
+We plot these solution fields in Fig. 4 below. 
+<figure>
+	<img src="images/prob3.png" style="width:100%">
+	<figcaption> 
+		Fig. 4: The solution fields for Layer 1 of the Ventilation region (left) $\widehat{h_1^V}$ (middle) $\widehat{\psi_1^V}$ (right) $\widehat{q_1^V}$.
+		The dash red lines represent the bounds of the "sleeve" of ventilation derived above.
+	</figcaption>
+</figure>
+We then get the corresponding solutions in Layer 2 of the Ventilation Region:
+\begin{align}
+	\widehat{h_2^V} &= \frac{h_2^V}{H_0} = \widehat{H^V}\frac{8}{7}\widehat{y} = \frac{8}{7}\widehat{y}\left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {1 / 2}, \\
+	\widehat{\psi_2^V} &= \frac{\psi_2^V}{H_0} = \widehat{H^V} = \left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {1 / 2}, \\
+	\widehat{q_2^V} &= \frac{H_0}{f_0}q_2^V = \frac{\widehat{y}}{\widehat{H^V}} = \widehat{y}\left( \frac{1 + 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right]}{1 + \left( 1 - \left( 8 \widehat{y} / 7 \right)  \right)^2 } \right) ^ {-1 / 2}, \\
+\end{align}
+We plot these solution fields in Fig. 5 below. 
+<figure>
+	<img src="images/prob4.png" style="width:100%">
+	<figcaption> 
+		Fig. 5: The solution fields for Layer 2 of the Ventilation region (left) $\widehat{h_2^V}$ (middle) $\widehat{\psi_2^V}$ (right) $\widehat{q_2^V}$.
+		The dash red lines represent the bounds of the "sleeve" of ventilation derived above.
+	</figcaption>
+</figure>
+</p>
+
+<h4>Shadow Zone</h4>
+<p>
+We start by assuming that there is no flow in Layer 2 and then determine the solution fields accordingly, i.e. that all of the Eckman transport is taken by Layer 1. 
+We then note that $H$ is <i>constant</i> here, meaning that $H = H_0$ in the shadow zone.
+</p>
+<p>
+<i>Layer 1: </i>
+We set out to find the following field solutions: $h_1^S$, $\psi_1^S$, and $q_1^S$. Again, we drop the superscript $S$ for the time being for the sake of clarity.
+We once again use our hydrostatic balance equation to get:
+\begin{equation}
+	p_1 = \rho_0\left( \gamma_2H + \gamma_1h_1 \right),
+\end{equation}
+which gives the Layer 1 Thermal Wind equations, again assuming that the density anamoly is smalled compared to the reference density and also assuming that $\gamma_i = \gamma$ for all $i$, as well as noting that $H = H_0$ (i.e., a constant) in the shadow zone:
+\begin{align}
+	u_1 &= -\frac{\gamma}{f}\partial_y\left[h_1\right], \\
+	v_1 &= \frac{\gamma}{f}\partial_x\left[h_1\right], \\
+\end{align}
+where we note that:
+\begin{equation}
+	\psi_1 \sim h_1.
+\end{equation}
+Now, as we have assumed that all Eckman transport is taken up by Layer 1, our Sverdrup potential vorticity equation becomes:
+\begin{equation}
+	\beta v_1 h_1 = f w_{Ek}\left( \widehat{y} \right).
+\end{equation}
+By substitution, we therefore get:
+\begin{equation}
+	\partial_x\left[h_1^2\right] = \frac{2f^2}{\gamma \beta} w_{Ek}\left( \widehat{y} \right).
+\end{equation}
+Appropriate integration from east to west across $x$ gives:
+\begin{equation}
+	h_1^2 = \frac{2f^2}{\gamma \beta}\int_L^x \text{d}x' \: w_{Ek}\left( \widehat{y} \right),
+\end{equation}
+which means that:
+\begin{equation}
+	h_1 = \left( \frac{2f}{\gamma} \Psi_{geo} \right) ^{1 / 2}.
+\end{equation}
+Simplifying and nondimensionalizing then gives:
+\begin{equation}
+	\widehat{h_1} = \left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{1 /2}.
+\end{equation}
+This then means that:
+\begin{equation}
+	\widehat{\psi_1} = \widehat{h_1} = \left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{1 /2},
+\end{equation}
+and also that:
+\begin{equation}
+	q_1 = \frac{f}{h_1},
+\end{equation}
+which gives:
+\begin{equation}
+	\widehat{q_1} = \frac{\widehat{y}}{\widehat{h_1}} = \widehat{y}\left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{-1 /2}.
+\end{equation}
+</p>
+<p>
+<i>Layer 2: </i>
+We next set out to find the following field solutions: $h_2^S$, and $q_2^S$, neglecting $\psi_2^S$ as we have assumed that no flow in Layer 2. Again, we drop the superscript $S$ for the time being for the sake of clarity.
+From the above calculations, as $H$ is constant, we get that:
+ \begin{equation}
+	h_2 = H_0 - h_1,
+\end{equation}
+implying that:
+\begin{equation}
+	\widehat{h_2} = 1 - \widehat{h_1} = 1 - \left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{1 /2}.
+\end{equation}
+Therefore, we get:
+\begin{equation}
+	q_2 = \frac{f}{h_2},
+\end{equation}
+or:
+\begin{equation}
+\widehat{q_2} = \frac{\widehat{y}}{\widehat{h_2}} = \frac{\widehat{y}}{1 - \left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{1 /2}}.
+\end{equation}
+</p>
+<p>
+<i>Solution Fields:</i>
+We compile all of the solutions for the Shadow zone here. 
+First, for the first layer we have that:
+\begin{align}
+\widehat{h_1^S} &= \left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{1 /2}, \\
+\widehat{\psi_1^S} &= \left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{1 /2}, \\
+\widehat{q_1^S} &= \frac{\widehat{y}}{\widehat{h_1}} = \widehat{y}\left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{-1 /2}. \\
+\end{align}
+We plot the solution fields to Layer 1 in Fig. 6 below. 
+<figure>
+	<img src="images/prob5.png" style="width:100%">
+	<figcaption> 
+		Fig. 6: The solution fields for Layer 1 of the Shadow region (left) $\widehat{h_1^S}$ (middle) $\widehat{\psi_1^S}$ (right) $\widehat{q_1^S}$.
+		The dash red lines represent the bounds of the "sleeve" of ventilation derived above.
+	</figcaption>
+</figure>
+
+For the second layer, we have:
+\begin{align}
+\widehat{h_2^S} &= 1 - \widehat{h_1} = 1 - \left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{1 /2}, \\
+\widehat{q_2^S} &= \frac{\widehat{y}}{\widehat{h_2}} = \frac{\widehat{y}}{1 - \left( 4(1 - \widehat{x})\sin\left[\pi \widehat{y}\right] \right) ^{1 /2}}. \\
+\end{align}
+We plot the solution fields to Layer 2 in Fig. 7 below. 
+<figure>
+	<img src="images/prob6.png" style="width:80%">
+	<figcaption> 
+		Fig. 7: The solution fields for Layer 2 of the Shadow region (left) $\widehat{h_2^S}$ (right) $\widehat{q_2^S}$.
+		The dash red lines represent the bounds of the "sleeve" of ventilation derived above.
+	</figcaption>
+</figure>
+</p>
+
+<h4>Pool Region</h4>
+
+We now will tackle the final region: the western Pool region. 
+Here, we are given that:
+\begin{equation}
+	q_2 = \frac{f_1}{H^V\left(0, y_1\right)},
+\end{equation}
+and is homogenized everywhere, as this is a region of recirculation, receiving water from and depositing water into the western boundary current.
+
+<p>
+<i>Layer 2: </i>
+We now set out to find the solutions to: $h_2^P$, $\psi_2^P$, and $q_2^P$, and again drop the superscript $P$ for convience and reintroduce it at the end.
+From the given above, we start with:
+\begin{equation}
+	q_2 = \frac{f_1}{H^V\left(0, y_1\right)},
+\end{equation}
+which means that:
+\begin{equation}
+	\widehat{q_2} = \frac{f_1}{f_0}\frac{H_0}{H^V\left(0, \widehat{y_1}\right) } = \frac{7}{8}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {-1 / 2}.
+\end{equation}
+Then, we can relate this to our depth of $h_2$ following:
+\begin{equation}
+	\widehat{h_2} = \frac{f}{f_0}\widehat{q_2} = \frac{8}{7 \widehat{y}}\left(1 + 4\sin\left[\frac{7}{8}\pi\right] \right) ^ {1 / 2},
+\end{equation}
+and from geostrophy we know that:
+\begin{equation}
+	\psi_2 \sim H.
+\end{equation}
+Now, we need to find $h_1$.
+</p>
+<p>
+<i>Layer 1: </i>
 
 
+</p>
+<p>
+<i>Solution Fields:</i>
 
 
+</p>
 
-<h3>South of $y_1$</h3>
+
+<h3>Full Solutions</h3>
 
 <hr style="width: 60em;">
 
