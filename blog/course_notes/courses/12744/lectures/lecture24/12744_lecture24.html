@@ -38,72 +38,71 @@ MathJax = {
 
 <hr style="width: 60em;">
 
-<h3>Radioactive Decay</h3>
+<h3>Tackling New Stable Isotope Systems</h3>
 
-We can continue our work with the decay series of $^{238}$U, we consider the amount of the daughter left, $N_2$, from a parent, $N_2$, in which we sum the input and the output from decay:
-\begin{equation}
-N_2 = \underbrace{\frac{\lambda_1}{\lambda_1 - \lambda_2}N_{1,0}\left(\exp\left[-\lambda_1 t\right]  - \exp\left[-\lambda_2 t\right]\right)}_{N_2 \text{ atoms produced by the decay of the parent, } N_1, \text{ but not decayed yet}} + \underbrace{N_{2,0}\exp\left[-\lambda_2 t\right]}_{N_2 \text{ atoms originally present and not yet decayed}}
-\end{equation}
-We introduce the notation $\left(^iX  \right) $, which denotes:
-\begin{equation}
-	\left(^iX\right) = \lambda_i N_i.
-\end{equation}
-For a specific system, let's consider $^iX = ^{230}$Th, which is described by:
-\begin{equation}
-\left( ^{234}\text{Th} \right) = \underbrace{\left( ^{230}\text{Th} \right)_x}_{\text{excess}} + \underbrace{\left( ^{230}\text{Th} \right)_s}_{\text{support}},
-\end{equation}
-where we have that the $\text{excess}$ is from sources outside of our "box" we are modeling/bean-counting in and $\text{support}$ is produced within the box from its parent, $^{234}$U.
-We can consider depth profiles in sediment of $^{230}$Th, given in Fig. 1.
+We have seen, with the development and proliferation of Inductively Coupled Plasma Mass Spectrometry (ICP-MS), massive development in developing these isotope systems. 
+From our Qualitative Rules of Equilibrium Isotope Fractionation, we note that the mass fractionation scales inversely with mass.
+We now look at an example case. 
+
+<h3>Boron – a Return</h3>
+
+Boric acid has a lower coordination number, has stronger bonds with O, and therefore has a stronger affinity to fractionate.
+This is to say that heavy isotopes are concentrated in substances where that element forms the stiffest bonds (i.e., a lower coordination number). 
+We can think of this as a high spring constant, meaning short, strong chemical bonds.
+We plot this, comparing Boric Acid with Borate, in Fig. 1. 
 <figure>
-	<img src="images/sed_rate.png" style="width:100%">
-	<figcaption> Fig. 1: Different regimes for sedimentation rates.</figcaption>
+	<img src="images/boron.png" style="width:60%">
+	<figcaption> Fig. 1: A comparison of boron ions.</figcaption>
 </figure>
-To understand the red regime (for total activity), we consider the following. 
-We assume that $^{238}$U decays to $^{230}$Th and normalize to the long-lived Th isotope.
-So, we have:
-\begin{equation}
-	^{230}\text{Th} = \frac{\lambda_{234}}{\lambda_{230} - \lambda_{234}} ^{234}\text{U}_0\left( \exp\left[-\lambda_{234}t\right] - \exp\left[-\lambda_{230}t\right]\right),
-\end{equation}
-then as secular equilibrium we have that:
-\begin{equation}
-	\left( ^{234}\text{U} \right)  = \left( ^{238}\text{U} \right) = ^{234}\text{U}\lambda_{234}.
-\end{equation}
-We further note that:
-\begin{equation}
-	\lambda_{230} - \lambda_{234} \sim \lambda_{230},
-\end{equation}
-which means that:
-\begin{equation}
-	\exp\left[-\lambda_{234}t\right] \sim  1.
-\end{equation}
-Therefore, we have that:
-\begin{equation}
-	\lambda_{230} \cdot ^{230}\text{Th} = \lambda_{234}\cdot^{234}\text{U}_0\left( 1 - \exp\left[-\lambda_{230} t\right] \right),
-\end{equation}
-and thus:
-\begin{equation}
-	\left( ^{230 / 232}\text{Th} \right) = \left( ^{230 / 232}\text{Th} \right) _{x,0} \exp\left[-\lambda_{230}t\right] + \frac{^{238}\text{U}_0}{^{232}\text{Th}_0}\exp\left[-\lambda_{238}t\right].
-\end{equation}
-We plot this in Fig. 2. 
+See Valier's lecture on Boron for more information.
+
+<h3>Strontium – another Return</h3>
+
+First, we remeber that: $^{87}Rb \to \: ^{87}Sr$ by $\beta^-$
+We consider the diagram in Fig. 2. 
 <figure>
-	<img src="images/th_u_iso.png" style="width:100%">
-	<figcaption> Fig. 2: $^{230}$Th-$^{238}$U Isochron diagram.</figcaption>
+	<img src="images/rb_rivers_reason.png" style="width:60%">
+	<figcaption> Fig. 2: Reason for Rb being higher in rivers.</figcaption>
 </figure>
-We can view this as a change in the support of $^{230}$Th over time, at which the equiline is define as the secular equilibrium point.
-We can also study the $^{238}$U-$^{234}$U system in Fig. 3.
+We note that the reduced crust is below the MORB, therefore there is less Rb in the oceans than in the rivers, so we have that the ratio of Sr to Rb isotopes that we are interest in will be higher in the rivers than in the ocean. Importantly, Rb has a half life of about 49 billion years.
+Now, we can use a mixing equation to get the respect mixing for the river $r$ and the ocean $o$ for this system:
+\begin{equation}
+	\left[Sr\right] = a\left[Sr\right]_o + b\left[Sr\right]_r.
+\end{equation}
+We note that it is linear mixing mixing, as we have the same isotope in the denominator so that it progresses 1:1 and not with some other gradient.
+However, we find that this is note the case, and we see that there needs to be some isotope fractionation effect that causes the seatwater water to be greater than the expected linear mixing.
+We can see this is Fig. 3, where we note that $\Delta_x m = 2$ and $\Delta_y m = 1$.
 <figure>
-	<img src="images/u_u_iso.png" style="width:100%">
-	<figcaption> Fig. 3: $^{234}$U-$^{238}$U Isochron diagram.</figcaption>
-</figure>
-The green zone is seawater!
-We can also consider the counting statistics, as in Fig. 4.
-<figure>
-	<img src="images/counting_stats.png" style="width:100%">
-	<figcaption> Fig. 4: Counting statistics, comparing mass spec. precision to counting.</figcaption>
+	<img src="images/rb_sr.png" style="width:60%">
+	<figcaption> Fig. 3: Sr-Sr system.</figcaption>
 </figure>
 
+So, our mixing equation becomes:
+\begin{equation}
+	\left[Sr\right] = a\left[Sr\right]_o + b\left[Sr\right]_r - c\left[Sr\right]_c.
+\end{equation}
+
+<h3>Molybdenum – a New System!</h3>
+
+We can view the Mo system as in Fig. 4.
+<figure>
+	<img src="images/mo_system.png" style="width:60%">
+	<figcaption> Fig. 4: The Mo system that we are thinking about.</figcaption>
+</figure>
+We can think of this as a box model:
+\begin{equation}
+	F_{in}\delta_{in} = F_{oxic}\delta_{oxic} + F_{anoxic}\delta_{anoxic},
+\end{equation}
+where we have that the anoxic is heavy, because the removal of Mo from solution is quantitative, meaning that the pore waters in the sediment will be the ultimate source of Mo.
+Basically, what we see is that there is a step-wise addition of S that replaces the O in the Mo-O compound, which then makes it so that unless we are in a complete euxinic environemtn, it is harder to get a handle on the actual oxygenation state of seawater.
+We can see a schematic of this in Fig. 5.
+<figure>
+	<img src="images/mo_s.png" style="width:60%">
+	<figcaption> Fig. 5: The formation of thiomolybdates.</figcaption>
+</figure>
+What this means then is that the ligands are changing, as O is being replaced with the weak ligand S, and these compounds become more particle reactive. 
+This all happens in the sediments, and we see that with these stepwise actions, we get decreasing effects (intermediate) from isotope fractionation.
 <hr style="width: 60em;">
-
 </div>
 </body>
 </html>
