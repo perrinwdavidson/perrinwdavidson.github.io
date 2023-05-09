@@ -140,34 +140,48 @@ So, to zeroeth order, we have that, for $x = \alpha_{A / B} - 1$:
 \begin{equation}
 	\Delta_{A / B} \sim (\alpha_{A / B} - 1) \times 10^3 \sim \log\left[\alpha_{A /B}\right] \times  10^3.
 \end{equation}
-Now, in this system we can derive:
+Now, in this system we can derive, for:
 \begin{equation}
-	\alpha_{P /R} = \frac{R_{P}}{R_R} \sim \epsilon_{P / R} \log\left[f \frac{1 + R_{R_0}}{1 + R_R}\right] = \log\left[\frac{R_R}{R_{R_0}}\right],
+	\alpha_{P /R} = \frac{R_{P}}{R_R} \epsilon_{P / R} \log\left[f \frac{1 + R_{R_0}}{1 + R_R}\right] = \log\left[\frac{R_R}{R_{R_0}}\right],
+\end{equation}
+that:
+\begin{equation}
+	\epsilon_{P / R} \log\left[f \frac{1 + R_{R_0}}{1 + R_R}\right] = \log\left[\frac{R_R}{R_{R_0}}\right],
 \end{equation}
 where we define:
 \begin{equation}
-	f = \frac{R}{R_0}.
+	f = \frac{R}{R_0},
 \end{equation}
-Given that $R_R, R_{R_0} \ll 1$, we can approximate this as:
+or the fraction reacted. 
+Given that $(1 + R_{R_0}) / (1 + R_R) \sim  1$, for an abundance of rare isotopes assumed to be low, we can approximate this as:
 \begin{equation}
 	\epsilon_{P / R} \log \left[f\right] = \log\left[\frac{R_R}{R_{R_0}}\right].
 \end{equation}
 We can rearrange this to get:
 \begin{equation}
-	f^{\epsilon_{P / R}} = \frac{R_R}{R_{R_0}} = f^{\alpha_{P / R} - 1},
+	f^{\epsilon_{P / R}} = \frac{R_R}{R_{R_0}},
 \end{equation}
-dropping the per mille notation in the exponent of the third equation.
-We now make the Mariotti Approximation, one of many we can do:
+which is known as the "Rayleigh Equation".
+We now make the Mariotti Approximation, in which we re-write the Rayliegh Equation using $\delta$ notation and rearrange to get:
 \begin{equation}
 	\log\left[\delta_R + 1\right] \sim  \log\left[R_{R_0} + 1\right] + \epsilon_{P / R}\log\left[f\right].
 \end{equation}
 We note that this is essentially a line of the form: $y \sim  mx +b$ in $\log$ space.
 Therefore,we can get the slope of this line, if we have data, say, to get  $\epsilon_{P / R}$ of the reaction described above.
-From the equation above, we can also get:
+From the equation above, we can also get, by again remembering our Taylor Expansion and taking the zeroeth order, we get:
 \begin{align}
 	\delta_R &= \delta_{R_0} + \epsilon_{P / R}\log\left[f\right], \\
-	\delta_{P} &= \delta_{R_0} - \epsilon_{P / R}\left( \frac{f}{1 - f} \right) \log\left[f\right].
+	\delta_{P} &= \delta_{R_0} - \epsilon_{P / R}\left( \frac{f}{1 - f} \right) \log\left[f\right],
 \end{align}
+where we have derived the second form by substituting in the mass conservation equation:
+\begin{equation}
+	\delta_{R_0} = f\delta_R + (1 - f)\delta_P.
+\end{equation}
+Of some interest might be:
+\begin{equation}
+	\delta_{P'}= \delta_{R} - \epsilon_{P / R},
+\end{equation}
+where we have that $P'$ is the instantaneous $\delta$ value.
 We note that these are approximations and have errors that scale with $f$ and $\epsilon$.
 
 <h4>Irreversible, Open System</h4>
@@ -178,23 +192,27 @@ We start deriving the equations of this model system by assuming a steady state,
 \end{equation}
 Now, for an irreversible reaction of the form:
 \begin{equation}
-A_0 \to A + B,
+R_0 \to R + P,
 \end{equation}
 we have:
 \begin{equation}
-	F_{A_0}\delta_{A_0} = F_A\delta_A + F_B\delta_B.
+	F_{R_0}\delta_{R_0} = F_R\delta_R + F_P\delta_P.
 \end{equation}
 We can rearrange this to get:
 \begin{equation}
-	\delta_A = \delta_{A_0} + \frac{F_B}{F_A + F_B}\epsilon_{A / B}.
+	\delta_R = \delta_{R_0} + \frac{F_P}{F_R + F_P}\epsilon_{R / P}.
 \end{equation}
 Noting that:
 \begin{equation}
-	F_A + F_B = 1 - f,
+	F_R + F_P = 1 - f,
 \end{equation}
 we get finally that:
 \begin{equation}
-	\delta_A = \delta_{A_0} + (1-f)\epsilon_{A /B}.
+	\delta_R = \delta_{R_0} + (1-f)\epsilon_{R / P},
+\end{equation}
+and correspondingly:
+\begin{equation}
+	\delta_P = \delta_{R_0} - f \epsilon_{R / P}
 \end{equation}
 We can look at diagram of these two models of an irreversible system in Fig. 1. 
 <figure>
