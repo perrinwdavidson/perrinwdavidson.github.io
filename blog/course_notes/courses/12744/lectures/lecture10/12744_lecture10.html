@@ -77,11 +77,88 @@ Then, we apply out mixing equation to get:
 
 <h4>Case II</h4>
 
-We have the same setup but with the denitrification drawdown to $4 \: \left[\mu\text{M}\right]$. This then gives $\delta_{mix} \simeq 62.5$ [‰].
-Therefore, we see that the levers can really matter, i.e., you can change both the concentration as well as the isotope valuesm, which can have counteracting effects.
+We have the same setup but with the denitrification drawdown to $4 \: \left[\mu\text{M}\right]$. This then gives $\delta^{15}\text{N} \simeq 62.5$ [‰] and a $\delta_{mix} = 20.5$ [‰].
+Therefore, we see that the levers can really matter, i.e., you can change both the concentration as well as the isotope values, which can have counteracting effects.
 
+<h3>-Similation</h3>
+
+We consider the following system:
+\begin{equation}
+A \to \text{System} \to B.
+\end{equation}
+Here, we have the following definitions:
+<ol>
+	<li>Assimilatory: $A$ (i.e., biomass)</li>
+	<li>Dissimilatory: $B$ (i.e., energy conservation turning one substance into another)</li>
+</ol>
+In a closed study of cells described by the top panel of Fig. 2, we want to compare the intracellular and extracellular nitrate. 
+They were limited by different nitrients, such as Fe such that they would consume all of the nitrate. 
+The results are presented in the bottom panel of Fig. 2 and summarized below:
+<ol>
+	<li>
+		Low Fe, Low T: small $\epsilon_p$, large difference between $\delta^{15}$N in the cell and outside the cell.
+		This is to say that the $\text{efflux} / \text{uptake} \ll 1$.
+	</li>
+	<li>Low light: large $\epsilon_p$, small difference between internal and external pools.</li>
+</ol>
+<figure>
+	<img src="images/nitrate_cell.png" style="width:60%">
+	<figcaption> Fig. 2: Experimental setup and results from nitrate cell experiments.</figcaption>
+</figure>
+We consider another setup, presented in Fig. 3, where we have a similar experiment but with CO$_2$, in which the rate limiting step is the CO$_2 \to $ OrgC, which has a signatude of $\delta^{13}$C.
+<figure>
+	<img src="images/co2_cell.png" style="width:60%">
+	<figcaption> Fig. 3: CO$_2$ experiment in cell showing isotope effect. The lines in the lower panel are for different species of cells.</figcaption>
+</figure>
+The model to describe this is, for $\mu$ the growth rate:
+\begin{equation}
+	\epsilon_p = \epsilon_T - (\epsilon_f - \epsilon_T)\left[\frac{K_1}{K_2} - \frac{\mu}{K_2\left[\text{CO}_2\right]}\right].
+\end{equation}
+We note that $K_1 / K_2 \sim 1$ and that as $\mu \to 0$, that $\epsilon_p \to \epsilon_f$ as [CO$_2$]  $\to \infty$ all determined by the RuBisCo.
+This is called the Passive Diffusion Model.
+It has been updated to include the co-uptake of bicarbonate into the cell, at which RuBisCo is the most down-stream enzyme acting on the system.
+
+<h3>Biosynthesis</h3>
+
+We assume a system in <b>steady state</b> (SS) as shown in Fig. 4 below. 
+<figure>
+	<img src="images/biosynthesis.png" style="width:100%">
+	<figcaption> Fig. 4: Steady state biosynthetic test case that we are considering.</figcaption>
+</figure>
+We first want to, given the conditions given in the figure, determine what $\delta_B$ is. To do this, we note that SS means $\delta_1 = \delta_2$.
+Therefore, we get that:
+\begin{equation}
+	\delta_2 = \delta_B - \epsilon_2,
+\end{equation}
+which means that $\delta_B = 25$ [‰]. 
+We know this as what goes in, $\delta_B$, must equal what does out, $\delta_2$, offset by the isotope effect, $\epsilon_2$, so we can equibilently write this as:
+\begin{equation}
+	\text{[IN]} \: \delta_B = \delta_2 + \epsilon_2 \: \text{[OUT]}.
+\end{equation}
+Here we note that the time to reach steady state, $\tau$, is proportional to the size of your isotope pool over the flux of that pool, as presented in Fig. 5. 
+<figure>
+	<img src="images/steady_state.png" style="width:60%">
+	<figcaption> Fig. 5: A schematic showing the approach to steady state.</figcaption>
+</figure>
+How, we want to  know what happens at Point C in Fig. 4. Again, as we are at steady state, we know that:
+\begin{equation}
+	F_2 = F_3 + F_4,
+\end{equation}
+which then means that:
+\begin{equation}
+	\delta_2F_2 = \delta_3F_3 + \delta_4F_4.
+\end{equation}
+Now we can change this into $f_3 = F_3 / \left( F_3 + F_4 \right) $ notation to get the mixing equation:
+ \begin{equation}
+	\delta_2 = f_3\delta_3 + (1-f_3)\delta_4.
+\end{equation}
+We can think og this as in Fig. 6. 
+<figure>
+	<img src="images/branching_system.png" style="width:60%">
+	<figcaption> Fig. 6: How to think about the branching equation above.</figcaption>
+</figure>
 
 <hr style="width: 60em;">
 </div>
-</body>
+</bodyo>
 </html>

@@ -134,9 +134,9 @@ From our definition of $\alpha_{A/B}$, we can subtract $1 = (\delta_B + 10^3) / 
 \end{equation}
 Then, we recall the Taylor expansion:
 \begin{equation}
-	\log \left[x + 1\right] = x - \frac{x^2}{2} + \frac{x^2}{3} - \cdots, \quad \text{for } x \in (-1, 1].
+	\log \left[x + 1\right] = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots, \quad \text{for } x \in (-1, 1].
 \end{equation}
-So, to zeroeth order, we have that, for $x = \alpha_{A / B} - 1$:
+So, to first order, we have that, for $x = \alpha_{A / B} - 1$:
 \begin{equation}
 	\Delta_{A / B} \sim (\alpha_{A / B} - 1) \times 10^3 \sim \log\left[\alpha_{A /B}\right] \times  10^3.
 \end{equation}
@@ -168,10 +168,10 @@ We now make the Mariotti Approximation, in which we re-write the Rayleigh Equati
 \end{equation}
 We note that this is essentially a line of the form: $y \sim  mx +b$ in $\log$ space.
 Therefore,we can get the slope of this line, if we have data, say, to get  $\epsilon_{P / R}$ of the reaction described above.
-From the equation above, we can also get, by again remembering our Taylor Expansion and taking the zeroeth order, we get:
+From the equation above, we can also get, by again remembering our Taylor Expansion and taking the first order, we get:
 \begin{align}
-	\delta_R &= \delta_{R_0} + \epsilon_{P / R}\log\left[f\right], \\
-	\delta_{P} &= \delta_{R_0} - \epsilon_{P / R}\left( \frac{f}{1 - f} \right) \log\left[f\right],
+	\delta_R &= \delta_{R_0} - \epsilon_{P / R}\log\left[f\right], \\
+	\delta_{P} &= \delta_{R_0} + \epsilon_{P / R}\left( \frac{f}{1 - f} \right) \log\left[f\right],
 \end{align}
 where we have derived the second form by substituting in the mass conservation equation:
 \begin{equation}
