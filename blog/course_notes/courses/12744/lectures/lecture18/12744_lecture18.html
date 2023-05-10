@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.744: Lecture 18</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.744: Lecture 18</h1>
+<h2>Simple Decay – Radiometric Dating</h2>
+<hr style="width: 60em;">
+
+<h3>Theory</h3>
+
+A review of important terms:
+<ol>
+<li>Radioactive: decaying</li>
+<li>Cosmogenic: from space</li>
+<li>Anthropogenic: produced by humans</li>
+<li>Primordial: existing at the beginning of the universe</li>
+<li>Closed system: a closed box</li>
+</ol>
+We start with the decay equation:
+\begin{equation}
+	\frac{N}{N_0} = \exp\left[-\lambda t\right].
+\end{equation}
+We can reforumulate this as:
+\begin{equation}
+	N = N_0\exp\left[-\lambda t\right],
+\end{equation}
+or:
+\begin{equation}
+	N_0 = N \exp\left[\lambda t\right].
+\end{equation}
+This relates the original number of isotopes (at $t=0$) to the number of isotopes now (at time $t$).
+In order to apply this, we can measure $N$ and we can measure  $\lambda$ experimentally. 
+However, there are a few unknowns, such as  $t$ and  $N_0$. 
+What we can say, though, is that we can note that:
+\begin{equation}
+	D^* = N_0 - N,
+\end{equation}
+where $D^*$ is the number of radiogenic daughter nuclides. 
+So, we can get a new equation:
+ \begin{equation}
+	D^* = N\exp\left[\lambda t\right] - N = N\left(\exp\left[\lambda t\right] - 1\right).
+\end{equation}
+We can then use:
+\begin{equation}
+	D = D_0 + D^*,
+\end{equation}
+where $D$ is the total daughter and $D_0$ is the primordial activity. Therefore, we get:
+\begin{equation}
+	D = D_0 + N\left(\exp\left[\lambda t\right] - 1\right).
+\end{equation}
+Now, as MS is really good at measuring ratios, we introduce the following:
+\begin{equation}
+	\frac{D}{D_s} = \frac{D_0}{D_s} + \frac{N}{D_s}\left(\exp\left[\lambda t\right] - 1\right),
+\end{equation}
+where $D_s$ is the stable isotope of the daughter element.
+This is the form used in Eq. (1) in the Patterson (1956).
+We can clearly see that this is essentially:
+\begin{equation}
+	y \sim b + m x,
+\end{equation}
+which we use in the isochron method.
+There is a neat trick for doing the calculations in your head:
+\begin{equation}
+	\exp\left[\lambda t\right] = 1 + \left(\lambda t\right) + \frac{\left(\lambda t\right)^2}{2!} + \ldots,
+\end{equation}
+and in special cases for $t \ll \tau_{1 / 2}$, we can forget all terms greater than linear.
+Thus, we get:
+\begin{equation}
+	\frac{D}{D_s} = \frac{D_0}{D_s} + \frac{N}{D_s}\lambda t.
+\end{equation}
+
+<h3>Application</h3>
+
+We start with the:
+\begin{equation}
+^{87} \text{Rb} \to  ^{87} \text{Sr} + \mathcal{C}, 
+\end{equation}
+via $\beta^-$ decay. So, in order to do this, we want to balance the charges. 
+To do this, we need to balance the following:
+<ol>
+<li>charge</li>
+<li>baryons</li>
+<li>leptons</li>
+</ol>
+and then we can balance each based on the decay above and get that:
+\begin{equation}
+	\mathcal{C} = e^- + p + \nu^-.
+\end{equation}
+We can look at the relative abundances of the Sr element and want to choose the stable isotope that is of similar magnitude to the radioactive element.
+This is why we want to choose \ch{^{86}Sr} as the normalization isotope.
+We can then measure two or more samples and plot the line as discussed previously and get the initial value. 
+There are a few major assumptions with this:
+<ol>
+<li>System was isotopically homogeneous</li>
+<li>System was variable in its elemental concentrations,</li>
+<li>System has to be closed.</li>
+</ol>
+As Bernhard Peucker-Ehrenbrink has said: "Without age, we are lost in time".
+
+<hr style="width: 60em;">
+</div>
+</bodyo>
+</html>
