@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.744: Lecture 4</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.744: Lecture 4</h1>
+<h2>Mass-dependent Fractionation</h2>
+<hr style="width: 60em;">
+<p>
+There are two different kind of fractionation processes: equilibrium and kinetic. 
+We start with the experiment in Fig. 1.
+<figure>
+	<img src="images/spring.png" style="width:80%">
+	<figcaption> Fig. 1: A diagram of Hooke's Law and a simple harmonic oscillator (SHO).</figcaption>
+</figure>
+
+<p>
+Equilibrium isotope fractionation is a consequence of difference in the vibrational frequencies of molecules participating in isotope exchange reactions. 
+For diatomic molecules, the simplest model is that of the simple harmonic oscillator (SHO), in which the bond between the two atoms is considered to be an ideal spring.
+The set-up for this is presented in Fig. 1, and assumes that there is an atom of finite mass $m$ bound to another atom of infinite mass, such as an ball attached by a spring to a wall.
+We know from classical physics that we can represent this system by Hooke's Law (or the law of Elasticity) given by:
+\begin{equation}
+	F = -k x,
+\end{equation}
+where we have that $k$ is the spring constant that represents the bond strength of the molecule.
+We consider the equilibrium position to be $x_0.$
+We can integrate this equation over $x$ to get:
+ \begin{equation}
+	E_p = \frac{1}{2}kx^2,
+\end{equation}
+which is the potential energy, or the red parabola or well in Fig. 1. 
+We can rearrange Hooke's Law, using Newton's Second Law to get:
+\begin{equation}
+\ddot{x} = - \frac{k}{m} x.
+\end{equation}
+This is a second order homogeneous linear differential equation which we assume has a solution (an <i>ansatz</i> if you like) of the form:
+\begin{equation}
+	x(t) = x_0\cos\left[\omega t\right],
+\end{equation}
+in which we note that if we differentiate this twice with respect to $t$ we get an equation proportional to the re-written Hooke's Law.
+To nondimensionalize  $\cos$, we define:
+ \begin{equation}
+	\omega = \frac{2\pi}{T} \: \left[\text{radians s}^{-1}\right],
+\end{equation}
+which is the angular frequency and $T$ is the period of one oscillation. 
+Plugging this into our equation we wish to solve, we get:
+ \begin{equation}
+ \ddot{x} = -\omega^2x_0\cos\left[\omega t\right],
+\end{equation}
+which implies that:
+\begin{equation}
+	\omega^2 \frac{k}{m}.
+\end{equation}
+We can then translate angular freuquency to frequency $\nu$ via:
+\begin{equation}
+	\omega = 2\pi\nu,
+\end{equation}
+where we can think of this as the arc length traversed by $\omega$ for an angle $\nu$, as we know that we relate linear and angular distances from geometry.
+Now, if we want to consider two finite masses, say of  $m_1$ and $m_2$, then we introduce the reduced mass of the form:
+\begin{equation}
+	\mu = \frac{m_1m_2}{m_1+m_2},
+\end{equation}
+which gives upon substitution:
+\begin{equation}
+	\nu^2 = \frac{k}{\mu 2\pi}.
+\end{equation}
+This then allows us to relate vibrational frequencies of isotopologues, say by solving the above system for two different masses and taking the ratio:
+\begin{equation}
+\frac{\nu_1}{\nu_2} = \left( \frac{\mu_2}{\mu_1} \right) ^ {1 / 2}.
+\end{equation}
+</p>
+
+In Fig. 1, we have that the red function is the SHO, which has equal spacing between energy levels $n$, with the lowest being:
+\begin{equation}
+E_0 = \frac{1}{2}\hbar \omega, \quad \text{ for } \omega = \sqrt{k / m},
+\end{equation}
+which means that you can never get to the value of the potential at $r_e$.
+We note that this is opposed to the Morse Potential, which does not have equal spacing (asymmetric solution) between energy levels $\nu.$
+We further note that $r_e$ is the same for both, and that it takes a force in order to change $r$ toward and away from $r_e$.
+Also, see that it is impossible to disassociate with the SHO, as there are an infinite number of $n$, versus in the Morse potential which has a certain energy threshold, as shown in Fig. 1. 
+</p>
+
+<p>
+The Zero Point Energy (ZPE) is an impotant part of these potentials and is lower for the heaviest isotopologues (i.e., D-D, H-D, H-H).
+We define ZPE as:
+\begin{equation}
+	\text{ZPE} = \frac{1}{2}\hbar \omega,
+\end{equation}
+and thus we see that heavier isotopes have lower ZPE, and thus more energy is needed to get them out of the energy well.
+This this means that to get out of this potential well ("do chemistry"), you need to apply more energy.
+So, out of all of the isotopes, the lighter ones will be more reactive, or more readily able to do chemistry and react in chemical reactions.
+An example is CO$_2$, for which $^{12}$C will react first before $^{13}$C or $^{14}$C.
+</p>
+
+<p>
+This model explains kinetic isotope effects, which are non-equilibrium isotope effects.
+Each system energetically gains from having heavier isotopes in a reaction.
+An example of this is:
+\begin{equation}
+	\text{C}^{16}\text{O}_2 + \text{H}_2 ^{18}\text{O} \leftrightharpoons \text{C}^{18,16}\text{O}_2 + \text{H}_2 ^{16}\text{O}
+\end{equation}
+The question then becomes: where does the $^{18}$O go, as it will make each bonding environment more fabroable for each compound. 
+The answer to this is from ZPE. 
+Specifically, we can define the difference in the ZPE for the two isotopes with vibrational frequencies $\nu$ and $\nu'$:
+\begin{equation}
+\Delta \text{ZPE} = \frac{1}{2}\hbar\left( \nu - \nu' \right)  \sim  \nu \left( \frac{\nu}{\nu'}\right)^ {1 / 2}.
+\end{equation}
+So, the molecular with the greater $\Delta \text{ZPE}$ will get the heavier isotope (in this case $\nu'$).
+From this, we can get, after calculation:
+\begin{align}
+	\Delta G^o(\text{H}_2 \text{O}) &= - 56.7 \: \left[\text{kcal} \text{ mol}^{-1}\right], \\
+	\Delta G^o(\text{CO}_2) &= - 92.3 \: \left[\text{kcal} \text{ mol}^{-1}\right], \\
+\end{align}
+which then means that the difference between the ZPE for water is less than that for carbon dioxide. 
+Therefore, CO$_2$ is the more favorable as it has the most to gain, and therefore the heavier O isotope ends up with the carbon dioxide.
+</p>
+<p>
+This leads us to some qualitative rules for isotope fractionation:
+<ol>
+<li>Degree of fractionation goes down with increasing temperature T</li>
+<li>Deree of fractionation increases with increasing mass, described by the fractional mass difference: $\mu = \left( m_h\cdot m_l \right) / \left( m_h + m_l \right) $</li>
+<li>Heavy isotopes are concentrated in substances with the stiffest bonds (i.e., high spring constant, stiffest bonds). 
+These often correlate with the following environments:
+<ul>
+<li>High oxidations state: Fe$^{3+}$ vs. Fe$^{2+}$, remembering that the oxidation state is the hypothetical charge of an atom if all of its bonds to pother atoms were fully ionic)</li>
+<li>Bonds with elements near the top of the periodic table: Fl, Cl, Br</li>
+<li>Strongly covalent bonds (bonds formed by sharing valence electrons vs. the complete trandsfer of valence electrons in ionic bonding)</li>
+<li>Low-spin configuration (specifically for transition metals), which are based on the molecular geometries of the complexes of interest</li>
+<li>Low coordination numbers: B(OH)$_3$ vs. B(OH)$_4 ^-$, which becomes important when reconstructing paleo pH with B isotopes.
+We note that the heavier isotope $^{11}$B will end up in B(OH)$_3$ and so we can get the pH from the forams that incorporate in these heavy isotopes (or not). 
+Remember that the coordination number is the number of atoms bonded to a central atom, the ligand. 
+</li>
+</ul>
+</li>
+</ol>
+</p>
+
+<p>
+Let's look at this all in play. 
+For O$_2$ with O atoms of mass 16, there is a vibrational frequnecy of about 1580  [cm$^{-1}$], as opposed to O$_2$ of one 16 and one 18, which has a frequency of about 1235 [cm$^{-1}$].
+This shows us that the heavier the mass, the lower the frequency, therefore the closer to the bottom of the potential energy well determined above. 
+We can see this in our calculation of $\nu$ in the negative square root dependence on the reduced mass. 
+As the energy of a vibrational model is directlu related to the frequency, then the heavier the molecule the less energy in the bond, as it is deeper into the energy well.
+Conversely, we see that the higher the force constant, such as the $k$ above related to a stiffer bond, then the higher the vibrational frequency and energy will be.
+We note that the force constant is unaffected by isotope substitution but rather the orbital electrons which are closer to the interatomic distance (think the cloud of electrons), therefore we get that no matter the isotope of a given element the spring constant the same within a given molecular for a given atom.
+We remember that the overatching principle of isotope fractionation is to lower the overallenergy of the system (reach a minimum, equilibrium state, i.e. resting in the bottom of the well), this means that all moecular are competing for the heaviest isotopes and therefore the lowest energy.
+The molecule that successfully recieves this heavier isotope is the one that has the greatest energetic benefit (or the greatest reduction of energy) of the incorporation, which is usually the compound with the higher force constant as this would translate to a higher energy level (and thus a greater difference between the bottom of the well). 
+An example would be that $^{18}$O would preferntially choose the smaller, higher charged silicon to the larger, lesser charged iron (silicates instead of oxides). 
+</p>
+
+<hr style="width: 60em;">
+</div>
+</bodyo>
+</html>
