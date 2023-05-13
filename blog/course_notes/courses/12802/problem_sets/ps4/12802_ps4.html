@@ -39,8 +39,11 @@ MathJax = {
 
 <h3>Problem 1</h3>
 
+We consider a Yanai wave generated in the middle of the equatorial Pacific away from boundaries. 
+
 <p>
 <b>(a)</b> 
+
 
 
 </p>
@@ -68,13 +71,114 @@ MathJax = {
 
 <h3>Problem 3</h3>
 
+We consider a two-layer model in the mid-latitudes with the top layer of thickness $H_1 = 1000$ [m] and the bottom layer of thickness $H_2 = 3000$ [m].
+The density difference $\Delta \rho$ between these two layers has been chosen so that the baroclinic Kelvin wave speed is $c_\text{Kelvin} = 3$ [m s$^{-1}$].
+For this problem, we are interested in calculating the spin-up time, $t_{s}$, for a range of scenarios. 
+The initial scenario is, given the properties stated above, that $t_s = 20$ [y].
+Let's assume that the horizontal domain is of length $L$.
+For all of these scenarios that follow, we note that $t_s$ is defined as the time it takes for the slowest Rossby wave to propogate from the eastern to the western boundary, that is the distance $L$.
+
 <p><b>(a)</b> 
-
-
+Now, we want to determine what $t_s$ is given that the horizontal domain has doubled in size. 
+To do so, we could simply note the linear relation between the distance propogated and the spin up time, that is:
+\begin{equation}
+	t_s = \frac{L}{c_\text{Rossby}}.
+\end{equation}
+Therefore, if we let $L \to 2L$, this then means that $t_s \to 2t_s$. Thus, we get that, for this scenario:
+\begin{equation}
+	t_s = 40 \: \left[\text{y}\right].
+\end{equation}
+Now, we can come at this from a second angle by first recalling the Kelvin wave disperion relation:
+\begin{equation}
+	\omega = kc,
+\end{equation}
+where we define:
+\begin{equation}
+	c^2 = g'H^\ast,
+\end{equation}
+for $g$ reduced gravitational acceleration defined as:
+\begin{equation}
+	g' = g\frac{\rho_2 - \rho_1}{\rho_2} \simeq g \frac{\rho_2 - \rho_1}{\rho_0}
+\end{equation}
+and $H^\ast$ the effect depth of the layer of interest defined as:
+\begin{equation}
+	H^\ast = \frac{H_1H_2}{H_1 + H_2}.
+\end{equation}
+We note here that we assume that we assume the reference density is greater than the density anomaly, i.e., $\sigma_2 \ll \rho_0$ for $\rho_2 = \rho_0+\sigma_2$.
+Therefore, we can get the phase velocity as:
+\begin{equation}
+	c_\text{Kelvin} = \frac{\omega}{k} = c = g \frac{\rho_2 - \rho_1}{\rho_0}\frac{H_1H_2}{H_1 + H_2}.
+\end{equation}
+As we are givven $c_{\text{Kelvin}}$, we can solve for $\Delta \rho = \rho_2 - \rho_1$ as:
+\begin{equation}
+\Delta \rho = \frac{c_{\text{Kelvin}}\rho_0}{g'H^\ast},
+\end{equation}
+which then allows us to calculate $g'$.
+Next, we want to calculate $c_\text{Rossby}$ for the two layer model, for the baroclinic mode. 
+To do this, we can cite Gill [1982] (as deriving the following relations is, I think, most likely outside the scope of this problem set), and define the line dividing eastward- and and westward-propogating waves (for group velocity) as the hyperbola:
+\begin{equation}
+	k^2 = l^2 + f_0^2 / c^2.
+\end{equation}
+Then, we can cite Problem Set 3 (or Vallis [2006]) to get the Rossby wave dispersion relation for an infinite deformation radius:
+\begin{equation}
+	\omega = \frac{\beta k}{k^2 + l^2}.
+\end{equation}
+Noting that we can deal with only zonal motion, we then get, for the relation for the horizontal wave number above, that the group velocity for the baroclinic Rossby waves in this model is given by:
+\begin{equation}
+	c_\text{Rossby} = \frac{\beta}{l^2 + f_0^2 / c^2}.
+\end{equation}
+Now, we can note that, for baroclinic modes, $l^2 \ll f_0^2 / c^2$, giving:
+\begin{equation}
+	c_\text{Rossby} \simeq \frac{\beta}{f_0^2 / c^2}.
+\end{equation}
+So, after all of that, we can get that, for this present scenario of interest:
+\begin{equation}
+	t_s = \frac{2L}{c_\text{Rossby}} = \frac{2L f_0^2}{\beta g'H^\ast} \simeq 40 \left[\text{y}\right].
+\end{equation}
 </p>
 
 <p><b>(b)</b>
+Now, we want to calculate the new $t_s'$ when we have reduced $\Delta \rho = 0$, that is we are now dealing with a single-layer, homogenous model of depth $H = 4000$ [m].
+To do this, we first want to calculate the length of the domain, $L$. 
+We can rearrange our equations above to get:
+\begin{equation}
+	L = t_s\frac{\beta g' H^\ast}{f_0^2}.
+\end{equation}
+Then, we note that, as we have seen in lecture:
+\begin{equation}
+	c_\text{Rossby} \sim \Delta \rho.
+\end{equation}
+Therefore, for our equation for $t_s$ above, we would get:
+\begin{equation}
+t_s' \xrightarrow[\Delta \rho \to 0]{} \infty,
+\end{equation}
+as $g' \sim \Delta \rho$, which is in the denominator of our current definition of $t_s'$. 
+Clearly, this is aphysical, but we can arrive a physical solution by first noting that the first baroclinic mode occurs when then waves at the <i>interface</i> of two layers have opposite phase. 
+Therefore, we cannot have a baroclinic mode in a single layer model when we assume that there is a solid (flat) bottom boundary and thus only one free surface. 
+This then implies that we are dealing with a barotropic mode, which changes the game a bit. 
 
+<p>
+In the barotopic mode, we have the oppsite inequality of the baroclinic the the denominator of our Rossby phase velocity. 
+Namely, we have that $l^2 \gg f_0^2 / c^2$.
+Therefore, our updated Rossby phase velocity is:
+\begin{equation}
+	c_\text{Rossby} \simeq \frac{\beta}{l^2},
+\end{equation}
+which from Gill [1982] has values of $\mathcal{O}\left( 200 \right) $ [m s$^{-1}$].
+We will use this as a sanity check for our updated Rossby velocity, in which, as we have one model, we now let $g' \to  g$ and $H^\ast \to H = H_1 + H_2$, giving:
+\begin{equation}
+c_\text{Rossby} = \frac{\beta g H}{f_0^2} \simeq 198 \left[\text{m s}^{-1}\right]
+\end{equation}
+which is on the order of our value from above.
+Therefore, we have that the spin-up in this scenario is given by:
+\begin{equation}
+	t_s' = \frac{L f_0^2}{\beta g H} \simeq 1.67 \left[\text{d}\right].
+\end{equation}
+This is 3 orders of magnitude quicker than our solution to <b>(a)</b>, but then again so was our velocity...
+
+
+
+</p>
 
 </p>
 
