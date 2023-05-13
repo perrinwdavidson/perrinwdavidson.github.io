@@ -70,28 +70,71 @@ From this, and taking the solutions that vanish as $y \to \pm \infty$, we get th
 <b>(a)</b> 
 So, from the above general equatorial wave dispersion relation, and noting that the Yanai wave is defined as that wave defined for $n=0$, we get the Yanai dispersion relation:
 \begin{equation}
-	\frac{\omega}{c} - l - \frac{\beta}{\omega} = 0.
+	\frac{\omega}{c} - \frac{\beta}{\omega} = k,
+\end{equation}
+which has the (physical) solution:
+\begin{equation}
+\omega = \frac{kc}{2} \pm \frac{1}{2}\sqrt{k^2c^2 + 4\beta c}.
 \end{equation}
 From Gill [1982], we note that solutions to this special case are:
 \begin{align}
 	v = \exp\left[-\frac{\beta y^2}{2c}\right]\cos\left[kx - \omega t\right], \\
 	u = -\left( \frac{\omega y}{c} \right) \exp\left[- \frac{\beta y^2}{2c}\right] \sin\left[kx - \omega t\right],
 \end{align} 
-noting that the zonal velocity is odd in $y$ about the equator and is not in geostrophic balance, most so at the equator which decreases as $y^2$ increases.
-The Yanai wave is unique in that for large positive $k$ it behaves like a gravity, but for negative $k$ is behaves like a planetary wave.
-Thus, this leads to it's alternative name, the <i>mixed Rossby-gravity wave</i>.
-The phase velocity can be east to west, but the group velocity is always eastward, as it is the maximum of short waves with eastward group velocities, that is for all gravity waves.
-The corresponding particles have anticyclonic orbits everywhere.
+noting that the zonal velocity is odd (antisymmetric) in $y$ about the equator and is not in geostrophic balance, most so at the equator which decreases as $y^2$ increases.
 
+<p>
+Let's now take some limiting cases of of the physical dispersion relation above.
+<ul>
+	<li>
+		$k = 0$: Here, we have the $\omega = \sqrt{\beta c}$, which suggests a balance between the two terms on the LHS of our dispersion relation for $k$ above.
+	</li>
+	<li>
+		$k \to + \infty$: This case gives $\omega = ck$, which gives a balance between the first term on the LHS and $k$, which suggests an eastward propagating gravity wave. 
+	</li>
+	<li>
+		$k \to  - \infty$: Lastly, we see that $\omega = -\beta / k$, which means a balance between the second term on the LHS and $k$, suggesting a westward propagating Rossby wave.
+	</li>
+</ul>
+Therefore, the Yanai wave is unique in that for large positive $k$ it behaves like a gravity, but for negative $k$ is behaves like a planetary wave. 
+Thus, this leads to it's alternative name, the <i>mixed Rossby-gravity wave</i>.
+The phase velocity can propagate east to west (with a low frequency), but the group velocity is always eastward, as it is the maximum of short waves with eastward group velocities, that is for all gravity waves, and is given by:
+\begin{equation}
+	c_g^x = \frac{\omega^2 c}{\beta c + \omega^2}.
+\end{equation}
+The corresponding particles have anticyclonic orbits everywhere.
+</p>
 </p>
 
 <p>
 <b>(b)</b>
-
-
+We first denote $k_\pm$ as the respective parts of the root solution to our dispersion relation in <b>1(a)</b> above. 
+Then, from Gill [1982], we know that the solutions to the total zonal velocity $U$ of a wave propagating westward, i.e., the incoming wave, is given by a function of the form:
+\begin{equation}
+	U_\text{incoming} \sim \text{Re} \left[k_+, \psi\right],
+\end{equation}
+for $\psi$ the appropriate streamfunction.
+We note that this is a summation of a finite set of Rossby waves plus a Lanai wave a Kelvin wave.
+The reflected (eastward propagating) wave is given, conversely, by a function of the form:
+\begin{equation}
+	U_\text{reflected} \sim \text{Re}\left[k_-, \psi, A_0, A_\text{Kelvin}\right],
+\end{equation}
+for $A_0$ and $A_\text{Kelvin}$ the amplitude of the reflected Yanai and Kelvin wave, respectively.
+Then, at $x=0$, the western boundary, we get from the BCs that:
+\begin{equation}
+	U_\text{incoming} + U_\text{reflected} = 0,
+\end{equation}
+which implies a Yanai amplitude of the functional form:
+\begin{equation}
+	A_0 \sim k_-^{-1}.
+\end{equation}
+This all leads to a few important points, the first of which is that an essential part of the reflection process at the western boundary is the production of the Yanai waves, which leads to energy propagating away from the western boundary.
+Conversely, the reflection process at the oceanic eastern boundary is severely complicated by the absence of Yanai waves capable of reflection, and therefore transmission of energy westward.
 </p>
 
 <h3>Problem 2</h3>
+
+Apologies, but I will submit the remainder of my write-up of this problem set in the coming hours.
 
 <p><b>(a)</b> 
 
