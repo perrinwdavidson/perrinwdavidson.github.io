@@ -40,11 +40,48 @@ MathJax = {
 <h3>Problem 1</h3>
 
 We consider a Yanai wave generated in the middle of the equatorial Pacific away from boundaries. 
+To begin, we note that the Yanai wave, or the mixed Rossby-gravity wave, is a special case of the solution to the governing equations for equatorial waves:
+\begin{equation}
+	\partial_x u = -g \partial_x \eta \quad \text{ and } \quad \partial_t \eta + H \partial_x = 0,
+\end{equation}
+which, after recognizing that the solution required here is of the form, which vanish as $y \to \infty$:
+\begin{equation}
+	G' = \exp\left[- \frac{1}{2} \frac{\beta y^2}{c}\right] G(x - ct),
+\end{equation}
+gives the dispersion relation:
+\begin{equation}
+	\omega = kc,
+\end{equation}
+for $c^2 = gH.$
+If we seek solutions of the form:
+\begin{equation}
+	\exp\left[\text{i}\left( kx - \omega t \right) \right],
+\end{equation}
+we get the ODE:
+\begin{equation}
+	\frac{\textrm{d}^2v}{\textrm{d}y} + \left( \frac{\omega^2}{c^2} - k^2 - \frac{\beta k}{\omega} - \frac{\beta^2y^2}{c^2}\right)v = 0.
+\end{equation}
+From this, and taking the solutions that vanish as $y \to \pm \infty$, we get the dispersion relation:
+\begin{equation}
+	\left( \frac{\omega}{c} \right)^2 - k^2 - \frac{\beta k}{\omega} = \frac{\left( 2n +1 \right)\beta }{c}.
+\end{equation} 
 
 <p>
 <b>(a)</b> 
-
-
+So, from the above general equatorial wave dispersion relation, and noting that the Yanai wave is defined as that wave defined for $n=0$, we get the Yanai dispersion relation:
+\begin{equation}
+	\frac{\omega}{c} - l - \frac{\beta}{\omega} = 0.
+\end{equation}
+From Gill [1982], we note that solutions to this special case are:
+\begin{align}
+	v = \exp\left[-\frac{\beta y^2}{2c}\right]\cos\left[kx - \omega t\right], \\
+	u = -\left( \frac{\omega y}{c} \right) \exp\left[- \frac{\beta y^2}{2c}\right] \sin\left[kx - \omega t\right],
+\end{align} 
+noting that the zonal velocity is odd in $y$ about the equator and is not in geostrophic balance, most so at the equator which decreases as $y^2$ increases.
+The Yanai wave is unique in that for large positive $k$ it behaves like a gravity, but for negative $k$ is behaves like a planetary wave.
+Thus, this leads to it's alternative name, the <i>mixed Rossby-gravity wave</i>.
+The phase velocity can be east to west, but the group velocity is always eastward, as it is the maximum of short waves with eastward group velocities, that is for all gravity waves.
+The corresponding particles have anticyclonic orbits everywhere.
 
 </p>
 
@@ -74,7 +111,7 @@ We consider a Yanai wave generated in the middle of the equatorial Pacific away 
 We consider a two-layer model in the mid-latitudes with the top layer of thickness $H_1 = 1000$ [m] and the bottom layer of thickness $H_2 = 3000$ [m].
 The density difference $\Delta \rho$ between these two layers has been chosen so that the baroclinic Kelvin wave speed is $c_\text{Kelvin} = 3$ [m s$^{-1}$].
 For this problem, we are interested in calculating the spin-up time, $t_{s}$, for a range of scenarios. 
-The initial scenario is, given the properties stated above, that $t_s = 20$ [y].
+The initial scenario is, given the properties stated above, that $t_{s,0} = 20$ [y].
 Let's assume that the horizontal domain is of length $L$.
 For all of these scenarios that follow, we note that $t_s$ is defined as the time it takes for the slowest Rossby wave to propogate from the eastern to the western boundary, that is the distance $L$.
 
@@ -84,11 +121,11 @@ To do so, we could simply note the linear relation between the distance propogat
 \begin{equation}
 	t_s = \frac{L}{c_\text{Rossby}}.
 \end{equation}
-Therefore, if we let $L \to 2L$, this then means that $t_s \to 2t_s$. Thus, we get that, for this scenario:
+Therefore, if we let $L \to 2L$, this then means that $t_s \to 2t_{s,0}$. Thus, we get that, for this scenario:
 \begin{equation}
 	t_s = 40 \: \left[\text{y}\right].
 \end{equation}
-Now, we can come at this from a second angle by first recalling the Kelvin wave disperion relation:
+Now, we can come at this from a second angle by first recalling the Kelvin wave dispersion relation from <b>1</b>:
 \begin{equation}
 	\omega = kc,
 \end{equation}
@@ -109,13 +146,13 @@ Therefore, we can get the phase velocity as:
 \begin{equation}
 	c_\text{Kelvin} = \frac{\omega}{k} = c = g \frac{\rho_2 - \rho_1}{\rho_0}\frac{H_1H_2}{H_1 + H_2}.
 \end{equation}
-As we are givven $c_{\text{Kelvin}}$, we can solve for $\Delta \rho = \rho_2 - \rho_1$ as:
+As we are given $c_{\text{Kelvin}}$, we can solve for $\Delta \rho = \rho_2 - \rho_1$ as:
 \begin{equation}
 \Delta \rho = \frac{c_{\text{Kelvin}}\rho_0}{g'H^\ast},
 \end{equation}
 which then allows us to calculate $g'$.
 Next, we want to calculate $c_\text{Rossby}$ for the two layer model, for the baroclinic mode. 
-To do this, we can cite Gill [1982] (as deriving the following relations is, I think, most likely outside the scope of this problem set), and define the line dividing eastward- and and westward-propogating waves (for group velocity) as the hyperbola:
+To do this, we can cite Gill [1982] (as deriving the following relations is, I think, most likely outside the scope of this problem set), and define the line dividing eastward- and westward-propagating waves (for group velocity) as the hyperbola:
 \begin{equation}
 	k^2 = l^2 + f_0^2 / c^2.
 \end{equation}
@@ -153,12 +190,12 @@ Therefore, for our equation for $t_s$ above, we would get:
 t_s' \xrightarrow[\Delta \rho \to 0]{} \infty,
 \end{equation}
 as $g' \sim \Delta \rho$, which is in the denominator of our current definition of $t_s'$. 
-Clearly, this is aphysical, but we can arrive a physical solution by first noting that the first baroclinic mode occurs when then waves at the <i>interface</i> of two layers have opposite phase. 
+Clearly, this is aphysical, but we can arrive a physical solution by first noting that the first baroclinic mode occurs when waves at the <i>interface</i> of two layers have opposite phase. 
 Therefore, we cannot have a baroclinic mode in a single layer model when we assume that there is a solid (flat) bottom boundary and thus only one free surface. 
 This then implies that we are dealing with a barotropic mode, which changes the game a bit. 
 
 <p>
-In the barotopic mode, we have the oppsite inequality of the baroclinic the the denominator of our Rossby phase velocity. 
+In the barotopic mode, we have the opposite inequality of the baroclinic in the denominator of our Rossby phase velocity. 
 Namely, we have that $l^2 \gg f_0^2 / c^2$.
 Therefore, our updated Rossby phase velocity is:
 \begin{equation}
@@ -174,12 +211,8 @@ Therefore, we have that the spin-up in this scenario is given by:
 \begin{equation}
 	t_s' = \frac{L f_0^2}{\beta g H} \simeq 1.67 \left[\text{d}\right].
 \end{equation}
-This is 3 orders of magnitude quicker than our solution to <b>(a)</b>, but then again so was our velocity...
-
-
-
+This is 3 orders of magnitude quicker than our solution to <b>(a)</b>, but then again so was our Rossby wave velocity...
 </p>
-
 </p>
 
 <hr style="width: 60em;">
