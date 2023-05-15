@@ -91,7 +91,7 @@ This then means that we can re-write our gradient of the advected bouyancy as:
 \end{equation}
 where we have that:
 \begin{equation}
-	\left( v^\ast, w^\ast \right)  = \left( -\partial_y\psi^\ast, \partial_z\psi^\ast \right).
+	\left( v^\ast, w^\ast \right)  = \left( -\partial_z\psi^\ast, \partial_y\psi^\ast \right).
 \end{equation}
 The algebra to get this is based on:
 \begin{equation}
@@ -111,11 +111,55 @@ Therefore, we get that:
 \end{equation}
 This then means that:
 \begin{equation}
-	J\left( \psi_r, \overline{b} \right) = \partial_zB,
+	J\left( \psi_R, \overline{b} \right) = \partial_zB,
 \end{equation}
 where we have defined:
 \begin{equation}
 	\psi^\ast = \frac{\overline{v'b'}}{\overline{b}_z}.
+\end{equation}
+
+<h3>Describing the Solution</h3>
+
+We get that in the ML:
+\begin{equation}
+	-\partial_z\psi_R \partial_y\overline{b} = \partial_zB_s.
+\end{equation}
+Integrating over the MLD, we get:
+\begin{equation}
+	\psi_R = \frac{B_s}{\partial_y\overline{b}}.
+\end{equation}
+We can relate this back to our definition of the residual streamfunction, i.e.:
+\begin{equation}
+	\frac{\overline{v'b'}}{N^2} = \overline{v'h'} \leftrightarrow \psi^\ast = \frac{\overline{v'b'}}{\overline{b}_z}.
+\end{equation}
+Now, we can describe the circulation in the ACC as:
+\begin{equation}
+	-f\overline{v^\ast} + \frac{1}{\rho}p_x = \frac{1}{\rho}\partial_z\tau_w.	
+\end{equation}
+Then, we can say that Ro$\ll 1$ and then get that:
+\begin{equation}
+	f \partial_z\psi_R = \frac{1}{\rho}\partial_z\tau_w + f\partial_z\psi^\ast.
+\end{equation}
+Therefore, we get that:
+\begin{equation}
+	\psi_R(z) = -\frac{\tau_w}{\rho f} + \psi^\ast.
+\end{equation}
+This then also means that:
+\begin{equation}
+	\psi^\ast = \frac{\overline{v'b'}}{\overline{b}_z} = \frac{\tau_w}{\rho f}.
+\end{equation}
+Next, we can say then that:
+\begin{equation}
+	\overline{v'b'}= -k\overline{b}_y,
+\end{equation}
+where $k$ is the eddy diffusivity.
+Therefore, we could get:
+\begin{equation}
+	kS_\rho = \frac{\tau_w}{\rho f}.
+\end{equation}
+From hydrography, we can get:
+\begin{equation}
+	S_\rho= \frac{10^{-1}}{10^3 \times 10^{-4} \times \left( 5 \times 10^2 \right) }\simeq 2 \times  10^{-3}.
 \end{equation}
 
 <hr style="width: 60em;">
