@@ -76,6 +76,10 @@ MathJax = {
 
 <hr style="width: 60em;">
 
+<! <div style="text-align: center;"> 
+<!All plots are appended in full-size to the end of this document for closer viewing, if wanted and/or needed.
+</div>
+
 <h3>The Setup</h3>
 
 We consider the Stommel wind-driven gyre model, which has the linear vorticity balance:
@@ -175,7 +179,7 @@ The arc length $S$ is defined as the path length traversed a central angle $\the
 	S = R\theta.
 \end{equation}
 </div>
-In our case, we will let $R$ be the radius of the Earth and $\theta$ be longitude.
+In our case, we will let $R$ be the radius of the Earth and $\theta$ be longitude or latitude.
 
 <h3>The Flat Bottom Double Gyre</h3>
 
@@ -295,7 +299,7 @@ Additionally, we have used the following values:
 \end{align}
 Importantly, we remember our definition of arc length, which allows us to convert the units of $L_s \to L_s R L_x$.
 <figure>
-	<img src="images/prob1a_revised.png" style="width:100%">
+	<img src="images/prob1a_revised.png" style="width:60%">
 	<figcaption> Fig. 1: The streamfunction solution $\Psi_F = D \psi_F$ to the flat bottom double gyre problem, with the solution plotted in Sverdrups and the domain nondimensionalized.</figcaption>
 </figure>
 
@@ -322,7 +326,7 @@ for $L_M$ the width of the Munk layer.
 For a basic comparison, we plot a proportional distribution of the Munk meridional velocity in the dashed black line in Fig. 2, where we have both negated and assumed $L_M \simeq L_S$ for the basic sake of comparison, though this is not necessarily true in the exact sense.
 Additionally, here we have defined $\widehat{x} = x / L_s$ and plotted it out to 20.
 <figure>
-	<img src="images/prob1b_revised.png" style="width:100%">
+	<img src="images/prob1b_revised.png" style="width:60%">
 	<figcaption> 
 		Fig. 2: Zonal cross section of a proportional meridional velocity.
 		The solid red line is the section for our flat bottom gyre Stommel solution, compared to the dashed black line which is Munk's solution. 
@@ -384,7 +388,7 @@ where we have defined the region Kronecker $\delta$
 \delta_{II} = \begin{cases} 1 & y \in \left[30^\circ, 50^\circ\right], \\ 0 & \text{ otherwise}. \end{cases}
 \end{equation}
 Now, we start the solving by recalling our definition of solutions for equations of this form, by first assuming that we can turn this equation into an ordinary differential equation by holding all $y$ constant.
-We apply the same anstanz to the homogeneous part of this equation to get a characteristic polynomial with roots $\lambda = 0, 1 / L_s$, leading to a homogeneous general solution of the form:
+We apply the same ansatz to the homogeneous part of this equation to get a characteristic polynomial with roots $\lambda = 0, -1 / L_s$, leading to a homogeneous general solution of the form:
 \begin{equation}
 	\psi_{B,h} = b\exp\left[-\frac{x}{L_s}\right].
 \end{equation}
@@ -420,12 +424,14 @@ Therefore, we have that our boundary solution is:
 
 Putting all of this together, we get that our full solution is:
 \begin{equation}
-	\Psi_S = D \psi_S = \frac{\tau_0\pi L_x}{\beta\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ} \right]\left( \frac{x}{L_x} + \exp\left[- \frac{x}{L_s}\right] - 1\right)  + \frac{f_0w_0 L_s^{2}}{\left( \gamma^{2} - \gamma \right) \epsilon } \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\delta_{II}\left( \exp\left[- \frac{x}{L_s}\right] - \exp\left[-\gamma \frac{x}{L_s}\right] \right).
+\begin{split}
+	\Psi_S = D \psi_S = &\frac{\tau_0\pi L_x}{\beta\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ} \right]\left( \frac{x}{L_x} + \exp\left[- \frac{x}{L_s}\right] - 1\right) + \\ &\frac{f_0w_0 L_s^{2}}{\left( \gamma^{2} - \gamma \right) \epsilon } \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\delta_{II}\left( \exp\left[- \frac{x}{L_s}\right] - \exp\left[-\gamma \frac{x}{L_s}\right] \right).
+\end{split}
 \end{equation}
 We plot this solution in the bottom panel Fig. 3, with the corresponding $w_B$ for this problem with $\gamma = 0.4$ in the top panel for comparison.
 
 <figure>
-	<img src="images/prob2_revised.png" style="width:100%">
+	<img src="images/prob2_revised.png" style="width:60%">
 	<figcaption> Fig. 3: Bottom stress forcing, $w_B$ (top) and streamfunction solution $\Psi_S = D \psi_S$ to the non-flat bottom double gyre problem.
 	We again note that $\Psi_F$ is plotted in Sverdups and the domain is nondimensionalized.
 	The deformation of the symmetric streamfunction between $30^\circ$ and $50^\circ$ is is an important feature of the streamfunction solution.
@@ -433,27 +439,27 @@ We plot this solution in the bottom panel Fig. 3, with the corresponding $w_B$ f
 	</figcaption>
 </figure>
 
-We can see that the non-flat bottom disrupts the symmetric double gyre solution for the flat bottom over the western boundary current region in which $w_B$ is dominant (which is proportional to the $e$-folding scaling analysis discussed previously), predominantly (with the currently value of $\gamma$) at the western boundary for $y \in \left[30^\circ, 50^\circ\right]$.
-Additionally, we can see that $w_B$ provides a negative perturbation to our solution, which we see in the streamfunction by a continuation of the northern gyre transport into the southern gyre circulation, this is to say there are negative transport contours perturbing the positive contours of the southern gyre.
-The magnitudes of the transport nearly stay the same, with a slight increase in the negative transport within the northern perturbed gyre transport.
+We can see that the non-flat bottom disrupts the symmetric double gyre solution for the flat bottom over the western boundary current region in which $w_B$ is dominant (which is proportional to the $\text{e}$-folding scaling analysis discussed previously), predominantly (with the current value of $\gamma$) at the western boundary for $y \in \left[30^\circ, 50^\circ\right]$.
+Additionally, we can see that $w_B$ provides a negative perturbation to our solution, which we see in the streamfunction by a continuation of the subpolar gyre transport into the subtropical gyre circulation, this is to say there are negative transport contours perturbing the positive contours of the subtropical gyre.
+The magnitudes of the transport nearly stay the same, with a slight increase in the negative transport within the subpolar perturbed gyre transport.
+Very simply, we see that when there is downwelling (upwelling) in the western boundary current, the subpolar (subtropical) gyre encroaches on the subtropical (subpolar) gyre.
+Our current solution field for $w_B$ is consistent with a flow outward from the western boundary current down the shelf into an abyss. 
 We also consider the case in which there is a positive perturbation to our solution in Fig. 4, i.e., $w_B > 0$.
 
 <figure>
-	<img src="images/prob2b_revised.png" style="width:100%">
+	<img src="images/prob2b_revised.png" style="width:60%">
 	<figcaption> Fig. 4: The case in which we change the sign of the bottom stress term, that is we have a positive vertical velocity that exponentially decreases to 0 away from the side.</figcaption>
 </figure>
 
 This is the case in which we have translated the $\sin$ within the $w_{BB}$ term by a half-period such that the amplitude is negative.
-We can see that we have the negated effect as seen in Fig. 3, that is that there is an amplification of transport over the region in which $w_B$ is dominant in the southern gyre which makes the positive transport more than a factor of two greater. 
-Correspondingly, we get that positive transport protrudes into the northern, negative transport circulation gyre in this solution.
+We can see that we have the negated effect as seen in Fig. 3, that is that there is an amplification of transport over the region in which $w_B$ is dominant in the subtropical gyre which makes the positive transport more than a factor of two greater. 
+Correspondingly, we get that positive transport protrudes into the subpolar, negative transport circulation gyre in this solution.
 There is little change in the negative transport magnitude compared to the flat bottom solution.
 
 <h3>Parameter Sensitivity</h3>
 
-
-
 <figure>
-	<img src="images/prob3_psi_gamma_revised.png" style="width:100%">
+	<img src="images/prob3_psi_gamma_revised.png" style="width:60%">
 	<figcaption> 
 		Fig. 5: A parameter sensitivity study of the bottom pressure torque forcing $w_B$ (left column) and the resulting streamfunction $\Psi_S$ (right column) for a range of $\gamma \in \left[0.01, 0.1, 0.25, 0.5, 0.75, 1.0, 10\right]$.
 		We note the decreasing perturbation in $\Psi_S$ caused by $w_B$ as $\gamma$ increases.
@@ -461,10 +467,46 @@ There is little change in the negative transport magnitude compared to the flat 
 	</figcaption>
 </figure>
 
+We now run a parameter sensitivity on our model through a range of $\gamma$ values that span a range of magnitudes, from $10^{-2}$ to $10^1$.
+Specifically, we plot 7 solution fields for $w_B$ (left column) and $\Psi_S$ (right column) for $\gamma \in \left[0.01, 0.1, 0.25, 0.5, 0.75, 1.0, 10\right]$ (with the values of $\gamma$ increasing with rows).
+The biggest effect seen with increasing $\gamma$ is the reduction in the area of dominant $w_B$, which is based on our $\text{e}$-folding scale analysis and can be seen by scanning down the left column of Fig. 5 above.
+As $\gamma$ increases, we have a decreased $\text{e}$-folding scale, meaning that the exponential decay is greater with increasing $\gamma$. 
+For small $\gamma$, we get that $w_B$ is dominant far into the gyre, an effect which decreases exponentially with increasing $\gamma$.
+We can think of this as the roll of topography in the circulation increasing with decreasing $\gamma$. 
+This then means that, for reasonable values of $\gamma$ (namely, $\gamma \ge  0.25$), we see that perturbations imposed by the $w_B$ term decreases, and therefore the subtropical gyre has less perturbation with increasing $\gamma$, until we get that for $\gamma \sim 10^0 - 10^1$, we are back to the symmetric solution of the double, flat bottom as before.
+Another way of thinking of this is that in this regime, we are working with an $\text{e}$-folding scale that is the order of $L_s$, meaning that in this regime $w_{Ek}$ takes over as the dominant term in the circulation.
+This is understandable as with a very short $\text{e}$-folding length scale, we basically have $w_{Ek}$ as the dominant forcing, causing the flat bottom gyre circulation pattern seen for large $\gamma$.
+Additionally, our analysis shows that there are some bounds on reasonable values of $\gamma$, as those less than 0.25 seem to give aphysical circulation patterns (the transport values are massive). 
+
 <h3>Removing Topographic Effects</h3>
 
+Lastly, we are interested in finding a distribution of $w_B$ that balances out the spatial distribution imposed on $\psi$ by $w_{Ek}$
+Therefore, we want to find a distribution such that $w_B = w_{Ek}$. 
+To do this, we calculated the contribution to the geostrophic streamfunction of each as we know that:
+\begin{equation}
+	\Psi_{geo} = -\int_{L_x}^x \text{d}x' \: w(x', y).
+\end{equation}
+Therefore, we have that:
+\begin{equation}
+	\frac{\tau_0 \pi}{f_0\rho_0 25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right] \int_0^{L_x}\text{d}x = w_{BB}\sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\int_{0}^{L_x}\text{d}x' \: \exp\left[-\gamma \frac{x}{L_s}\right],
+\end{equation}
+which gives a $w_{BB}$ of:
+\begin{equation}
+	w_{BB} = \frac{\gamma \tau_0 \pi L_x}{f_0\rho_{0}25^\circ Ls} \frac{\sin\left[\pi\left( y - 45^\circ \right) / 25^\circ\right]}{1- \exp\left[- \gamma L_x / L_s\right]}.
+\end{equation}
+So, we get a distribution of the form:
+\begin{equation}
+	w_B = \frac{\gamma \tau_0 \pi L_x}{f_0\rho_{0}25^\circ Ls} \frac{\sin\left[\pi\left( y - 45^\circ \right) / 25^\circ\right]}{1- \exp\left[- \gamma L_x / L_s\right]} \exp\left[-\gamma \frac{x}{L_s}\right].
+\end{equation}
+We can then correspondingly get an adjusted streamfunction given by:
+\begin{equation}
+\begin{split}
+	\Psi_S = D \psi_S = &\frac{\tau_0\pi L_x}{\beta\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ} \right]\left( \frac{x}{L_x} + \exp\left[- \frac{x}{L_s}\right] - 1\right) + \\ &\frac{\gamma \tau_0 \pi L_x}{f_0\rho_{0}25^\circ Ls} \frac{\sin\left[\pi\left( y - 45^\circ \right) / 25^\circ\right]}{1- \exp\left[- \gamma L_x / L_s\right]} \exp\left[-\gamma \frac{x}{L_s}\right]\left( \exp\left[- \frac{x}{L_s}\right] - \exp\left[-\gamma \frac{x}{L_s}\right] \right).
+\end{split}
+\end{equation}
+We plot these solution fields below in Fig. 6, where we note we have applied the arc length calculation to our value of $25^\circ$ to convert to S.I. units.
 <figure>
-	<img src="images/prob4_revised.png" style="width:100%">
+	<img src="images/prob4_revised.png" style="width:60%">
 	<figcaption> 
 		Fig. 6: A possible distribution of $w_B$ (middle) that removes the effects imposed by $w_{Ek}$ (top) on the resulting streamfunction $\Psi_S$ (bottom).
 		We note the streamfunction resembles the solution to the flat bottom streamfunction $\Psi_F$.
@@ -472,6 +514,10 @@ There is little change in the negative transport magnitude compared to the flat 
 	</figcaption>
 </figure>
 
+Here, we clearly see that we have found a distribution of $w_B$ the balances the imposed patterns of $w_{Ek}$, as the solution field for $\psi$ is that of the flat bottom, double gyre problem shown and derived above.
+We see that the magnitude of our new $w_B$ term, which we call $w_{B, Ek}$, is greater than that of $w_{Ek}$, but this is balanced out by the greatly reduced area over which this magnitude is imposed in the western boundary current to that of the Ekman layer, which is across the entire zonal domain.
+Furthermore, we see that the signs of both $w_{Ek}$ and $w_{B, Ek}$ are the same in the corresponding gyres (positive/upwelling in the subpolar and negative/downwelling in the subtropical).
+In these ways, we have found a flow over the bottom topography that results in a form drag than balances the wind in an integral sense.
 
 <hr style="width: 60em;">
 
