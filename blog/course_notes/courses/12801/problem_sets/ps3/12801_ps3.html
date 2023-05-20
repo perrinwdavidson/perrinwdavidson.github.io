@@ -14,6 +14,44 @@ h1 {text-align: center;}
 }
 figure {text-align: center;}
 figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.claim {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.claim[text]:before {
+content: "Claim (" attr(text) "). ";
+}
 </style>
 
 <script>
@@ -45,8 +83,8 @@ We consider the Stommel wind-driven gyre model, which has the linear vorticity b
 	\beta \partial_x\psi = \frac{f}{D}\left( w_{Ek} - w_B \right) - \epsilon \Delta \psi,
 \end{equation}
 where we define the Laplacian as $\Delta = \nabla^{2}$. 
-We can derive this equation by considering a single layer of homogeneous fluid with depth $D$ that is below a mixed layer of thickness $h_M$ which transports the wind stress and corresponding Ekman transport into the layer. 
-At the bottom of the layer of thickness $\delta_E$, there is a viscous boundary layer wherein the viscous stresses produced by the fluid motion against the bottom act on the fluid layer.
+We can derive this equation by considering a single layer of homogeneous fluid with thickness $D$ that is below a mixed layer of thickness $h_M$ which transports the wind stress into the homogeneous layer.
+At the bottom of the single layer, there is a viscous boundary layer of thickness $\delta_E$ wherein the viscous stresses produced by the fluid motion against the bottom act on the fluid layer.
 We assume that in this layer, the north-south motion is small enough that the $\beta$-plane approximation is valid and that the velocity of the fluid is small enough that the fluid is in geostrophic balance such that:
 \begin{equation}
 	\beta L / f_0 \ll 1,
@@ -79,7 +117,7 @@ giving, assuming steady state (i.e., time-independent circulation):
 \begin{equation}
 	\beta v = \frac{f_0}{D}\left( w_{Ek} - w_B^\ast \right) + A_H \Delta \psi,
 \end{equation}
-where we have assumed that the limits of our vertical velocity are composed into:
+where we have assumed that the limits of our vertical velocity are decomposed into:
 \begin{align}
 	\text{Top: }& w_{Ek,}  \\
 	\text{Bottom: }& w_B^\ast = w_B + w_{Ek,B},
@@ -105,15 +143,184 @@ Thus, we arrive at the model we are interested in this problem set, namely:
 
 <h3>Mathematical Preliminaries</h3>
 
+We recall the following:
+<div class="definition" text="Solution to a Second-Order, Homogenous Ordinary Differential Equation">
+The solution to a second-order, homogeneous ordinary differential equation $X_{h}(x)$ is given by:
+\begin{equation}
+	X_h = a\exp\left[\lambda_1 x\right] + b\exp\left[\lambda_2x\right],
+\end{equation}
+for $\lambda_i$ the two roots of the characteristic polynomial for $X_{h}(x)$ and $a,b$ undetermined constants.
+</div>
+We then recall the subsequent solution for a non-homogeneous equation:
+<div class="definition" text="Solution to a Second-Order, Non-homogeneous Ordinary Differential Equation">
+The solution to a second-order, non-homogeneous ordinary differential equation equation $X_{nh}(x)$ is given by:
+\begin{equation}
+	X = X_h(x) + X_p(x),
+\end{equation}
+where the particular solution $X_p(x)$ is to be determined. 
+</div>
+Handily, we recall the following:
+<div class="claim" text="Method of Undetermined Coefficients">
+A common way of solving for particular, second-order solutions is to assume a function of the form:
+\begin{equation}
+	X_p = cY(x),
+\end{equation}
+where $Y(x)$ is the functional form of the non-homogeneous part, such as $\exp, \sin$, etc., and $c$ is a constant to be determined (there could be multiple per term of $Y(x)$).
+By plugging in $X_p(x)$ into the non-homogeneous equation and solving for $c$ (or the multiple coefficients), we come to a solution of our equation of interest. 
+</div>
+Lastly, we remember the following geometric definition:
+<div class="definition" text="Arc Length">
+The arc length $S$ is defined as the path length traversed a central angle $\theta$ along the circumference of a circle of radius $R$, calculated by:
+\begin{equation}
+	S = R\theta.
+\end{equation}
+</div>
+In our case, we will let $R$ be the radius of the Earth and $\theta$ be longitude.
 
 <h3>The Flat Bottom Double Gyre</h3>
 
+<h4>Ekman Transport</h4>
+Now, with those preliminaries out of the way, we proceed to solve the Stommel model for $w_B=0$, that is for a flat bottom.
+To begin, we calculate the Ekman velocity, recalling from lecture that:
+\begin{equation}
+	w_{Ek} = \frac{1}{f_0\rho_0}\nabla \times \underline{\tau}_w,
+\end{equation}
+where we are given that:
+\begin{equation}
+	\underline{\tau}_w = \begin{bmatrix} \tau_0\cos\left[\pi\left( y - 45^\circ \right)/ 25^\circ\right] \\ 0 \end{bmatrix}, 
+\end{equation}
+i.e., we have a purely zonal wind stress.
+Therefore, we calculate that:
+\begin{equation}
+	w_{Ek} = \frac{\tau_0\pi}{f_0\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right].
+\end{equation}
 
+<h4>Interior Solution</h4>
+Now, in this problem set we will assume that our streamfunction of interest is defined as:
+\begin{equation}
+	\psi = \psi_I + \psi_B,	
+\end{equation}
+where we have decomposed the streamfunction into the interior $I$ and boundary $B$ solutions. 
+We want to determine the leading order terms in each region. 
+To do this, we rearrange our vorticity equation to be of the form:
+\begin{equation}
+	L_s\Delta\psi + \partial_x\psi = \frac{f_0}{\beta D}w_{Ek},
+\end{equation}
+we have defined the width of the Stommel boundary layer as $L_s = \epsilon / \beta = L_x / 100$.
+Now, we perform some scaling analysis, with $W_E$ the magnitude for Ekman transport, finding that:
+\begin{align}
+	\partial_x\psi &\sim \frac{UL}{L} \simeq \frac{W_E f_0}{\beta D} = \frac{10^{-7}10^{-4}}{10^{-11}10^3} = 10^{-3}, \\
+	L_s\Delta\psi &\sim \frac{UL}{L^2}\frac{L}{10^2} \simeq \frac{W_E f_0}{\beta D 10^2} = \frac{10^{-7}10^{-4}}{10^{-11}10^310^2} = 10^{-5}.
+\end{align}
+Therefore, in the interior we note that $\mathcal{O(\partial_x\psi}) \gg \mathcal{O}(L_s\Delta\psi)$, meaning that we can neglect the stress from the bottom Ekman layer in the interior (i.e., we are in Sverdup balance).
+This means then that we have the first-order differential equation:
+\begin{equation}
+	\partial_x\psi_I = \frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right].
+\end{equation}
+We can solve this using Separation of Variables, to get:
+\begin{equation}
+	\psi_I = \frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]x + C,
+\end{equation}
+where we determine the constant $C$ with the boundary condition (BC): $\psi_I(L_x, y) = 0$, for $L_x$ the length of the $x$ domain, which means then that:
+\begin{equation}
+	C = -\frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]L_x.
+\end{equation}
+Thus, our interior streamfunction is given by:
+\begin{equation}
+	\psi_I = \frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]\left( x - L_x \right).
+\end{equation}
+
+<h4>Boundary Solution</h4>
+
+Next, we have to find the boundary solution, $\psi_B$.
+To do this, we note that, in the western boundary current, the streamfunction will be varying greatly in $x$ to accommodate the needed northward mass transport, giving:
+\begin{equation}
+\partial_x\psi_B \gg \partial_y\psi_B.
+\end{equation}
+Therefore, we can simplify our second-order Ekman stress term into $\Delta \to \partial_{x x}$.
+Next, we perform scaling analysis in the western boundary current of width $L_s$, noting first that $\psi_B$ has to be at least as great as $\psi_I$ as one interfaces with the other as $x \to L_x$.
+Therefore, we get:
+\begin{align}
+	\beta \partial_x\psi_B &\gtrsim \frac{\beta\psi_I}{L_s} = \frac{\beta U L}{L_s} = \frac{W_Ef_0L}{L_sD} = \frac{10^{-7}10^{-4}10^{6}}{10^{4}10^3} = 10^{-12}, \\
+	\epsilon \partial_{x x}\psi_B &\gtrsim \frac{\beta L_s\psi_I}{L_s^2} = \frac{\beta U L}{L_s} = \frac{W_Ef_0L}{L_sD} = \frac{10^{-7}10^{-4}10^{6}}{10^{4}10^3} = 10^{-12}, \\
+	\frac{\beta f_0}{D}w_{Ek} &\sim \frac{W_E f_0}{D} = \frac{10^{-7}10^{-4}}{10^3} = 10^{-14}.
+\end{align}
+This then means that we can neglect the Ekman transport in the boundary layer, leading to the second-order, homogeneous linear differential equation:
+\begin{equation}
+	\partial_{x x}\psi_B + \frac{1}{L_s}\partial_x\psi_B = 0.
+\end{equation}
+To solve this equation, we first hold all $y$ constant, meaning that we can treat this as an ordinary differential equation. 
+Therefore, we recall our definition of the solution to equations of this type and assume an ansatz to this equation of the form $\psi = \text{e}^{\lambda x}$.
+Plugging this into our differential equation, we get the characteristic polynomial:
+\begin{equation}
+	\lambda^{2} + \frac{1}{L_s}\lambda = 0,
+\end{equation}
+which has roots $\lambda = 0, - 1 / L_s$. Therefore, we get a solution of the form:
+\begin{equation}
+	\psi_B = a + b\exp\left[- \frac{x}{L_s}\right].
+\end{equation}
+To solve for $a$, we note the BC $\psi(L_x, y) = 0$, giving:
+\begin{equation}
+a = -b\exp\left[\frac{L_x}{L_s}\right] \to 0,
+\end{equation}
+given that $L_s \ll L_x$ and that $\psi_I(L_x, 0) = 0$.
+Then, we use the BC $\psi(0, y) = 0$, which gives:
+\begin{equation}
+	b = \frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]L_x.
+\end{equation}
+Therefore, our boundary solution is:
+\begin{equation}
+	\psi_B = \frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]L_x\exp\left[- \frac{x}{L_s}\right].
+\end{equation}
+
+<h4>Full Solution</h4>
+
+This all means that our full solution for the flat bottom, double gyre Stommel model is given by:
+\begin{equation}
+	\Psi_F = D\psi_F = \psi_{F,I} + \psi_{F,B} = \frac{\tau_0\pi L_x}{\beta\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]\left(\frac{x}{L_x} + \exp\left[- \frac{x}{L_s}\right] - 1\right).
+\end{equation}
+We plot this solution in Fig. 1 below, where we have defined the nondimensional domain variables:
+\begin{equation}
+	\widehat{x} = \frac{x}{L_x} \quad \text{ and } \quad \widehat{y} = \frac{y - 20^\circ}{50^\circ}. 
+\end{equation}
+Additionally, we have used the following values:
+\begin{align}
+	\tau_x &\sim 8 \times 10^{-2} \: \left[\text{kg} \text{ m}^{-1} \text{s}^{-2}\right], \\	
+	L_x &\sim 60 \: \left[\text{degrees West}\right], \\
+	L_s &\sim L_x / 10^2 \: \left[\text{degrees West}\right], \\
+	\beta &\sim 2 \times 10^{-11} \: \left[\text{s}^{-1} \text{m}^{-1}\right], \\
+	\rho_0 &\sim 1 \times 10^{3} \: \left[\text{kg} \text{ m}^{-3}\right], \\
+	f_0 &\sim 1 \times 10^{-4} \: \left[\text{s}^{-1}\right], \\
+	R &\sim 6371000 \: \left[\text{m}\right].
+\end{align}
+Importantly, we remember our definition of arc length, which allows us to convert the units of $L_s \to L_s R L_x$.
 <figure>
 	<img src="images/prob1a_revised.png" style="width:100%">
 	<figcaption> Fig. 1: The streamfunction solution $\Psi_F = D \psi_F$ to the flat bottom double gyre problem, with the solution plotted in Sverdrups and the domain nondimensionalized.</figcaption>
 </figure>
 
+We can see that the expected symmetric, two gyre solution is exhibited in Fig. 1, with a difference in the cyclonicity of the gyres also as expected.
+Additionally, as was a fundamental result of Stommel's original work, we note that presence of a western boundary current in both gyres that was revolutionary in our understanding of ocean circulation in his 1947 paper.
+
+<h4>Proportional Meridional Velocity</h4>
+
+Now, we can examine a zonal cross section of the proportional meridional velocity structure across our solution by defining:
+\begin{equation}
+	X = \frac{x}{L_x} + \exp\left[- \frac{x}{L_s}\right] - 1.
+\end{equation}
+Then, we can estimate a proportional meridional velocity distribution using:
+\begin{equation}
+	\frac{\textrm{d}X}{\textrm{d}x} = \frac{1}{L_x} - \frac{1}{L_s}\exp\left[- \frac{x}{L_s}\right].
+\end{equation}
+We plot this profile in Fig. 2 in the solid red line.
+An important comparison is with the Munk model, which as discussed earlier considers the fourth-order lateral diffusion of vorticity in the $\nabla ^4 \psi$ term.
+The proportional meridional velocity is given, from our notes, as:
+\begin{equation}
+\frac{2}{\sqrt{3}}\exp\left[-\frac{x}{L_M}\right]\sin\left[\frac{\sqrt{3}}{2}\frac{x}{L_M}\right],
+\end{equation}
+for $L_M$ the width of the Munk layer.
+For a basic comparison, we plot a proportional distribution of the Munk meridional velocity in the dashed black line in Fig. 2, where we have both negated and assumed $L_M \simeq L_S$ for the basic sake of comparison, though this is not necessarily true in the exact sense.
+Additionally, here we have defined $\widehat{x} = x / L_s$ and plotted it out to 20.
 <figure>
 	<img src="images/prob1b_revised.png" style="width:100%">
 	<figcaption> 
@@ -123,24 +330,132 @@ Thus, we arrive at the model we are interested in this problem set, namely:
 		Note the nondimensionalized zonal coordinate.
 	</figcaption>
 </figure>
+There are a number of key similarities and differences between these two solutions plotted in Fig. 2.
+First, we note that there is a presence of the western boundary current in both solutions, despite the maximum of the peaks occurring in different zonal positions, at the boundary for the Stommel solution and slightly within the Munk boundary layer for the Munk solution.
+The Munk solution also exhibits a counter-current that balances out the flow in the western boundary current. This is not present in the Stommel solution.
+The solutions at the boundaries are also different. 
+Our current in the region near $x=0$ is greatly negative, but asymptotically approaches a slightly positive (i.e., northward) value that balances out the negative western boundary current (southward).
+We contrast this to the Munk solution, which exhibits a no-slip boundary condition that supports the lateral diffusion term of vorticity $\nabla ^4 \psi$, this is to say that $\partial_x \psi = 0$, which is something that we do not assume in our derivation of the streamfunction solution.
+Therefore, we correspondingly see that the Munk solution is $\text{d}X / \text{d}x (0, y) = \text{d}X / \text{d}x (L_x,y) = 0$ which we do not see in the Stommel solution.
 
 <h3>The Non-flat Bottom Double Gyre</h3>
 
+<h4>Interior Solution</h4>
+We now have that $w_{BB} \not=0$, for $w_B = w_{BB}\exp\left[- \gamma x / L_s\right]$. Therefore, our vorticity equation is of the form:
+\begin{equation}
+	\beta\partial_x\psi + \epsilon\Delta\psi = \frac{f_0}{D}\left( w_{Ek} - w_B\right).
+\end{equation}
+We are given that:
+\begin{equation}
+w_B = \begin{cases} w_0\sin\left[\pi\left( y - 50^\circ \right) / 20^\circ\right]\exp\left[-\gamma x / L_s\right] & y \in \left[30^\circ, 50^\circ\right], \\ 0 & \text{otherwise,} \end{cases}
+\end{equation}
+for $\gamma, w_0$ constants.
+Here we note the $\text{e}-$folding length of $w_B$ is $L_s / \gamma \sim 10^{4} / 10^{-1} = 10^5$ [m], which is an order of magnitude less than the length of the $x$ domain.
+Therefore, we would get a drop-off of $e^{-5}$ by the zonal mid-point of the gyre. 
+Thus, we get:
+\begin{align}
+\partial_x \psi_I &\gg L_S \Delta \psi_I, \\
+w_{Ek} &\gg w_{B}.
+\end{align}
+This all then means that in the interior of the gyre, our vorticity equation is:
+\begin{equation}
+	\partial_x\psi_I = \frac{f_0}{\beta D}w_{Ek},
+\end{equation}
+which we note is the same interior equation for the flat bottom case. 
+Thus, we get that the interior solution is, as before:
+\begin{equation}
+	\psi_I = \frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]\left( x - L_x \right).
+\end{equation}
+
+<h4>Boundary Solution</h4>
+
+Now, to find the boundary solution for $w_{BB}\not=0$, that is we are in the domain of $y \in \left[30^\circ, 50^\circ\right]$, we note that in the boundary layer, in addition to the scaling analysis performed in the Flat Bottom case, we have that:
+\begin{align}
+	w_B \sim \frac{w_0 f_0\mathcal{O}(10^{-1 \text{ to } 0})}{D} \simeq 10^{-11 \text{ to } -12},
+\end{align}
+where we have noted that the $\sin\left[\cdot\right]\exp\left[\cdot\right]$ contributes $(10^{-1 \text{ to } 0})$.
+We can see that this is the same order as as $\partial_x\psi_B$ and $\partial_{x x}\psi_B$, where we have again noted that $\partial_x \psi_B \gg \partial_y \psi_B$.
+Therefore, we get the second-order nonhomogenous differential equation:
+\begin{equation}
+	\partial_{x x}\psi_B + \frac{1}{L_s}\partial_x\psi_B = - \frac{f_0w_0}{\epsilon D} \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\exp\left[-\gamma \frac{x}{L_s}\right]\delta_{II},
+\end{equation}
+where we have defined the region Kronecker $\delta$
+\begin{equation}
+\delta_{II} = \begin{cases} 1 & y \in \left[30^\circ, 50^\circ\right], \\ 0 & \text{ otherwise}. \end{cases}
+\end{equation}
+Now, we start the solving by recalling our definition of solutions for equations of this form, by first assuming that we can turn this equation into an ordinary differential equation by holding all $y$ constant.
+We apply the same anstanz to the homogeneous part of this equation to get a characteristic polynomial with roots $\lambda = 0, 1 / L_s$, leading to a homogeneous general solution of the form:
+\begin{equation}
+	\psi_{B,h} = b\exp\left[-\frac{x}{L_s}\right].
+\end{equation}
+where we have again found, given the BC $\psi(L_x, y) = 0$, that $a = 0$.
+Next, we want to find the particular solution by proposing an ansatz, following our claim of the Method of Undetermined Coefficients, as:
+\begin{align}
+	\psi_{B,p} &= a\exp\left[-\gamma \frac{x}{L_s}\right], \\
+	\partial_x\psi_{B,p} &= -a \frac{\gamma}{L_s} \exp\left[-\gamma \frac{x}{L_s}\right], \\
+	\partial_{x x}\psi_{B,p} &= a \frac{\gamma^{2}}{L_s^2} \exp\left[-\gamma \frac{x}{L_s}\right].
+\end{align}
+Plugging these into our non-homogeneous equation, we can simplify to get:
+\begin{equation}
+\frac{\gamma^{2}a}{L_s^{2}} - \frac{\gamma a}{L_s^{2}} = - \frac{f_0w_0}{\epsilon D} \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\delta_{II}.
+\end{equation}
+This then gives:
+\begin{equation}
+	a = - \frac{f_0w_0L_s^{2}}{\left( \gamma^{2} - \gamma \right) \epsilon D} \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\delta_{II}.
+\end{equation}
+Then, applying the boundary condition:
+\begin{equation}
+	0 = \psi(0, y) = \psi_I + \psi_{B,h} + \psi_{B,p} = -\frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]L_x + b - \frac{f_0w_0 L_s^{2}}{\left( \gamma^{2} - \gamma \right) \epsilon D} \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\delta_{II},
+\end{equation}
+we can get that:
+\begin{equation}
+	b = \frac{\tau_0\pi}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]L_x + \frac{f_0w_0 L_s^{2}}{\left( \gamma^{2} - \gamma \right) \epsilon D} \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\delta_{II}.
+\end{equation}
+Therefore, we have that our boundary solution is:
+\begin{equation}
+	\psi_B = \frac{\tau_0\pi L_x}{\beta D\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ}\right]\exp\left[- \frac{x}{L_s}\right] + \frac{f_0w_0 L_s^{2}}{\left( \gamma^{2} - \gamma \right) \epsilon D} \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\delta_{II}\left( \exp\left[- \frac{x}{L_s}\right] - \exp\left[-\gamma \frac{x}{L_s}\right] \right).
+\end{equation}
+
+<h4>The Full Solution</h4>
+
+Putting all of this together, we get that our full solution is:
+\begin{equation}
+	\Psi_S = D \psi_S = \frac{\tau_0\pi L_x}{\beta\rho_{0}25^\circ}\sin\left[\frac{\pi\left( y - 45^\circ \right) }{25^\circ} \right]\left( \frac{x}{L_x} + \exp\left[- \frac{x}{L_s}\right] - 1\right)  + \frac{f_0w_0 L_s^{2}}{\left( \gamma^{2} - \gamma \right) \epsilon } \sin\left[\frac{\pi\left( y - 50^\circ \right) }{20^\circ}\right]\delta_{II}\left( \exp\left[- \frac{x}{L_s}\right] - \exp\left[-\gamma \frac{x}{L_s}\right] \right).
+\end{equation}
+We plot this solution in the bottom panel Fig. 3, with the corresponding $w_B$ for this problem with $\gamma = 0.4$ in the top panel for comparison.
+
 <figure>
 	<img src="images/prob2_revised.png" style="width:100%">
-	<figcaption> Fig. 3: Bottom pressure toque forcing, $w_B$ (top) and streamfunction solution $\Psi_S = D \psi_S$ to the non-flat bottom double gyre problem.
+	<figcaption> Fig. 3: Bottom stress forcing, $w_B$ (top) and streamfunction solution $\Psi_S = D \psi_S$ to the non-flat bottom double gyre problem.
 	We again note that $\Psi_F$ is plotted in Sverdups and the domain is nondimensionalized.
 	The deformation of the symmetric streamfunction between $30^\circ$ and $50^\circ$ is is an important feature of the streamfunction solution.
+	Here, $\gamma = 0.4$, as is given in the question.
 	</figcaption>
 </figure>
 
+We can see that the non-flat bottom disrupts the symmetric double gyre solution for the flat bottom over the western boundary current region in which $w_B$ is dominant (which is proportional to the $e$-folding scaling analysis discussed previously), predominantly (with the currently value of $\gamma$) at the western boundary for $y \in \left[30^\circ, 50^\circ\right]$.
+Additionally, we can see that $w_B$ provides a negative perturbation to our solution, which we see in the streamfunction by a continuation of the northern gyre transport into the southern gyre circulation, this is to say there are negative transport contours perturbing the positive contours of the southern gyre.
+The magnitudes of the transport nearly stay the same, with a slight increase in the negative transport within the northern perturbed gyre transport.
+We also consider the case in which there is a positive perturbation to our solution in Fig. 4, i.e., $w_B > 0$.
+
+<figure>
+	<img src="images/prob2b_revised.png" style="width:100%">
+	<figcaption> Fig. 4: The case in which we change the sign of the bottom stress term, that is we have a positive vertical velocity that exponentially decreases to 0 away from the side.</figcaption>
+</figure>
+
+This is the case in which we have translated the $\sin$ within the $w_{BB}$ term by a half-period such that the amplitude is negative.
+We can see that we have the negated effect as seen in Fig. 3, that is that there is an amplification of transport over the region in which $w_B$ is dominant in the southern gyre which makes the positive transport more than a factor of two greater. 
+Correspondingly, we get that positive transport protrudes into the northern, negative transport circulation gyre in this solution.
+There is little change in the negative transport magnitude compared to the flat bottom solution.
 
 <h3>Parameter Sensitivity</h3>
+
+
 
 <figure>
 	<img src="images/prob3_psi_gamma_revised.png" style="width:100%">
 	<figcaption> 
-		Fig. 4: A parameter sensitivity study of the bottom pressure torque forcing $w_B$ (left column) and the resulting streamfunction $\Psi_S$ (right column) for a range of $\gamma \in \left[0.01, 0.1, 0.25, 0.5, 0.75, 1.0, 10\right]$.
+		Fig. 5: A parameter sensitivity study of the bottom pressure torque forcing $w_B$ (left column) and the resulting streamfunction $\Psi_S$ (right column) for a range of $\gamma \in \left[0.01, 0.1, 0.25, 0.5, 0.75, 1.0, 10\right]$.
 		We note the decreasing perturbation in $\Psi_S$ caused by $w_B$ as $\gamma$ increases.
 		The domain is again nondimensionalized and the streamfunction plotted in Sverdrups.
 	</figcaption>
@@ -151,7 +466,7 @@ Thus, we arrive at the model we are interested in this problem set, namely:
 <figure>
 	<img src="images/prob4_revised.png" style="width:100%">
 	<figcaption> 
-		Fig. 5: A possible distribution of $w_B$ (middle) that removes the effects imposed by $w_{Ek}$ (top) on the resulting streamfunction $\Psi_S$ (bottom).
+		Fig. 6: A possible distribution of $w_B$ (middle) that removes the effects imposed by $w_{Ek}$ (top) on the resulting streamfunction $\Psi_S$ (bottom).
 		We note the streamfunction resembles the solution to the flat bottom streamfunction $\Psi_F$.
 		The domain is nondimensionalized and the streamfunction plotted in Sverdrups.
 	</figcaption>
