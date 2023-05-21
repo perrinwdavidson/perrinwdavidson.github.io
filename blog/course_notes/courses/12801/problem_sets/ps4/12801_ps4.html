@@ -63,7 +63,7 @@ Furthermore, we will define three regions for which we will derive both the stre
 Note the convention used here, in which $i, j \in \left[1, 2, 3\right]$ and $i$ indexes the level and $j$ the region in which the variable is valid.
 We illustrate the regions in Fig. 1.
 <figure>
-	<img src="images/regions.png" style="width:40%">
+	<img src="images/regions.png" style="width:60%">
 	<figcaption> Fig. 1: The three regions for which we will derive the valid streamfunctions and potential vorticity equations in each layer.</figcaption>
 </figure>
 We note regions II and III are so called "pool" regions for specific combinations of $i, j$ on $q$, for which there will be homogenized potential vorticity in the second and third layers.
@@ -90,17 +90,18 @@ Now, we take the following values, which we will use for the remainder of the pr
 \end{align}
 We plot both the Eckman pumping field and the geostrophic streamfunction in Fig. 2 with these values. 
 <figure>
-	<img src="images/prob1.png" style="width:100%">
+	<img src="images/prob1.png" style="width:60%">
 	<figcaption> Fig. 2: The Eckman pumping field, $w_{Ek}$, and the corresponding geostrophic streamfunction, $\Psi_{geo}$. </figcaption>
 </figure>
 For the sake of simplicity, we will follow Marshall and Speer and define:
 \begin{equation}
-	\Psi_{Sv} = \frac{\pi \tau_x L_x}{\beta \rho_0 L_y} \sim \text{max}\left[\Psi_{geo}\right] \sim 7.85 \:\left[\text{Sv}\right],
+	\Psi_{Sv} = \frac{\pi \tau_x L_x}{\beta \rho_0 L_y} \sim \text{max}\left[\Psi_{geo}\right] \simeq \frac{\pi \cdot 10^{-1} \cdot \left( 3 \times  10^6 \right) }{\left( 2 \times  10^{-11} \right)\cdot 10^3 \cdot \left( 3 \times  10^6 \right)  } = 15.7 \:\left[\text{Sv}\right],
 \end{equation}
 so we will deal with the geostrophic streamfunction of the form:
 \begin{equation}
     \Psi_{geo} = \Psi_{Sv}\left(1 - \frac{x}{L_x}\right)\sin\left[\frac{\pi y}{L_y}\right].
 \end{equation}
+We note that Marshall and Speer define $\Psi_{Sv} \sim 40$ [Sv], but for our values in this problem the above transport magnitude is at least within the same order of magnitude, $\mathcal{O}(10^1)$ [Sv].
 
 <h3>Problem 2 (Region I)</h3>
 
@@ -130,14 +131,15 @@ First, we assume, from the problem:
 \end{equation}
 As we know the definition of $F$, we can rearrange to get, for the values given above:
  \begin{equation}
-	H = \left(\frac{f_0^2\pi\tau_xL_x}{2g'\rho_0\beta^2L_y^2}\right)^{1 / 2} \sim 181 \:\left[\text{m}\right],
+	H = \left(\frac{f_0^2\pi\tau_xL_x}{2g'\rho_0\beta^2L_y^2}\right)^{1 / 2} \sim 255 \:\left[\text{m}\right],
 \end{equation}
 and therefore calculate:
 \begin{equation}
 	F = \frac{f_0^2}{g'H} \sim  2.76 \times 10^{-9} \: \left[\text{m}^{-2}\right].
 \end{equation}
+We note that $H$ is linked to our value of the transport $\Psi_{Sv}$.
 Next, we need to determine the boundaries of Region I, as shown in Fig. 1. 
-To do this, we will note the curve that demarkates Region I is given by equating $q^1_2$ with the reference value of QGPV at the center of the basin, i.e.:
+To do this, we will note the curve that demarcates Region I is given by equating $q^1_2$ with the reference value of QGPV at the center of the basin, i.e.:
 \begin{equation}
 	q_2^1 = \beta y + F\psi_1^1 = \beta L_y.
 \end{equation}
@@ -153,26 +155,27 @@ Noting the coefficient in the second term on the LHS is assumed to be 2, we get:
 \end{equation}
 We plot the resulting bounds in Fig. 3.
 <figure>
-	<img src="images/prob2a.png" style="width:40%">
+	<img src="images/prob2a.png" style="width:60%">
 	<figcaption> Fig. 3: The bounds between Region I and Region II, as quantified above and graphically represented in Fig. 1.</figcaption>
 </figure>
 Now, we plot $\psi_1^1$ in Fig. 4 (but not $\psi_2^1$ or $\psi_3^1$ as these are 0). 
 <figure>
-	<img src="images/prob2b.png" style="width:40%">
+	<img src="images/prob2b.png" style="width:60%">
 	<figcaption> Fig 4: The streamfunction $\psi_1^1$.</figcaption>
 </figure>
 As confirmed by the maths, this is simply the geostrophic streamfunction normalized to the height of the layers, $H.$
 Next, we will plot the entire domain solution for $q^1_i$ in Fig. 5 below. 
 <figure>
-	<img src="images/prob2c.png" style="width:100%">
+	<img src="images/prob2c.png" style="width:60%">
 	<figcaption> Fig 5: The QGPV $q_i^1$ over the entire domain, where the dashed red line separates the pool region (left, closed region) to the shadow zone (right, open region).</figcaption>
 </figure>
 We note the "pool region" which is defined above in $q^1_2$ by those contours which only intersect with the western boundary and the "shadow zone" by those contours which intersect the eastern boundary.
-The dashed red line demarkates these different regions, and is defined by the Region I boundary above.
+The dashed red line demarcates these different regions, and is defined by the Region I boundary above.
 
 <h3>Problem 3 (Region II)</h3>
 
-We are moving onto the second region, in which we have the following equations for the streamfunctions:
+We are moving onto the second region, for which we have two equations for two unknowns.
+Concretely, we have the following equations for the streamfunctions:
 \begin{align}
 	\psi_1^2 + \psi_2^2 &= \frac{\Psi_{geo}}{H}, \\
 	\psi_3^2 &= 0,
@@ -181,7 +184,7 @@ which means we have the following QGPV equations:
 \begin{align}
 	q_1^2 &= \beta y - F\left(\psi_1^2 - \psi_2^2\right), \\
 	q_2^2 &= \beta y + F\left(\psi_1^2 - \psi_2^2\right) = \beta L_y, \\
-	q_3^2 &= \beta y + F\psi_2^2.,
+	q_3^2 &= \beta y + F\psi_2^2,
 \end{align}
 noting the assumption $q_2^2 = \beta L_y$ of homogenization of GQPV in the pool region.
 From our streamfunction Sverdrup relation, we can get the relation:
@@ -194,10 +197,10 @@ Therefore, we can start our solutions by finding first:
 \end{equation}
 which we can plug in to our relation above to get:
 \begin{equation}
-	\psi_1^2 = \frac{\Psi_{geo}}{H} - \frac{1}{3}\left(\frac{\Psi_{geo}}{H} - \frac{\beta}{F}\left(L_y - y\right)\right),
+	\psi_1^2 = \frac{2}{3}\frac{\Psi_{geo}}{H} - \frac{\beta}{3F}\left(L_y - y\right),
 \end{equation}
 and of course we still $\psi_3^2 = 0$.
-The next calculation used in this problem is the demarkation between Region II and Region III. 
+The next calculation used in this problem is the demarcation between Region II and Region III. 
 We follow a similar procedure as before, in which we let:
 \begin{equation}
 	 q_3^2 = \beta y + F\psi_2^2 = \beta L_y,
@@ -206,21 +209,21 @@ plug in our solution for $\psi_2^2$ and solve for $x$ to get:
 \begin{equation}
 	x = L_x\left(1 - \frac{4H\beta}{\Psi_{Sv}F\sin\left[\pi y / L_y\right]}\left(L_y - y\right)\right).
 \end{equation}
-We again use the demarkation region between I and II which we found previously to provide the appropriate solutions for $q_i, \psi_i$ in the appropriate regions.
+We again use the demarcation region between I and II which we found previously to provide the appropriate solutions for $q_i, \psi_i$ in the appropriate regions.
 Now, we plot these boundaries in Fig. 6
 <figure>
-	<img src="images/prob3a.png" style="width:40%">
+	<img src="images/prob3a.png" style="width:60%">
 	<figcaption> Fig 6: Boudaries between Regions I, II, and III.</figcaption>
 </figure>
-After applying the boundary to properly demarkate the solutions, we plot the streamfuncions in the top two layers in Fig. 7.
+After applying the boundary to properly demarcate the solutions, we plot the streamfuncions in the top two layers in Fig. 7.
 <figure>
-	<img src="images/prob3b.png" style="width:100%">
+	<img src="images/prob3b.png" style="width:60%">
 	<figcaption> Fig 7: The streamfunctions for flow in the top two layers (left) $\psi_1$ and (right) $\psi_2$.</figcaption>
 </figure>
 The dashed red line is the boundary between Region I and II used in this solution.
-We can then apply the same routine to demarkate the solutions for the QGPV in Fig. 8.
+We can then apply the same routine to demarcate the solutions for the QGPV in Fig. 8.
 <figure>
-	<img src="images/prob3c.png" style="width:100%">
+	<img src="images/prob3c.png" style="width:60%">
 	<figcaption> Fig 8: The QGPV for the three layers. </figcaption>
 </figure>
 Note the addition of the blue dashed line in the $q_3$ plot.
@@ -229,7 +232,8 @@ Additionally, note the homogenization (by assumption) of the QGPV in $q_2$.
 
 <h3>Problem 4 (Region III)</h3>
 
-We move on to Region III, having equations of the form:
+We move on to Region III, having three equations for three unknowns.
+We start with:
 \begin{align}
 	\psi_1^3 + \psi_2^3  + \psi_3^3 = \frac{\Psi_{geo}}{H}, \\
 \end{align}
@@ -260,13 +264,13 @@ Okay, so know we present the full, three-layer, three-flow results.
 First, we plot the solution for the three streamfunctions, using the respective bounds to piece together the appropriate solutoins to get those shown in Fig. 9.
 
 <figure>
-	<img src="images/prob4a.png" style="width:100%">
-	<figcaption> Fig 9: Streamfunction solution for flow in all three layers, where regions are demarkated with the red and blue dashed lines.</figcaption>
+	<img src="images/prob4a.png" style="width:60%">
+	<figcaption> Fig 9: Streamfunction solution for flow in all three layers, where regions are demarcated with the red and blue dashed lines.</figcaption>
 </figure>
 Now, we plot the solution for the QGPV in Fig. 10.
 <figure>
-	<img src="images/prob4b.png" style="width:100%">
-	<figcaption> Fig 10: the QGPV for flow in all three layers, again demarkated by the dashed lines.</figcaption>
+	<img src="images/prob4b.png" style="width:60%">
+	<figcaption> Fig 10: the QGPV for flow in all three layers, again demarcated by the dashed lines.</figcaption>
 </figure>
 We note the homogenization of the pool region for both $q_2$ and $q_3$ in their respective pool regions.
 
@@ -276,17 +280,18 @@ We note the homogenization of the pool region for both $q_2$ and $q_3$ in their 
 We will discuss the results presented mainly in Fig. 9 and Fig. 10. 
 We begin with the streamfunctions. 
 Importantly, we note the decrease in area / region as we move down in the water column. 
-This is to say that as the streamfunctions have progressively smaller regions of validity given the demarkations found in the previously questions.
-This also corresponds to the total transport decreasing as we go down in the watercolumn. 
+This is to say that as the streamfunctions have progressively smaller regions of validity given the demarcations found in the previously questions.
+This also corresponds to the total transport decreasing as we go down in the water column. 
 Further, we note the $\psi_i$ solution is nearly continuous at the region interfaces, but there is a slight discontinuity.
-Additionally, there is a similar form within the pool regions, both in the direction of circulation in the separate gyres as well as the forms of the contours in relation to the contour of the demarkation of the region.
+Additionally, there is a similar form within the pool regions, both in the direction of circulation in the separate gyres as well as the forms of the contours in relation to the contour of the demarcation of the region.
 </p>
 
 <p>
 Now, we discuss the QGPV. 
-Perhaps the largest difference is the pool regions between $q_2$ and  $q_3$ with the larck of one pool region in $q_1$.
-There is not a single pool region in $q_1$, as opposed to the large homogenzed QGPV pool within $q_2$ and the smalled homogenized pool of $q_3$.
-This then means the shadow region of $q_2$ is smaller than $q_3$. 
+Perhaps the largest difference is the pool regions between $q_2$ and  $q_3$ with the lack of one pool region in $q_1$.
+There is not a single pool region in $q_1$, as opposed to the large homogenized QGPV pool within $q_2$ and the smalled homogenized pool of $q_3$.
+This then means the shadow region of $q_2$ is smaller than $q_3$.
+Therefore, the circulation is confined to something called the "bowl", which narrows with depth becoming increasingly confined to the gyre boundary on the west.
 Remarkably, demonstrating the strength of this model formulation, we again see the close agreement between the QGPV contours across the interfaces. 
 We could, as with $\psi_i$, compare Fig. 10  $q_1$ with Fig. 5 and see a large similarity with only a minor discontinuity. Super cool!
 In both cases we can imagine a elliptical cone-like shape that decreases in cross-sectional area with depth in which we have homogenized QGPV as well as the region of validity for streamfunctions.
@@ -295,6 +300,7 @@ In both cases we can imagine a elliptical cone-like shape that decreases in cros
 <h3>Problem 6 ($N$-layers)</h3>
 
 Lastly, we discuss how to extend this solution to $N$ layers.
+We start with the discrete case.
 To do this, we will again assume  the same height $H$ and reduced gravity, i.e. same $F$, for all layers.
 Then, we know that we have to have the condition the summation of all QGPV in each layer must add up to the Sverdrup balance, i.e. the terms of the form $F\left(\psi_i + \psi_j + \ldots\right)$ will sum to zero leaving only a term dependent on $\beta y$ on the RHS.
 Taking all of this into consideration, we have for any given layer $i \in \left[2, N-2\right]$:
@@ -313,6 +319,21 @@ We can solve these equations in a similar, iterative manner as for the three lay
 	<li>Solve for $q_i$ for $i \in \left[1, N\right]$ given $\psi_{i}$ and/or $\psi_{i-1}, \psi_{i+1}$</li>
 	<li>Compile solutions in regions of validity given the boundaries found in 1.</li>
 </ol>
+We can solve for the "bowl" $D$ by first noting that the thickness of each layer increases linearly in the subtropical gyre with latitude, following Marshall and Nurser (1986).
+In order to maintain constant $f / h$, the vortex stretching term of the Taylor columns, must be equal to the value of $q_1$ on the southern edge of the subtropical gyre, which we can write down for the deviation from the undisturbed thickness of Layer 1 $H_1$, $\Delta h_1$:
+\begin{equation}
+\Delta h_1 = \frac{\beta (y - L_y)H_1}{f_0}.
+\end{equation}
+Then, the subsequent layer disturbances indexed by $n$ must be also constant and equal to their respective $q_n$ values for $y=L_y$, giving:
+\begin{equation}
+	\Delta h_n = \frac{\beta y H_n}{f_0},
+\end{equation}
+combined with the fact the summation of these disturbances must be zero gives:
+\begin{equation}
+	D = \sum_n H_n = \frac{L_y H_1}{y},
+\end{equation}
+for $y \in \left[0, L_y\right]$.
+We might consider moving onto the continuous case somewhat trivially by taking the limit of the thicknesses of each layer in the limit $h_n \to 0$ for all $n$.
 
 <hr style="width: 60em;">
 

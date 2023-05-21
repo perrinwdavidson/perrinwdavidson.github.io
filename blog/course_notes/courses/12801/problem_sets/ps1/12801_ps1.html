@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.801: Problem Set 1</title>
+
+<style>
+h1 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.claim {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.claim[text]:before {
+content: "Claim (" attr(text) "). ";
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.801: Problem Set 1</h1>
+
+<hr style="width: 60em;">
+
+ <div style="text-align: center;"> 
+All plots are appended in full-size to the end of this document for closer viewing, if wanted and/or needed.
+</div>
+
+<h3>Problem 2</h3>
+
+We start with hydrostatic balance, which from lecture we know is defined as:
+\begin{equation}
+	\partial_zp + g \rho = 0.
+\end{equation}
+We can solve this equation using separation of variables as follows:
+\begin{equation}
+	\int_{p\left(z=-H\right)}^{p\left(z=\eta\right)} \textrm{d}p = -g\rho \int_{z=-H}^{z=\eta} \textrm{d}z,
+\end{equation}
+which gives:
+\begin{equation}
+	p\left(-H\right) = p\left(\eta\right) + g\rho\left(\eta + H\right).
+\end{equation}
+This is the pressure at a depth $H$ below the MSL.
+Now, we can differentiate this equation with respect to $y$ to get:
+ \begin{equation}
+	\partial_y p\left(-H\right) = g\rho\partial_y\eta,
+\end{equation}
+where we have assumed that $p\left(\eta\right)$ is a constant. Clearly, this equation is independent of depth, $z$.
+Next, we can define geostrophic flow as:
+\begin{equation}
+	f\underline{u} = \frac{1}{\rho} \underline{\hat{z}}\times\nabla p,
+\end{equation}
+which is, in component form:
+\begin{align}
+	fu &= -\frac{1}{\rho}\partial_yp, \label{eq:geoflow2} \\
+	fv &= \frac{1}{\rho}\partial_xp.
+\end{align}
+Therefore, we can see that, by substitution, we get that:
+\begin{equation}
+	fu = -\frac{1}{\rho}g\rho\partial_y\eta,
+\end{equation}
+implying that:
+\begin{equation}
+	u = -\frac{g}{f}\partial_y\eta.
+\end{equation}
+This is clearly independent of depth, as well. Note that we can generally define:
+\begin{equation}
+	f\underline{u}=\frac{g}{f}\underline{\hat{z}}\times\nabla \eta,
+\end{equation}
+but the meridional component of this equation is 0 given that $\eta$ is a function of $y$ only in this formulation. 
+Lastly, we want to estimate the magnitude and direction of the zonal velocity.
+To do this, we will need a few numbers, calculated below:
+\begin{align*}
+	\partial_y\eta &= \frac{-0.200}{\left(10\right)\left(1.11\times 10^{5}\right)}, \\
+	g &= 9.81, \\
+	f &= 2\Omega\sin\phi = \sqrt{2}\left(7.27\times 10^{-5}\right), 
+\end{align*}
+which gives:
+\begin{equation}
+	u \simeq \frac{\left(-9.81\right)\cdot \left(-0.200 / 1.11\times 10^6\right)}{1.028\times 10^{-4}} = 1.72 \times 10^{-2} \:[\text{m s}^{-1}].
+\end{equation}
+
+<h3>Problem 3</h3>
+
+<p>
+<b>(a)</b> We start with geostrophic balance, and from <b>Problem 2</b> we know that:
+\begin{equation}
+	u = -\frac{g}{f}\partial_y\eta.
+\end{equation}
+Therefore, for the given $u\left(y,z=0\right)$, we have that:
+\begin{equation}
+	-\frac{fU_0}{g}\cos\left[\frac{\pi y}{2L}\right]=\partial_y\eta.
+\end{equation}
+Then, by Separation of Variables, we can find that:
+\begin{align}
+	-\frac{fU_0}{g}\int \textrm{d}y \cos\left[\frac{\pi y}{2L}\right] = \int \textrm{d}\eta,
+\end{align}
+and thus, we have that:
+\begin{equation}
+	-\frac{2fU_0L}{g\pi}\sin\left[\frac{\pi y}{2L}\right] = \eta.
+\end{equation}
+We set:
+\begin{equation}
+	\eta_0 = \frac{2fU_0L}{g\pi} \simeq \frac{2\left(1.028\times 10^{-4}\right)\cdot 1.5\cdot 10^5}{9.81\cdot 3.14} = 1.001 \:\text{[m]}.
+\end{equation}
+Like the example figure, we non-dimensionalize with variables:
+\begin{equation}
+	\widehat{y} = \frac{y}{L} \quad \& \quad \widehat{\eta} = \frac{\eta}{\eta_0},
+\end{equation}
+and we plot in Fig. 1 below.
+<figure>
+	<img src="images/prob3a_revised.png" style="width:60%">
+	<figcaption> Fig. 1: The nondimensionalized free surface height $\widehat{\eta}$ as a function of nondimensionalized $y$, $\widehat{y}$.</figcaption>
+</figure>
+We note that height of the free surface goes down with increasing $y$, which then means the pressure gradient force can balance the Coriolis force.
+</p>
+
+<p>
+<b>(b)</b> Now, we know from thermal wind that:
+\begin{equation}
+	f\partial_z u = \frac{g}{\rho_{0}}\partial_y\rho,
+\end{equation}
+which means that:
+\begin{equation}
+	\Delta \rho = \rho(y, z) - \rho(0, z) = \frac{f\rho_{0}}{g}\exp\left[\frac{z}{d}\right]\int \textrm{d}z \frac{U_0}{d}\cos\left[\frac{\pi y}{2L}\right],
+\end{equation}
+giving:
+\begin{equation}
+	\Delta \rho= \frac{2 f \rho_{0} U_0 L}{gd\pi}\sin\left[\frac{\pi y}{2 L}\right]\exp\left[\frac{z}{d}\right].
+\end{equation}
+We again define:
+\begin{equation}
+	\Delta \rho_0 = \frac{2 f \rho_{0} U_0 L}{gd\pi} \simeq \frac{2\cdot10^{-4}\cdot10^{3}\cdot1.5\cdot10^{5}}{(4 \times 10^2)\cdot3.14\cdot9.81} = 2.43 \left[\text{kg m}^{-3}\right],
+\end{equation}
+and nondimensionalize as follows:
+\begin{equation}
+	\widehat{y} = \frac{y}{L} \quad \& \quad \widehat{\Delta\rho} = \frac{\Delta \rho}{\Delta \rho_0},
+\end{equation}
+and we plot in Fig. 2.
+<figure>
+	<img src="images/prob3b_revised.png" style="width:60%">
+	<figcaption> Fig. 2: The nondimensionalized density difference $\widehat{\Delta \rho}$ as a function of nondimensionalized $y$, $\widehat{y}$.</figcaption>
+</figure>
+Here, we note that density differences increase with increasing $\widehat{y}$, which is the inverse of what we say for $\widehat{\eta}$.
+
+</p>
+
+<p>
+<b>(c)</b> Next we use the relation given in the problem:
+\begin{equation}
+	\sigma = -\rho_0\alpha\left(T - T_0\right),
+\end{equation}
+which implies that:
+\begin{equation}
+	\Delta \rho = -\alpha\rho_0\Delta T.
+\end{equation}
+Therefore, we have:
+\begin{equation}
+	\Delta T(y, z) = T\left(y, z\right) - T\left(0, z\right) = \frac{2 f U_0 L}{\alpha gd\pi}\sin\left[\frac{\pi y}{2 L}\right]\exp\left[\frac{z}{d}\right],
+\end{equation}
+Plugging in $\left[L, -L\right]$ into this relation, we get: 
+\begin{equation}
+	T\left(L,z\right)-T\left(-L,z\right) = \frac{4 f U_0 L}{\alpha gd\pi}\exp\left[\frac{z}{d}\right],
+\end{equation}
+We can estimate this difference as:
+\begin{equation}
+T\left(L,z\right)-T\left(-L,z\right) \simeq \left(\frac{10^{-4}\cdot1.5\cdot 10^{5}}{(2\times 10^{-4})\cdot \left(4 \times 10^2 \right) \cdot 9.81 \cdot 3.14}\right)\exp\left[-\frac{5}{4}\right] = 7.00 \text{ [C}^\circ].
+\end{equation}
+Comparing this to the figure, we can see that we are within the "ballpark" so to speak, i.e., within the correct order of magnitude. 
+Pulling two values from the figure across the 500 [m] depth horizon, we get that the difference there is $ \lesssim 15^\circ \text{ [C] } - 5^\circ \text{ [C] } = \mathcal{O}\left(10^\circ \text{ [C]}\right)$.
+</p>
+
+<p>
+<b>(d)</b>
+From our expressions for $\Delta T$ and $\eta$, we can see that the isotherms curve up with increasing $\widehat{y}$ (i.e., northward) whereas the free surface height curves down.
+Therefore, there is an inverse relationship as discussed in Section 4.3 of the notes. 
+We can further see this relationship by taking the ratio of these differences, which gives an inverse relationship.
+</p>
+
+<h3>Problem 4</h3>
+
+<p>
+<b>(a)</b> From hydrostatic balance and our definition of $\sigma$, we have that:
+\begin{equation}
+	\partial_zp = -g\rho_0\left(1 - \alpha\left(T - T_0\right)\right).
+\end{equation}
+Then, we can calculate pressure:
+\begin{equation}
+	\int \textrm{d}p = -g\rho_0\int \textrm{d}z + g\rho_0\alpha\int \textrm{d}z\left(T - T_0\right),
+\end{equation}
+giving:
+\begin{equation}
+	p\left(z\right) = p\left(\eta\right) + g\rho_0\left(\eta - z\right) - g\rho_0\alpha\int \textrm{d}z\left(T - T_0\right).
+\end{equation}
+So, we can take the pressure difference between two points in the horizontal, and assume that deep horizontal pressure gradients are 0 and atmospheric pressure is spatially constant to get:
+\begin{equation}
+	\Delta p = g\rho_0\Delta\eta - g\rho_0\alpha\int \textrm{d}z \Delta T = 0.
+\end{equation}
+Thus, we get that the free surface height is:
+\begin{equation}
+	\Delta \eta = \alpha\int_{-H}^z \textrm{d}z \Delta T = \alpha\left(z+H\right)\Delta T.
+\end{equation}
+We can can plug in a few numbers and get:
+\begin{equation}
+	\Delta \eta = (2 \times 10^{-4})\cdot 10^3 \cdot \left(5\text{ to }15\right) = \left(1 \text{ to } 3\right) \text{ [m] },
+\end{equation}
+where I snagged values for $\Delta T$ from Fig. 3 from the problem set and put in a range of values.
+</p>
+
+<p>
+<b>(b)</b> Geostrophic balance means there must be a pressure gradient force balancing the coriolois force.
+From hydrostatic balance, we know that:
+\begin{equation}
+	p\left(z\right) = p\left(\eta\right) + g\rho_0\left(\eta - z\right),
+\end{equation}
+which shows us that the horizontal pressure variations are dependent on the free-surface height. 
+In practice, we basically neglect the "day to day" fluctuations and instead focus on the geostrophic balance. 
+Explicitly, we can use hydrostatic and geostrophic balance, ignore variations in the surface pressure, and see that:
+\begin{align}
+	f\underline{u} = \frac{1}{\rho_0\underline{\hat{z}}}\times\nabla p
+\end{align}
+becomes:
+\begin{equation}
+	\underline{u} = \frac{g}{f}\underline{\hat{z}}\times\nabla \eta.
+\end{equation}
+Therefore, we see that this equation is consistent with the geostrophic relationship.
+Contour plots are given in Fig. 3. below.
+<figure>
+	<img src="images/geo_eta.png" style="width:60%">
+	<figcaption> Fig. 3: The geostrophic relationship between $\eta$ and $\overline{u}$ for high and low pressure systems.</figcaption>
+</figure>
+</p>
+
+<p>
+<b>(c)</b> We want to integrate in the $\left(x, z\right)$-plane the equation presented above. This gives:
+\begin{align}
+	F &= \frac{g}{f}\int \partial_x\eta \textrm{d}x \textrm{d}z \\
+	  &= \frac{g}{f}\Delta\eta \int \textrm{d}x \textrm{d}z \quad \left(\text{letting }\partial_x \to \Delta\right) \\
+	  &= \frac{gD}{f} \Delta\eta. 
+\end{align}
+Then, we can plug in some numbers to get an estimate:
+\begin{equation}
+	F = \frac{9.81\cdot 500 \cdot \left(1 \text{ to } 3\right)}{2\left(7.27\times 10^{-5}\right)\sin\left[38^\circ\right]} = \left(54.8 \text{ to } 164\right)\text{ [Sv]}.
+\end{equation}
+We note that this estimate spans two orders of magnitude and is in the range of transport for the ACC (of about 140 [Sv]). 
+Additionally, we can see the important dependence on the free surface height $\eta$, which can increase the flux by a factor of 3. 
+This is understandable as the greater the sea surface height, the more fluid in a column of water that is being fluxed.
+Clearly, this is an important transport of water that is a powerful western boundary current we will explore later in this course with models first developed by Stommel (1947).
+</p>
+
+<h3>Problem 5</h3>
+
+<p>
+<b>(a)</b> Given that the ACC is $\sim 2.3\times 10^7$ [m], we can estimate the average speed of the glider as:
+\begin{equation}
+\overline{u} =\frac{ \left[\text{Distance of ACC}\right]\times \left[\text{Number of Rotations}\right]}{\text{Time of Circumnavigation}} \sim \frac{\text{Distance}}{\text{Time}},
+\end{equation}
+which we know is our working definition of speed.
+Therefore, we can plug in some numbers to get:
+\begin{equation}
+	\overline{u} \simeq \frac{2.3 \times 10^7 \cdot 1.5}{5\cdot 60^2 \cdot 24 \cdot 365} = 0.219 \text{ [s]}.
+\end{equation}
+</p>
+
+<p>
+<b>(b)</b>We know from thermal wind and our definition of $\sigma$ that:
+\begin{equation}
+	\partial_z u = \frac{g\alpha}{f}\partial_yT,
+\end{equation}
+where we have plugged in our definition of density to the thermal wind relation and simplified. 
+Then, we use separation of variables to get:
+\begin{equation}
+	\int_0^{\overline{u}} \textrm{d}u = \frac{g\alpha}{f}\int_{-H}^0 \textrm{d}z \partial_y T,
+\end{equation}
+which gives, plugging in our mean value for the velocity and our depth averaged value $\partial_yT \to \overline{T} / L$:
+\begin{equation}
+	\frac{f\overline{u}}{g\alpha} = \frac{H}{L}\overline{T},
+\end{equation}
+which means that:
+\begin{equation}
+	\overline{T} = \frac{Lf\overline{u}}{g\alpha H} \simeq \frac{\left(6\times 10^5\right)\cdot10^{-4}\cdot 0.219}{9.81\cdot (2 \times 10^{-4})\cdot\left(4\times 10^3\right)} = 1.67 \: [^\circ\text{C}].
+\end{equation}
+This is a smaller number than expected, especially compared to the difference nearly an order of magnitude greater for the Gulf Stream.
+One possible reason for this is the fast speed calculated above at which the ACC is moving, which not only mixes the current well in the deep thermocline (in addition to the turbulence caused of the fast winds at this latitude), it also causes a large horizontal stratification between the ACC and the adjacent bodies of water.
+This is to say it is harder to induce a gradient if it is difficult for colder water to penetrate the current.
+We could contrast this against, say, the Gulf Stream which is small segment of a larger and colder body of water, the N. Atlantic.
+</p>
+
+<p>
+<b>(b)</b> We first define:
+\begin{align}
+	u\left(z\right) &= \overline{u}\left(1 - \frac{z}{H}\right), \\
+	v\left(y\right) &= \cos\left[\frac{\pi y}{2L}\right].
+\end{align}
+Therefore, integrating over the $\left(y, z\right)$-plane gives:
+\begin{equation}
+	F = \overline{u}\int_{-H}^0\int_0^L\left(1 - \frac{z}{H}\right)\cos\left[\frac{\pi y}{2L}\right] \textrm{d}y \textrm{d}z = \frac{L 2H \overline{u}}{\pi}.
+\end{equation}
+Plugging in numbers, we get:
+\begin{equation}
+	\frac{\left(\left[600/2\right]\times 10^3\right)\cdot 2 \cdot \left(4 \times 10^3\right) \cdot 0.219}{3.14} = 167 \text{ [Sv]}.
+\end{equation}
+We know that the observed transport of the ACC is about 130 to 140 [Sv]. 
+Therefore, with this calculation we are are nearly in accord with the observed transport. 
+However, we note that for every 1 [cm s$^{-1}$] of eastward bottom current, the transport through the Drake Passage changes by: $(6\times 10^5)\cdot {10}^{-2}\cdot(3\times 10^3) \simeq 18$ [Sv].
+Our above calculation only consider the contribution from thermal wind and not this additional transport. 
+With this addition, it is conceivable to calculate an estimate that is in less agreement with the observed transport.
+</p>
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
