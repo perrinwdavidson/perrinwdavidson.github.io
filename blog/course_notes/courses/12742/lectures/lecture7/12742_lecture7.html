@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.742: Lecture 7</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.claim {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.claim[text]:before {
+content: "Claim (" attr(text) "). ";
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.742: Lecture 7</h1>
+<h2>Export (and top-down controls)</h2>
+
+<hr style="width: 60em;">
+
+<h3>Phytoplankton Dynamics</h3>
+
+<h4>N-P Model: Bottom Up Limitation</h4>
+
+We can write a model of the form:
+\begin{equation}
+	\frac{\textrm{d}P}{\textrm{d}t} = P\cdot\left( v_{\text{max}} \frac{N}{K_N + N} - \lambda_p \right) =_{\text{SS}}0,
+\end{equation}
+where $\lambda_P$ is the death rate. 
+We can imagine this is a $\text{growth} - \text{death}$ scenario.
+Therefore, we can get:
+\begin{equation}
+	\lambda_P = \frac{v_{\text{max}}N}{K_N + N}.
+\end{equation}
+We can rearrange to get the nutrient, as a constant:
+\begin{equation}
+	N = \frac{\lambda_PK_N}{v_{\text{max}} - \lambda_P}.
+\end{equation}
+We define the total nutrient as: $N_T = N + P$.
+We note that in this steady-state model, $N$ is a constant, as it is a function of constants.
+Therefore, we can think of our system as having some total N, $N_T$, for which there is constant offset by $N$ that gives us $P$.
+We can define two regimes here. 
+The first is when $N$ is very low such that the growth rate from photosynthesis is smaller than the death rate.
+Therefore, we would eventually get that $P \to 0$.
+However, we we have that $N$ is large enough, then $P$ is supported and we reach a new steady state under the conditions of the system. 
+If advection and diffusion come into play, then we need to consider more $N$ to make up for this transport. 
+We can think of this solution, lastly, as the maximum value of $N$ that the system will hold, after which all additional $N$ goes into the production of $P$.
+
+<h4>N-P-Z Model: Top Down Limitation</h4>
+
+We can also consider the effect of having top down limitation, i.e, zooplankton eat both $N$ and $P$.
+Therefore, this removes the total amount of $N$ within the system.
+We present all of this in Fig. 1.
+We can continue this to have multiple size classes, which is shown for two size classes for $P$ and $Z$ in the dashed lines in the right panel of Fig. 1.
+
+<figure>
+	<img src="images/np_models.png" style="width:60%">
+	<figcaption> Fig. 1: Both top-down (right) and bottom-up (left) limitation models discussed thus far. The dashed lines in the TD control represent two sizes classes.</figcaption>
+</figure>
+
+<hr style="width: 60em;">
+
+<h4>Sverdrup's Critical Depth Hypothesis</h4>
+
+Sverdrup posits that the critical MLD is that where the integration of net photosynthesis and net respiration are equation, the compensation depth we discussed previously. 
+In this case, we could get that there is enough nutrients from the deep MLD and enough light to have a bloom, which is why we have lots of primary productivity in regions of deep MLD (North Atlantic).
+<figure>
+	<img src="images/sverdrup_Crity.png" style="width:60%">
+	<figcaption> Fig. 2: Sverdup's critical depth hypothesis.</figcaption>
+</figure>
+
+<h3>Regional Distributions of Export</h3>
+
+
+
+
+</div>
+</body>
+</html>
