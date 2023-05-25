@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.742: Lecture 12</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.claim {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.claim[text]:before {
+content: "Claim (" attr(text) "). ";
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.742: Lecture 12</h1>
+<h2>Thermodynamics in Seawater</h2>
+
+<hr style="width: 60em;">
+
+<h3>Gibbs Free Energy</h3>
+
+For chemical reactions, we can define:
+\begin{equation}
+	\Delta G = \sum G_{prof} - \sum G_{react} = \sum_i v_i \mu_i,
+\end{equation}
+where $v_i$ is the stoichiometric coefficient and $\mu_i$ the chemical potential. 
+This is the change in free energy or the chemical work that is being done in the system.
+
+<h4>An Example</h4>
+
+As an example, we can take:
+\begin{equation}
+	\text{HCO}_3^- \leftrightarrows \text{H}^+ + \text{CO}_3^{2-},
+\end{equation}
+then we have that:
+\begin{equation}
+	\Delta G^0 = \mu_\text{H} + \mu_{\text{CO}_3^{2-}} + \mu_{\text{HCO}_3^-}.
+\end{equation}
+The factors that contribute to our potential are:
+<ol>
+<li>concentrations</li>
+<li>chemical nature ($G^0, \Delta G^0, \mu^0$)</li>
+<li>interactions between species, such as non-ideal (like seawater)</li>
+</ol>
+We can define:
+\begin{equation}
+\mu_i = \mu_i^0 + \underbrace{RT \log \left[i\right]}_{\text{concentration}} = \mu_i^0 + RT\log a_i,
+\end{equation}
+where we define the activity as:
+\begin{equation}
+a_i = \gamma_i\left[i\right] = \{i\},
+\end{equation}
+for $\gamma_i$ the activity coefficient.
+\begin{equation}
+\Delta G = \mu_\text{H} + \mu_{\text{CO}_3^{2-}} + \mu_{\text{HCO}_3^-} + RT\log\left[\frac{a_\text{H}a_{\text{CO}_3^{2-}}}{a_{\text{HCO}_3^{-}}}\right] = \Delta G^0 + RT \log Q,
+\end{equation}
+where we note that $Q$ is the ratio of reactants over products.
+Now, at equilibrium, we know that $\Delta G = 0$ (i.e., we are at a steady state). 
+Therefore, we can rearrange to get:
+\begin{equation}
+	Q = \exp\left[- \Delta G^0 / RT\right] = K_{eq},
+\end{equation}
+which, at our equilibrium, is our reaction coefficient.
+Now, to tackle the activity coefficients, we note that:
+\begin{equation}
+	\mu_i = \mu_i^0 + RT\left( \log\gamma_i + \log\left[i\right]\right).
+\end{equation}
+These are super significant as they drive reactions in seawater, as there are myriad reactions going on.
+In seawater, the major driving force is the ionic strength of seawater. 
+Typically, we can relate:
+\begin{equation}
+\log\gamma_i \propto \sqrt{I},
+\end{equation}
+for $I$ the ionic strength defined as:
+\begin{equation}
+	I = \frac{1}{2} \sum_i \left[i\right]z_i^2,
+\end{equation}
+for $z_i$ the charge of $i$.
+As some examples, we know:
+<ol>
+<li>1.0 M NaCl: $I = 1$</li>
+<li>1.0 M MgCl$_2$: $I = 3$</li>
+<li>SW: $I \sim 0.7$</li>
+</ol>
+There are few things that we now recall:
+<ol>
+	<li>Debye-Huckel: $\log\gamma_i= -A z_i^2\sqrt{I}$, for $I <0.01$ M</li>
+	<li>Davies (ion-ion): $\log\gamma_\pm = -Az_+z_-\left( \frac{\sqrt{I}}{1 + \sqrt{I}} \right) - bI$, for $I < 0.5$ M</li>
+	<li>Pitzer: super complicated, but the gold standard for $I <$ saturation</li>
+</ol>
+Now, we are going to define the thermodynamic equilibrium constant:
+\begin{equation}
+K_{thermo} = \frac{a_\text{H}a_{\text{CO}_3^{2-}}}{a_{\text{HCO}_3^{-}}} = \frac{\gamma_{\text{H}^+}\left[\text{H}^+ \right] \gamma_{\text{CO}_3^{2-}}\left[\text{CO}_3^{2-} \right] }{\gamma_{\text{HCO}_3^{-}}\left[\text{HCO}_3^- \right]}.
+\end{equation}
+Then, we can define the concentration equilibrium constant as:
+\begin{equation}
+	K_{conc} = \frac{\left[\text{H}^+\right]\left[\text{CO}_3^{2-}\right]}{\left[\text{HCO}_3^{-}\right]},
+\end{equation}
+which allows us to define:
+\begin{equation}
+	K_{thermo} = \frac{\gamma_{\text{H}^+}\gamma_{\text{CO}_3^{2-}}}{\gamma_{\text{HCO}_3^{-}}} K_{conc}.
+\end{equation}
+Now, the issue here is that electrodes, which is what we use to measure things in the lab, measure the activity not the concentration of H$^{+}$ ions. 
+To combat this, we define the "mixed acidity constant" for freshwater as:
+\begin{equation}
+K' = \frac{a_{\text{H}^+}\left[\text{CO}_{3}^{2-}\right]}{\left[\text{HCO}_3^{-}\right]} = K_{thermo}\frac{\gamma_{\text{CO}_3^{2-}}}{\gamma_{\text{HCO}_3^-}}.
+\end{equation}
+What we note is that we have only treated these are individual and not as species that are able to form ion-ion pairs.
+There are a few kinds of bonds:
+<ol>
+<li>Direct ion pair: coulombic ion pair, such as for Na$^{+}$ and Cl$^{-}$</li>
+<li>Hydration sphere contact: localized hydrolysis, which is a water separated ion pair</li>
+<li>Shared hydration sphere: water-like sharing</li>
+</ol>
+
+<h3>Ion Pairing</h3>
+
+<h4>Magnesium Ion</h4>
+
+Let's take an ion:
+\begin{equation}
+	\left[\text{Mg}^{2+}\right]_T = \left[\text{Mg}^{2+}\right] + \left[\text{MgOH}^+\right] + \left[\text{MgCO}_2\right] + \cdots
+\end{equation}
+This then means that $\left[\text{Mg}^{2+}\right] \not= \left[\text{Mg}^{2+}\right]$.
+As an example:
+\begin{equation}
+\left[\text{Mg}^{2+}\right] + \left[\text{SO}_4^{2-}\right] \to \text{MgSO}_4.
+\end{equation}
+Then, we can say that:
+\begin{equation}
+K_{\text{MgSO}_4} = \frac{\{\text{MgSO}_4\} }{\{\text{Mg}^{2+}\}\{\text{SO}_4^{2-}\}} \simeq 12.9.
+\end{equation}
+Therefore, apply our definition of the equilibrium constant from above, we get that:
+\begin{equation}
+\{\text{MgSO}_4\} \simeq 12.9 \{\text{Mg}^{2+}\}\{\text{SO}_4^{2-}\}.
+\end{equation}
+In order to get these values from the 1960s, there was a large minimization problem following:
+<ol>
+<li>Assume (wrongly) that $\left[\text{Mg}^{2+}\right]_T = \left[\text{Mg}^{2+}\right]$, the free species</li>
+<li>Then, to correct this, form $\left[\text{MgSO}_4\right]$ and add this back into $\left[\text{Mg}^{2+}\right]_T$, which was not larger than the observed value</li>
+<li>Next, adjust the free ion until</li>
+<li>Convergence was reached for all species</li>
+</ol>
+The free species activities are what drive much of the chemistry within the ocean. 
+Additionally, we see that Magnesium itself, given that the free species is at 87% abundance in the ocean, is a major catalyst for ionic interactions in the ocean.
+Importantly, over time, we note that these are not at steady state and very much change over time, such as between the LGM and now.
+
+<h4>Carbonate Ion</h4>
+
+We can start by defining:
+\begin{equation}
+\{\text{CO}_3^{2-}\} = \gamma_{\text{CO}_3^{2-}}^T\left[\text{CO}_3^{2-}\right]_T,
+\end{equation}
+from which we can get:
+\begin{equation}
+	\gamma_{\text{CO}_3^{2-}}^T = \gamma_{\text{CO}_3^{2-}}\frac{\left[\text{CO}_3^{2-}\right]}{\left[\text{CO}_3^{2-}\right]_T} \simeq 0.02.
+\end{equation}
+
+<h3>Comparing to Seawater</h3>
+
+We again define for freshwater:
+\begin{equation}
+K_{a_2}' = \frac{\{\text{H}^+\}\left[\text{CO}_3^{2-}\right]}{\left[\text{HCO}_3^{-}\right]} = K_{thermo} \frac{\gamma_{\text{CO}_3^{2-}}}{\gamma_{\text{HCO}_3^-}}.
+\end{equation}
+Now, we set for seawater:
+\begin{equation}
+K_{a_2}^{app} = K_{a_2}^\ast =  \frac{\{\text{H}^+\}\left[\text{CO}_3^{2-}\right]_T}{\left[\text{CO}_3^-\right]_T} = K_{a_2}' \frac{\gamma^T_{\text{CO}_3^{2-}}}{\gamma^T_{\text{HCO}_3^-}} \simeq 10^{-8.88}.
+\end{equation}
+Contrast this with: $K_{a_2}' \simeq 10^{-10.33}.$ That's more than an order of magnitude difference!
+We can then compare:
+\begin{equation}
+	\frac{\left[\text{CO}_3^{2-}\right]_T}{\left[\text{HCO}_3^-\right]_T},
+\end{equation}
+which shows us that at pH $=8$, we have that freshwater is better at buffering than seawater as in seawater we are already more saturated in carbonate ion than freshwater.
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
