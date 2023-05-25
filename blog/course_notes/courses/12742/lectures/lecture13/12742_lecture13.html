@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.742: Lecture 13</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.claim {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.claim[text]:before {
+content: "Claim (" attr(text) "). ";
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.742: Lecture 13</h1>
+<h2>Carbonate System I</h2>
+
+<hr style="width: 60em;">
+
+<h3>The Carbon Budget</h3>
+
+The following are important reservoirs of carbon in the Earth system in [GT]:
+<ol>
+<li>Deep ocean: 37100</li>
+<li>Fossil fuels: 3700</li>
+<li>Terrestrial: 2300</li>
+<li>Upper ocean: 900</li>
+<li>Atmosphere: 597</li>
+<li>Surface sediments: 150</li>
+<li>Marine biota: 3</li>
+</ol>
+Despite the small biota contribution that is cycling, the actual fluxes are massive.
+
+<h3>The Carbonate System in Seawater</h3>
+
+We define the total carbon as:
+\begin{equation}
+	C_T = T_{\text{CO}_2} = \sum \text{CO}_2 = \text{DIC} = \left[\text{H}_2\text{CO}_2^\ast\right] + \left[\text{HCO}_3^-\right] + \left[\text{CO}_2^{2-}\right],
+\end{equation}
+where we define:
+\begin{equation}
+	\text{H}_2\text{CO}_3^\ast = \text{CO}_2 (aq) + \text{H}_2\text{CO}_3.
+\end{equation}
+The equilibrium is given by:
+\begin{equation}
+	\text{CO}_2 (aq) + \text{H}_2\text{O} \leftrightharpoons \text{H}_2\text{CO}_3.
+\end{equation}
+We get that, for the conditions of seawater (i.e., pH and carbonic anhydrase) only about 0.15% of $\text{H}_2\text{CO}_3^\ast$ is actually $\text{H}_2\text{CO}_3.$
+Therefore, this terms only contributes carbon dioxide.
+We can then define the activity coefficients as:
+\begin{equation}
+K_{a_1}^\ast = K_{a_1}' \frac{\gamma_{\text{H}_2\text{CO}_3}^T}{\gamma^T_{\text{HCO}_3^-}} \quad \text{ and } \quad K_{a_1}^\ast = K_{a_1}' \frac{\gamma_{\text{H}\text{CO}_3^-}^T}{\gamma^T_{\text{CO}_3^{2-}}},
+\end{equation}
+where we have that the primes represent the freshwater activity coefficients.
+We next remember our concentration equilibrium constants as:
+\begin{equation}
+	K_{a_1} = \frac{\left[\text{H}^{+}\right]\left[\text{HCO}_3^{-}\right]}{\left[\text{H}_2\text{CO}_3^{\ast}\right]} \quad \text{ and } \quad K_{a_2} = \frac{\left[\text{H}^{+}\right]\left[\text{CO}_3^{2-}\right]}{\left[\text{HCO}_3^{-}\right]}.
+\end{equation}
+We can put some numbers on these as:
+\begin{align}
+	pK_{a_1}&: 6.3, 6.0 \\
+	pK_{a_2}&: 10.3, 8.9 
+\end{align}
+for freshwater, saltwater.
+
+<h3>The DIC System in $\log\left[C\right]$-pH Space</h3>
+
+The result is presented in Fig. 1.
+<figure>
+	<img src="images/carbonate_pka.png" style="width:60%">
+	<figcaption> Fig. 1: The DIC system in $\log\left[C\right]$-pH space.</figcaption>
+</figure>
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
