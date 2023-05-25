@@ -172,7 +172,7 @@ We list the processes and their slopes now:
 <tr>
 <th>Respiration</th>
 <th>$-r_{\text{N:C}}$</th>
-<th>$1$</th>
+<th>$+1$</th>
 </tr>
 <tr>
 <th>Calcification: $\text{Ca}^{2+} + \text{CO}_3^{2-} \to  \text{CaCO}_3$</th>
@@ -181,11 +181,92 @@ We list the processes and their slopes now:
 </tr>
 <tr>
 <th>$\text{CaCO}_3$ Dissolution</th>
-<th>$2$</th>
-<th>$1$</th>
+<th>$+2$</th>
+<th>$+1$</th>
 </tr>
 </table>
 We note for calcification that it is an important processes for the oceans, as many organisms such as coccolithophores use it to produce shells, and about 80% of surface carbon is calcium carbonate and 20% is organic carbon.
+Now, we can map all of this onto the oceans, as we have done in Fig. 2. 
+<figure>
+	<img src="images/at_ct_oceans.png" style="width:60%">
+	<figcaption> Fig. 2: How we can map the global oceans, and the time along the global conveyor belt, into this space of $C_T$ and $A_T$.</figcaption>
+</figure>
+We explain this chart now.
+We start in the North Atlantic, the beginning of the conveyor belt. 
+The lowest DIC and Alkalinity in the ocean. 
+As the water subducts, organic material in the surface rains down and gets remineralized, increasing nitrate, phosphate, and DIC concentrations. 
+In so doing, alkalinity will be changed, especially if there are calcium carbonate shells being remineralized. 
+As we move along the conveyor belt, we are increasing the dissolved calcium carbonate concentrations in the water in carbon units. 
+We can see that the addition of alkalinity and DIC to seawater mostly falls in the 1:1 and 2:1 in the global ocean, which means that there is more organic material being remineralized than calcium carbonate (i.e., organic matter goes into DIC at a greater rate than alkalinity).
+Next, we can look at these ratios in our Fig. 1 plot. 
+This means that as we move along the conveyor belt, we are remineralizing more organic matter, so that we are pushed along the 2:1 line, which means that we are pushed into lower $pH$ and higher $p\text{CO}_2$ regimes, as the water accumulates that carbon.
+In the 1:1 case, we are much closer to constant contours of $pH$ and $p\text{CO}_2$, however there is still a slight increase.
+These vectors can be decomposed into respiration and $\text{CaCO}_3$ vectors shown:
+\begin{equation}
+ 	\text{Dissolution:}\quad	\text{CO}_2 + \text{CaCO}_3 \leftrightharpoons \text{Ca}^{2+} + 2\text{HCO}_3^-,
+\end{equation}
+and
+\begin{equation}
+\text{Respiration:} \quad \text{CH}_2\text{O} + \text{O}_2 + \text{CaCO}_3 \leftrightharpoons \text{Ca}^{2+} + 2\text{HCO}_3^{-} + \text{H}_2\text{O}.
+\end{equation}
+This is to say that it is the dissolution of $\text{CaCO}_3$ in the ocean that reduces the impact of respiration, and is thereby the major stabilizing feedback that allows the ocean to moderate a near constant $pH$ through time.
+The 1:1 ratio comes up in organic carbon flux to $\text{CaCO}_3$ and opal (inorganic), showing that this dissolution is really a predominate factor in the ocean.
+
+<h3>Global Distribution</h3>
+
+We note that one reason the ocean is able to store so much $\text{CO}_2$ is because of the stratification between the deep ocean and the surface ocean, such as through the thermocline. 
+We can see that we have degassing in regions of upwelling, which breaks down this stratification.
+The result is that the ocean has been able to take up about 25% of all anthropogenic $\text{CO}_2$ emissions.
+The distributions of this is in regions of low upwelling, so that that water is not equilibrated with the surface oceans and atmosphere.
+This can be seen in transport studies, in which we can artificially impose sequestration at different depths, with the greatest sequestration times occurring at deep (stratified) depths. 
+
+<h3>The Biology</h3>
+
+There are a few important organisms that make $\text{CaCO}_3$:
+<ol>
+<li>Coccolithophors: calcite</li>
+<li>Foraminifera: calcite</li>
+<li>Pteropods: aragonite</li>
+</ol>
+There is a 5:1 ratio of Mg to Ca ions in the ocean, both of which can form with carbonate.
+This all has to do with the dynamics of the system, from which we can see that $\text{CaCO}_3$ is the most stable, despite the fact that it is less abundant therefore it is preferred to be incinerated by biology.
+
+<h3>Calcium Carbonate Dynamics</h3>
+
+We consider the reaction:
+\begin{equation}
+	\text{CaCO}_3 (s) + \text{H}_2\text{O} \leftrightharpoons \text{Ca}^{2+} + \text{CO}_3^{2-} + \text{H}_2\text{O}.
+\end{equation}
+We can define the solubility product as:
+\begin{equation}
+K_{sp}^\ast = \frac{k_f}{k_r} = \frac{\left( \left[\text{Ca}^{2+}\right]\left[\text{CO}_3^{2-}\right] \right)_{eq} }{\{\text{CaCO}_3\}},
+\end{equation}
+where we define: $\{\text{CaCO}_3\} = 1$.
+We can then define:
+\begin{equation}
+	\Omega = \frac{\left[\text{Ca}^{2+}\right]\left[\text{CO}_3^{2-}\right]}{K_{sp}^\ast}.
+\end{equation}
+Greater, equal, and less than 1 defined as supersaturated, equilibrium, and undersaturated. Dissolutions moves in whatever direction to get to equilibrium (oversaturated means dissolution toward equilibrium).
+As $\left[\text{Ca}^{2+}\right]$ is basically conservative in seawater, we can define:
+\begin{equation}
+	\Omega \simeq \frac{\left[\text{CO}_3^{2-}\right]}{\left[\text{CO}_3^{2-}\right]_{sat}},
+\end{equation}
+which allows us to define:
+\begin{equation}
+	\Delta \text{CO}_3 = \left[\text{CO}_3^{2-}\right] - \left[\text{CO}_3^{2-}\right]_{sat},
+\end{equation}
+where we can similarly define greater than 0 as supersaturated and less than 0 as undersaturated.
+Some profiles are presented in Fig. 3. 
+<figure>
+	<img src="images/saturation.png" style="width:60%">
+	<figcaption> Fig. 3: Profiles of $\text{CO}_3^{2-}$ in different regimes of saturation for calculate.</figcaption>
+</figure>
+We can see from Fig. 3 most of the surface ocean is supersaturated for calcite. 
+This is where we see most of the calcification, at the ocean surface, which thermodynamically makes sense to reach equilibrium (as discussed previously).
+As we go deeper, we see the carbonate ion going down, which is the biological carbon pump which respires organic matter, producing $\text{CO}_2$. 
+We then are pushed toward equilibrium with depth. 
+Note that calcite becomes more soluble with depth, which is the pressure effect in play.
+The saturation horizon is much lower along the conveyor belt, as there is more carbonate ion in the water given the accumulation of the respire organic matter.
 
 <hr style="width: 60em;">
 
