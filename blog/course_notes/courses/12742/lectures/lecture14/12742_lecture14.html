@@ -184,8 +184,14 @@ We list the processes and their slopes now:
 <th>$+2$</th>
 <th>$+1$</th>
 </tr>
+<tr>
+	<th>Silicate Weathering: $\text{H}_2\text{O} + 2\text{CaSiO}_2 + 2\text{CO}_2 \to  2\text{Ca}^{2+} + 2\text{HCO}_3^{-} + \text{SiO}_2 \quad$</th>
+<th>$+2$</th>
+<th>$0$</th>
+</tr>
 </table>
 We note for calcification that it is an important processes for the oceans, as many organisms such as coccolithophores use it to produce shells, and about 80% of surface carbon is calcium carbonate and 20% is organic carbon.
+Silicate weathering is extremely important for alkalinity enhancement which then means that we can take up more $\text{CO}_2$, and drives a cooling feedback
 Now, we can map all of this onto the oceans, as we have done in Fig. 2. 
 <figure>
 	<img src="images/at_ct_oceans.png" style="width:60%">
@@ -265,9 +271,46 @@ We can see from Fig. 3 most of the surface ocean is supersaturated for calcite.
 This is where we see most of the calcification, at the ocean surface, which thermodynamically makes sense to reach equilibrium (as discussed previously).
 As we go deeper, we see the carbonate ion going down, which is the biological carbon pump which respires organic matter, producing $\text{CO}_2$. 
 We then are pushed toward equilibrium with depth. 
-Note that calcite becomes more soluble with depth, which is the pressure effect in play.
+Note that calcite becomes more soluble with depth, which is the pressure effect in play, that causes the saturation curves to be non-linear.
 The saturation horizon is much lower along the conveyor belt, as there is more carbonate ion in the water given the accumulation of the respire organic matter.
 We note that aragonite has a higher saturation state than calcite.
+We can look at sediment $\text{CaCO}_3$ maps and see that they look more than bathymetry more so than productivity. 
+This comes from the fact that it is really depth that dictates how much $\text{CaCO}_3$ is sediment, much like the snow line on a mountain (as calcium carbonate is a light mineral). 
+We can make depths of sediment values and see that they show there is something else at play. 
+<p>
+We define a few terms to understand this. 
+First, we define the <b>lysocline</b> as the depth range over which %$\text{CaCO}_3$ decreases sharply (decrease from 80-90% to 5-10%). 
+Next, we define the <b>calcite compensation depth</b> is the depth at which the calcite rain is balanced by dissolution of $\text{CaCO}_3$ out of the sediments, which can be locally or globally defined.
+We can then define this mathematically as:
+\begin{equation}
+	F_{\text{burial}} = F_{\text{rain}} - F_{\text{dissolution}} = 0.
+\end{equation}
+This term allows us to account for sedimentation of calcite globally, or we could have it as a reference to the N. Pacific, which is the end of the conveyor belt and therefore the most calcite/remineralized organic material.
+</p>
+
+<h3>Kinetics of $\text{CaCO}_3$</h3>
+
+From our above equations for $\text{CaCO}_3$ dissolution, solubility product, and $\Omega$, we can move away from thermodynamics to kinetics to get a rate:
+\begin{equation}
+R_{\text{diss}} = k_f\{\text{CaCO}_3\} - k_r\left[\text{Ca}^{2+}\right]\left[\text{CO}_3^{2-}\right] = 0,
+\end{equation}
+assuming equilibrium. Then, assuming the solid $\text{CaCO}_3$ is 1, we get that:
+\begin{equation}
+	R_{\text{diss}} = k_f(1 - \Omega),
+\end{equation}
+which says that our dissolution rate is going to be linear with $(1 - \Omega)$.
+There are a number cool power laws that we can get from data, for instance putting highly polished calcite spheres in the ocean at different depths to get the dissolition rates. 
+The result is a set of power laws of the form:
+\begin{equation}
+R_{\text{diss}} = k_f(1 - \Omega)^{n},
+\end{equation}
+for $n$ the range of power laws.
+Recent work as shown that there are three regimes: homogeneous, defect-assisted, and step retreat, which are physical chemical terms to do with the matrix of $\text{CaCO}_3$.
+
+<h3>$\text{CaCO}_3$ Ocean Budget</h3>
+
+We have that the shallow $\text{CaCO}_3$ dissolution is needed in order to balance the $\text{CaCO}_3$ budget in the ocean, largely driven by biology.
+As $\text{CaCO}_3$ is heavy, this sinks well, and it is therefore a good way of sequestering carbon in the deep ocean.
 
 <hr style="width: 60em;">
 
