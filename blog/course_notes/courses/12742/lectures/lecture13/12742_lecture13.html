@@ -98,7 +98,7 @@ We define the total carbon as:
 \begin{equation}
 	C_T = T_{\text{CO}_2} = \sum \text{CO}_2 = \text{DIC} = \left[\text{H}_2\text{CO}_2^\ast\right] + \left[\text{HCO}_3^-\right] + \left[\text{CO}_2^{2-}\right],
 \end{equation}
-where we define:
+where we define carbonic acid as:
 \begin{equation}
 	\text{H}_2\text{CO}_3^\ast = \text{CO}_2 (aq) + \text{H}_2\text{CO}_3.
 \end{equation}
@@ -122,15 +122,113 @@ We can put some numbers on these as:
 	pK_{a_1}&: 6.3, 6.0 \\
 	pK_{a_2}&: 10.3, 8.9 
 \end{align}
-for freshwater, saltwater.
+for freshwater, saltwater. We define:
+\begin{equation}
+	pK_a = -\log K_a, 
+\end{equation}
+which goes like $pH$ with acidity, and as a refresher:
+\begin{equation}
+	pH = -\log\left[\text{H}^{+}\right].
+\end{equation}
 
 <h3>The DIC System in $\log\left[C\right]$-pH Space</h3>
 
 The result is presented in Fig. 1.
 <figure>
-	<img src="images/carbonate_pka.png" style="width:60%">
+	<img src="images/carbonate_pka.png" style="width:100%">
 	<figcaption> Fig. 1: The DIC system in $\log\left[C\right]$-pH space.</figcaption>
 </figure>
+We can start to design this as follows:
+\begin{align}
+pH = pK_{a_1}&: pK_{a_1} - pH = 0 \Rightarrow \frac{K_{a_1}}{\left[\text{H}^{+}\right]} = \frac{\left[\text{HCO}_3^{-}\right]}{\left[\text{H}_2\text{CO}_3^{\ast}\right]} = 1 \\
+pH < pKa_{a_1}&: pH - pK_{a_1} < 0 \Rightarrow \frac{\left[\text{HCO}_3^{-}\right]}{\left[\text{H}_2\text{CO}_3^{\ast}\right]} \ll 1 \Rightarrow C_T  \simeq \left[\text{H}_2\text{CO}_3^{\ast}\right] \\ <! !>
+pH = pK_{a_2}&: pKa_{a_2} - pH = 0 \Rightarrow \frac{K_{a_2}}{\left[\text{H}^{+}\right]} = \frac{\left[\text{CO}_3^{2-}\right]}{\left[\text{HCO}_3^{-}\right]} = 1 \\
+pH > pK_{a_2}&: C_T \simeq \left[\text{CO}_3^{2-}\right]
+\end{align}
+Then, for $\left[\text{HCO}_3^{-}\right]$, we have that for $pH < pK_{a_1}$, where we assume the second equation from above substituted into the first: <! !>
+\begin{equation}
+\frac{K_{a_2}C_T}{\left[\text{H}^{+}\right]}	 = \left[\text{HCO}_3^{-}\right],
+\end{equation}
+and taking the log of both sides gives:
+\begin{equation}
+	\log\left[\text{HCO}_3^{-}\right] = \log\left[K_{a_1}C_T\right] + pH
+\end{equation}
+Therefore, we get that $\left[\text{HCO}_3^{-}\right]$ in this regime has a slope of 1 with $pH$.
+We can do this for $\left[\text{CO}_3^{2-}\right]$ for $pH \in \left[pK_{a_1}, pK_{a_2}\right]$ and get the same 1:1 relationship with $pH$.
+For $\left[\text{CO}_3^{2-}\right]$ at $pH < pK_{a_1}$, we get, using our definition of $pK_{a_2}$ and substituting in our value for $\left[\text{HCO}_3^{-}\right]$ from above: <! !>
+\begin{equation}
+	\frac{C_TK_{a_1}K_{a_2}}{\left[\text{H}^{+}\right]^{2}} = \left[\text{CO}_3^{2-}\right].
+\end{equation}
+Taking the log we then get:
+\begin{equation}
+\log\left[\text{CO}_3^{2-}\right] = \log\left[C_TK_{a_1}K_{a_2}\right] +2pH,
+\end{equation}
+which is a slope of 2 with $pH$.
+Now, we can do this for $\left[\text{H}_2\text{CO}_3^{\ast}\right]$ for $pK_{a_1} < pH < pK_{a_2}$ to get: <! !>
+\begin{equation}
+	\log\left[\text{H}_2\text{CO}_3^{\ast}\right] = \log\left[\text{H}^{+}\right] + \log\left[\frac{C_T}{K_{a_1}}\right],
+\end{equation}
+which is a slope of -1 with $pH$.
+We can do this for all configurations to get corresponding slopes of $\pm 1$ and $\pm 2$.
+An important note is how low the carbon dioxide/carbonic acid is at the current ocean $pH$, therefore we have that small changes in the $pH$ of the ocean have a large change in atmospheric composition of carbon dioxide, as well as the ocean's.
+
+<h3>Alkalinity</h3>
+
+Alkalinity, for a geologic perspective, is the ocean's ability to balance the discrepancy in charge of the major ocean ion compositions.
+This is to say that alkalinity is the ocean's charge balance. This isn't always the best way of thinking of alkalinity. 
+There are a few acid-base pairs that matter for seawater, that is where the concentration is high and the $K_{a}$'s are near the $pH$ of seawater:
+<ol>
+<li>$\left[\text{HCO}_3^{-}\right]$ and $\left[\text{H}_2\text{CO}_3^{\ast}\right]$</li>
+<li>$\left[\text{B}(\text{OH})_4^-\right]$</li>
+</ol>
+Some that don't work are:
+<ol>
+<li>$\text{H}_2\text{SO}_4$, as the $K_a$'s are too low</li>
+<li>$\text{NH}_4^+$ as the concentration is too low (though OMZ's might be high enough)</li>
+<li>$\text{H}_4\text{SiO}_4$ as the $K_a$'s are too low</li>
+<li>$\text{H}_3\text{PO}_4$ as the concentration is too low</li>
+<li>$\text{H}_2\text{S}$ as the concentration is too low (but might care about in porewaters)</li>
+</ol>
+Another way of thinking about this is by looking at plots like for the carbonate system above for these species. 
+For seawater carbonate equivalence points of $pH \in \left[2, 5\right]$, we look at the dominant ion for each species. 
+Therefore, the most number of $\text{H}^{+}$ protons that can be accepted by each is, at most, the deficit form this dominant species to any other species in that regime. 
+This is why we cannot think of alkalinity as the total number of protons that the ocean can accept, rather the total number of ions that the ocean can accept given the $pH$ and dominant specie-dynamics.
+Alkalinity is always relative to the carbonate / $\text{CO}_2$ equivalence point in seawater (as it is the carbonate system that is our reference).
+We can use the phosphate system as an example of this, in which the neutral species is not the dominant species at the $\text{CO}_2$ equivalence point and therefore protons added is not relative to that neutral point.
+
+We care about the equivalence point in natural waters, which we determine from titration as the inflection point of the $pH$ with the volume of the acid added.
+Here, this is where the acid added is equal to the extra base in the solution.
+For example:
+\begin{equation}
+\text{NaOH} + \text{HCL} \leftrightharpoons \text{H}_2\text{O} + \underbrace{\text{Na}^+ + \text{Ca}^-}_{\text{does not change buffering capacity}},
+\end{equation}
+The sodium and chloride ions do not change the buffering capacity of the water because of our definition of $pH$.
+To relate this to seawater, we have that $\text{HCO}_3^{-}$ is about 90% of all DIC in seawater, so we care about designing our understanding of alkalinity around this instead of water, given by:
+\begin{equation}
+	\text{HCO}_3^{-} + \text{H}^{+} \leftrightharpoons \text{H}_2\text{CO}_3^{\ast}.
+\end{equation}
+At the equivalence point here, we get that $\left[\text{HCO}_3^{-}\right] = \left[\text{H}^{+}\right]$.
+For natural waters, we have that it is nearly impossible to have a neutral $pH$, which only occurs in a strong acid-base system.
+In general, we define alkalinity to some reference, which in seawater we have defined as the carbonate system.
+
+<h4>An Important Note</h4>
+
+We can see in our example above that adding sodium and chloride to our system does not change the buffering capacity, the same thing is for $\text{H}_2\text{CO}_3^{\ast}$. 
+Therefore, this is why adding or removing carbon dioxide does not change the ocean's alkalinity.
+
+<h3>Total Alkalinity</h3>
+We define this as:
+\begin{equation}
+	TA = \left[\text{HCO}_3^{-}\right] + 2\left[\text{CO}_3^{2-}\right] + \left[\text{OH}^-\right] - \left[\text{H}^{+}\right] + \left[\text{B}(\text{OH})_4^-\right] + \left[\text{HS}^-\right] + 2\left[\text{S}^{2-}\right] - \left[\text{H}_3\text{PO}_4\right] + \left[\text{HPO}_4^{2-}\right] + 2\left[\text{PO}_3^{2-}\right].
+\end{equation}
+In reality, we really are interested in the carbonate-borate system, given that these are the most dominant species in sea water from our discussion above.
+The pros of alkalinity:
+<ol>
+<li>It is linearly mixable</li>
+<li>It is measurable by titration</li>
+<li>It adds another constraint to the ocean system</li>
+</ol>
+The most rigorous definition is the amount of bicarbonate ion such that it's concentration is equal to the amount of $\text{H}^{+}$ ion.
 
 <hr style="width: 60em;">
 

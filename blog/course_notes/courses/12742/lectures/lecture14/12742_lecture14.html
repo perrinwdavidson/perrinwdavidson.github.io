@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.742: Lecture 14</title>
+
+<style>
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 {text-align: center;}
+h2 {text-align: center;}
+table {text-align: center;}
+th {text-align: justify;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.claim {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.claim[text]:before {
+content: "Claim (" attr(text) "). ";
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.742: Lecture 14</h1>
+<h2>Carbonate System II</h2>
+
+<hr style="width: 60em;">
+
+<h3>Governing Equations</h3>
+We define the total carbon in our system (inorganic) as:
+\begin{equation}
+	DIC = C_T = \left[\text{H}_2\text{CO}_3^{\ast}\right] + \left[\text{HCO}_3^{-}\right] + \left[\text{CO}_3^{2-}\right].
+\end{equation}
+Then, to relate these things together we define the equilibrium constants, or the disassociation constants:
+\begin{equation}
+	K_{a_1} = \frac{\left[\text{H}^{+}\right]\left[\text{HCO}_3^{-}\right]}{\left[\text{H}_2\text{CO}_3^{\ast}\right]} \quad \text{ and } \quad K_{a_2} = \frac{\left[\text{H}^{+}\right]\left[\text{CO}_3^{2-}\right]}{\left[\text{HCO}_3^{-}\right]},
+\end{equation}
+and we additionally define the disassociation constant for water:
+\begin{equation}
+	K_w = \left[\text{H}^{+}\right]\left[\text{OH}^-\right].
+\end{equation}
+This is an underdetermined system, as there are 4 equations and 5 unknowns. Therefore, we define alkalinity to solve this:
+\begin{equation}
+	TA = \left[\text{HCO}_3^{-}\right] + 2\left[\text{CO}_3^{2-}\right] + \left[\text{OH}^-\right] - \left[\text{H}^{+}\right],
+\end{equation}
+which then gives a determined system.
+We can do the same thing for the borate system:
+\begin{align}
+	B_T &= \left[\text{B}(\text{OH})_3\right] + \left[\text{B}(\text{OH})_4^-\right] \sim f(S), \\
+	K_B &= \frac{\left[\text{B}(\text{OH})_4^-\right]}{\left[\text{H}^{+}\right]\left[\text{B}(\text{OH})_3\right]}.
+\end{align}
+where we have stated that borate scales with salinity, i.e., it is conservative in seawater (which breaks down near freshwater inputs).
+This is again a determined system.
+Therefore, as long as we solve for total alkalinity, total carbon, and salinity, we can solve our system of equations.
+So, we can continue to expand our definition, but we need to have some knowledge of the constants in order to solve our equation. 
+This all breaks down with organic acids, as we do not know a good handle on these constants. 
+Importantly, we note that:
+\begin{equation}
+	\left[\text{H}_2\text{CO}_3^{\ast}\right] = K_Hp\text{CO}_2,
+\end{equation}
+where we assume, as before, that $\left[\text{H}_2\text{CO}_3^{\ast}\right] \simeq \left[\text{CO}_2\right]$.
+
+<p>
+Now, we can think of this as only having to measure two of the following to solve for the rest:
+\begin{equation}
+	C_T, A_T, pH, p\text{CO}_2.
+\end{equation}
+This then implies that it can really be the total alkalinity and inorganic carbon that drives the carbon dioxide concentrations in the surface ocean, and thus the atmosphere.
+</p>
+A note on notation is that $\mu$eq is equal to the charge equivalent at carbon dioxide equivalence point.
+
+<h3>Contouring Solutions</h3>
+
+When comparing our contoured solutions of $C_T$ and $A_T$ against $pH$ and $p\text{CO}_2$, we note a few things. 
+First, the system is shifted toward $A_T$, that is there is more alkalinity than there is total carbon (which we can get from the definitions of these quantities above). 
+Second, we can see that we can increase $C_T$ via the addition of $\text{CO}_2$, which increases $pH$ but alkalinity remains the same. 
+This is ocean acidification, as the dissociation of $\text{CO}_2$ forms $\text{H}^{+}$ but forms equal amounts of $\text{H}^{+}$ ions to their receptors, $\text{H}_2\text{CO}_3^{\ast}$ and $\text{CO}_3^{2-}$, which "cancels" out the contribution, keeping alkalinity constant.
+Additionally, we note that if we bring a parcel of water from the deep into contact with the equilibrium values in the surface ocean, then it will have to equilibrate correspondingly (lose or gain based on values relative to the equilibrium value).
+We can look at the different processes that drive us moving around on these contours as in Fig. 1.
+<figure>
+	<img src="images/at_ct.png" style="width:60%">
+	<figcaption> Fig. 1: Vectors representing different processes that move us around contoured solitions of $C_T$ and $A_T$.</figcaption>
+</figure>
+We note a few things here. 
+First, we can increase DIC with increasing ocean acidification, which leaves alkalinity unchanged and reduces $pH$.
+Second, photosynthesis removes $\text{CO}_2$, thus changing DIC, with the slope having to do with the oxidation and reduction of nitrogen in the formation of organic compounds from nitrate which consumes protons (increaseing alkalinity). 
+The opposite is the case for respiration, in which the production of nitrate via the oxidation of organic nitrogen produces protons, which decreases alkalinity and increases DIC.
+The slope here is also dependent on the Redfield ratio.
+Third, we note the different slope of the calcium carbonate vectors, the most important application being that increasing coral coverage (and thereby increasing $CaCO$_3 formation) will increase $p\text{CO}_2$ by increasing $\left[\text{CO}_2\right]$ concentrations and decreasing $pH$.
+The way to actually decrease $p\text{CO}_2$, we have to add alkalinity to decrease these vectors, which is $\text{CaCO}_3$ dissolution.
+We derive these slopes now. 
+
+<h3>Processes that affect Alkalinity and DIC</h3>
+We list the processes and their slopes now:
+<table class="center">
+<tr>
+<th>Process</th><th>$\Delta A_T$</th><th>$\Delta C_T$</th>
+</tr>
+<tr>
+<th>$\text{CO}_2$ solition</th>
+<th>$0$</th>
+<th>$+1$</th>
+</tr>
+<tr>
+<th>$\text{CO}_2$ degassing</th>
+<th>$0$</th>
+<th>$-1$</th>
+</tr>
+<tr>
+	<th>Photosynthesis: $\text{CO}_2 + \text{H}_2\text{O} \to  \text{CH}_2\text{O} + \text{O}_2$</th>
+<th>$r_{\text{N:C}}$</th>
+<th>$-1$</th>
+</tr>
+<tr>
+<th>Respiration</th>
+<th>$-r_{\text{N:C}}$</th>
+<th>$1$</th>
+</tr>
+<tr>
+<th>Calcification: $\text{Ca}^{2+} + \text{CO}_3^{2-} \to  \text{CaCO}_3$</th>
+<th>$-2$</th>
+<th>$-1$</th>
+</tr>
+<tr>
+<th>$\text{CaCO}_3$ Dissolution</th>
+<th>$2$</th>
+<th>$1$</th>
+</tr>
+</table>
+We note for calcification that it is an important processes for the oceans, as many organisms such as coccolithophores use it to produce shells, and about 80% of surface carbon is calcium carbonate and 20% is organic carbon.
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
