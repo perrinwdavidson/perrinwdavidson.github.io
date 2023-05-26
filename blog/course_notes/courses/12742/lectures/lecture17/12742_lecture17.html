@@ -85,7 +85,75 @@ These behave singularly for every kind of element, that is C isotopes behave mos
 
 <h3>Notation</h3>
 
+We define the ratio as:
+\begin{equation}
+R^{\text{heavy}} = \frac{^{\text{heavy}}C}{^{\text{reference}}C},
+\end{equation}
+and the fractional abundance:
+\begin{equation}
+f^{\text{heavy}} = \frac{^{\text{heavy}}C}{^{\text{heavy}}C + \:^{\text{light}}C}.
+\end{equation}
+Next, we can define our $\delta$-notation:
+\begin{equation}
+	\delta^{\text{heavy}}C = \left( \frac{R^{\text{heavy}}_{meas} - R^{\text{heavy}}_{std}}{R^{\text{heavy}}_{std}} \right) \times 10^3.
+\end{equation}
+We also might care about mixing equation:
+\begin{equation}
+	n_T\delta_T = n_A\delta_A + n_B\delta_B + \cdots,
+\end{equation}
+but this is not necessarily the case for large $\delta$'s, where we have that $n_T = n_A + n_B$ for $n$ the number of each isotope.
+The better way of doing this is with fractional abundances:
+\begin{equation}
+	n_Tf_T = n_Af_A + n_Bf_B + \cdots.
+\end{equation}
+We can also define the fractionation factor as:
+\begin{equation}
+	\alpha_{A / B} = \frac{R_B}{R_A},
+\end{equation}
+for a process $A \to  B$, where we note that $\alpha$ is products over reactants.
+We can also define the enrichment factors:
+\begin{equation}
+	\epsilon_{ A / B} = \left( \alpha_{A /B} -1 \right) \times 10^3 \simeq \delta_A - \delta_B.
+\end{equation}
 
+<h3>Vibrational Modes</h3>
+
+We can think about a molecule that has a vibrational model with a spring constant $k$ and the frequency of vibration $\nu$ can be defined:
+\begin{equation}
+\nu = \frac{1}{2\pi}\sqrt{\frac{k}{\mu}},
+\end{equation}
+for $\mu$ our reduced mass.
+Therefore, our Zero Point Energy is going to change for different isotopes, with the heavier isotope having lower ZPE and thus will take more energy to dissociate.
+This is the basis of isotope fractionation, which happens as work is applied to system. 
+We see that this ZPE is going to dictate which isotope dissociates first given this applied work on the system, and therefore the chemistry that stems from this work will be dependent ultimately on this mass differences and the associated ZPE differences.
+
+<h3>Fractionation Effect</h3>
+
+We have two kinds of fracitonation:
+<ol>
+<li>Equilibrium</li>
+<li>Kinetic</li>
+</ol>
+
+<h4>Equilibrium</h4>
+
+We imagine a beaker with liquid and vapour phases, with isotopic composition $\delta_L$ and $\delta_V$, respectively.
+If we take the species to be water, the vapour phase will preferentially prefer the lighter isotopes as it is a gas are more energetic ($^{16}$O over $^{18}$O or $^1$H over $^2$H).
+Therefore, we can get that $\delta_V < \delta_L$ which then means that we can define $\epsilon_{V / L} = \delta_V - \delta_L <0 \sim f(T)$. <! !>
+<p>
+Another example would be in marine carbonates, specifically:
+\begin{equation}
+	\text{H}_2^{18}\text{O} + \text{CO}_3^{2-} \leftrightharpoons \text{H}_2\text{O} + \text{CO}_2^{18}\text{O}^-.
+\end{equation}
+and
+\begin{equation}
+\text{Ca}^{2-} + \text{CO}_3^{2-} \to \text{CaCO}_3 (s), 
+\end{equation}
+which gives, overall:
+\begin{equation}
+	\text{CaCO}_3 + \text{H}_2^{18}\text{O} 
+\end{equation}
+</p>
 
 <hr style="width: 60em;">
 
