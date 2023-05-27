@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.742: Lecture 18</title>
+
+<style>
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+th{font-weight: normal;}
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.claim {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.claim[text]:before {
+content: "Claim (" attr(text) "). ";
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.742: Lecture 18</h1>
+<h2>Weathering, Estuaries, and Vents</h2>
+
+<hr style="width: 60em;">
+
+<h3>Major Composition of Seawater</h3>
+
+We have the following major constituents of seawater, in relative order of abundance:
+<table class="center">
+<tr>
+<th><b>Cations</b></th><th><b>Anions (no proton exchange)</b></th><th><b>Anions (proton exchange)</b></th>
+<tr/>
+<tr>
+<th>Na$^{+}$</th><th>Cl$^{-}$</th><th>HCO$_3^-$</th>
+</tr>
+<tr>
+<th>Mg$^{2+}$</th><th>SO$_4^{2-}$</th><th>$\text{CO}_3^{2-}$</th>
+</tr>
+<tr>
+<th>Ca$^{2+}$</th><th>Br$^-$</th><th>B$(\text{OH})_4^-$</th>
+</tr>
+<tr>
+<th>K$^+$</th><th>F$^{-}$</th><th></th>
+</tr>
+<tr>
+<th>Sr$^{2+}$</th><th></th><th></th>
+</tr>
+<tr>
+<th>Li$^+$</th><th></th><th></th>
+</tr>
+</table>
+We note that the summation of the cations must equal the summation of the anions, and it is the anions with the significant proton exchange, i.e., the alkalinity, that make up that difference.
+Now, we are interested in what the inputs and outputs are to these important chemical constituents.
+
+<h3>Inputs and Outputs</h3>
+We have the following list:
+<table class="center">
+<tr>
+<th><b>Inputs</b></th><th><b>Ouputs</b></th>
+</tr>
+<tr>
+<th>Rivers</th><th>Evaporation</th>
+</tr>
+<tr>
+<th>Atmosphere</th><th>Sediments (biological and inorganic)</th>
+</tr>
+<tr>
+<th>Vents</th><th>Radioactive decay</th>
+</tr>
+<tr>
+<th></th><th>Vents</th>
+</tr>
+</table>
+
+We go over these now. 
+
+<h3>Weathering Reactions</h3>
+We have the general formulation of weather below:
+\begin{equation}
+\text{Rocks} + \text{Acid }\left( \text{H}_2\text{CO}_3^{\ast}, \text{H}_2\text{SO}_4\right)  \to  \text{Cations} + \text{Alkalinity }(\text{CaCO}_3) + \text{Rock Residue}
+\end{equation}
+One of these inputs that is important is rocks, in order of rate of weathering / stability:
+<ol>
+<li>Iron Oxides (residue of weathering)</li>
+<li>Al hydroxides (residue of weathering)</li>
+<li>Quartz</li>
+<li>Clay minerals (residue of weathering)</li>
+<li>Pyroxene</li>
+<li>Feldspar</li>
+<li>Olivine</li>
+<li>Calcite (complete dissolution: salt)</li>
+<li>Halite (complete dissolution: salt)</li>
+</ol>
+
+How can we convolve these endmembers?
+Garrels and Mackenzie (1967) picked a number of known weathering equations and went to the Sierra Nevada's and looked at the mass balance of the dissolved minerals in the water from the mountains. 
+The resultant mass balance gave the overall reaction:
+\begin{equation}
+	177 \text{Plagioclase} + 7.3 \text{Biotite} + 13 \text{Kspar}\left( + \text{H}_2\text{O} + \text{CO}_2 \right)  = 133 \text{Kaolinite} + 110 \text{Na}^- + 68 \text{Ca}^{2+} + 22 \text{Mg}^{2+} + 20 \text{K}^+ + 270 \text{SiO}_2 + 310 \text{HCO}_3^{-}.
+\end{equation}
+Now, the first thing that comes to mind is... what is kaolinite and why was this chosen as the end member out of all of the possibilities?
+
+To answer this, we start with quartz dissolution, given by:
+\begin{equation}
+	\text{SiO}_2 (s) + \text{H}_2\text{O} \leftrightharpoons \text{H}_2\text{SiO}_4.
+\end{equation}
+The equilibrium constant is equal to:
+\begin{equation}
+K_{eq,1} = \frac{\{\text{H}_4\text{SiO}_4\}}{\{\text{H}_2\text{O}\}} = \{\text{H}_4\text{SiO}_4\} = K_{sp}.
+\end{equation}
+Now, as the product is acidic, we can get:
+\begin{equation}
+	\text{H}_4\text{SiO}_4 \leftrightharpoons \text{H}_3\text{SiO}_4^- + \text{H}^{+},
+\end{equation}
+where we have that:
+\begin{equation}
+K_{eq,2} = \frac{\{\text{H}^{+}\}\{\text{H}_3\text{SiO}_4^-\}}{\{\text{H}_4\text{SiO}_4\}}.
+\end{equation}
+Now, we can substitute in our definition of $K_{sp}$ from above, take the $\log$ and solve to get:
+\begin{equation}
+\log\{\text{H}_3\text{SiO}_4^-\} = -\log\{\text{H}^{+}\} + \log\left[K_{sp}K_{eq,2}\right].
+\end{equation}
+Then, we can make a plot with respect to $pH$, which is the first term on the RHS above, and then the data, if the system is in equilibrium with quartz, would fall along the $\log-\log$ space line described by this equation. 
+Note that we would expect the same thing for the carbonate system, where the number of $\text{H}^{+}$ removed equalling the slope.
+We can do this until all protons are gone and then sum to get the total. 
+If we do this and compare to amorphous silica equilibrium constants, we get opal is higher. 
+Therefore, we need something to make up this difference but also note that if our concentration is lower than the equilibrium line, dissolution will occur and if the concentration is higher in the ocean, then precipitation will occur.
+Now, if we look at a plot of Silicate mineral in the ocean, we see that the ocean is everywhere undersaturated everywhere, with the lowest at the surface. 
+But we still have diatoms/radiolarians producing silica everywhere in the ocean. How is this possible?
+Note that this shows how important biology is and that thermodynamics isn't everything.
+
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>

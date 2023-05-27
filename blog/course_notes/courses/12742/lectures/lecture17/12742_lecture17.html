@@ -232,12 +232,62 @@ We can write this out as:
 \begin{equation}
 	R_L = R_L^0f_v^{\alpha - 1} \quad \text{ and } \quad R_{V'} = R_L\alpha \quad \text{ and } \quad R_V = R_L^0 \frac{\left( 1 - f_V \right) ^\alpha}{1 - f_V}.
 \end{equation}
-In $\delta$ space, we can write these as (noting that there is error in these as they are approximations:
+In $\delta$ space, we can write these as (noting that there is error in these as they are approximations):
 \begin{equation}
 \delta_{L} = e_{L / V} \log\left[1 - f_V \right]	+ \delta_{L^0} \quad \text{ and } \quad \delta_{V'}= \delta_L + \epsilon_{L / V} \quad \text{ and } \quad  \delta_{V} = \delta_{L^0} - \epsilon_{L / V}\frac{1 - f}{f}\log\left[1 - f\right].
 \end{equation}
 We can think of this as oxygen in the hydrological system, i.e. evaporation and precipitation. 
 After the vapour formation, we have that it is transported to the poles where it is rained out into the ice.
+
+<h3>Radioactivity</h3>
+
+We are interested in the Uranium-238 decay series, which decay from $^{238}$U into stable lead, $^{207}$Pb, through $\beta$ and $\alpha$ decay.
+We can extrapolate to this to having that all radioactive elements always decay into stable isotopes, which we can see in the "Valley of Stability". 
+Next, we have the decay equation:
+\begin{equation}
+	\frac{\textrm{d}N}{\textrm{d}t} = -\lambda N,
+\end{equation}
+for the BC that $N(0)=N_0$:
+\begin{equation}
+	N = N_0\exp\left[-\lambda t\right],
+\end{equation}
+Next, we define the activity $A$ as:
+\begin{equation}
+	A = \lambda N \sim \: [\text{dpm m}^{-3}].
+\end{equation}
+We can then assume a steady state of parent-daughter decay to get <b>secular equilibrium</b>:
+\begin{equation}
+	\frac{\textrm{d}N_D}{\textrm{d}t} = N_P\lambda_P - N_D\lambda_D,
+\end{equation}
+which means then that:
+\begin{equation}
+	A_D = A_P.
+\end{equation}
+We assume this steady state when doing most calculates, and it is secular because the steady state is only in one direction.
+One useful use of this is for POC flux with $^{238}$U and $^{234}$Th, starting with the dissolved $D$:
+\begin{equation}
+\frac{\textrm{d}A_{234}^D}{\textrm{d}t} = \lambda_{234} A_{238} - \lambda_{234}A_{234}^D - \psi_{234}^\ast.
+\end{equation}
+and particulate $P$:
+\begin{equation}
+	\frac{\textrm{d}A_{234}^P}{\textrm{d}t} = -A_{234}^P\lambda_{234} + \psi_{234}^\ast - J_{234}^\ast,
+\end{equation}
+where we define $\psi$ as the particle -sorption and $J$ as the particle sinking flux, which causes the disequilibrium in the surface ocean.
+Therefore, at steady state we can get:
+\begin{equation}
+	\frac{\textrm{d}A_{234}^D}{\textrm{d}t} + \frac{\textrm{d}A_{234}^P}{\textrm{d}t} = 0.
+\end{equation}
+This then means that;
+\begin{equation}
+	J_{234}^\ast = \lambda_{234}A_{238} - \lambda_{234}\left( A_{234}^P + A_{234}^D \right).
+\end{equation}
+We need to integrate over space to get:
+\begin{equation}
+	F_{234}^\ast = \int_{-D}^0 \text{d}z\: J_{234}^\ast.
+\end{equation}
+Thus, if we can measure the activities of the particulate and dissolved phases, we can get the sinking flux.
+Something to think about is that this is integrated flux through the Euphotic Zone, whereas with sediment traps and pumps you have a timescale observation dependent measurement.
+
 
 <hr style="width: 60em;">
 
