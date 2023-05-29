@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.744: Lecture 1</title>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.744: Lecture 1</h1>
+<h2>Chart of the Nuclides</h2>
+<hr style="width: 60em;">
+
+<h3>Some definitions</h3>
+
+We start with the concept of isotopes, which are forms of elements that exists with different atomic weights (given a different in neutrons) but where chemically indistinguishable. 
+Some important units are as follows:
+<ul>
+<li>$N$: number of neutrons</li>
+<li>$Z$: number of protons (same as the atomic number, as $Z$ dictates the chemical properties of the atom)</li>
+<li>$A = N+Z$: the mass number</li>
+<li>$M$: atomic mass</li>
+<li>$I = N - Z$: neutron excess number</li>
+</ul>
+Following our first discussion, we also define:
+<ul>
+<li>Isotopes: same number of protons, different number of neutrons</li>
+<li>Isobars: same mass number, $A$</li>
+<li>Isotones: same number of neutrons, different number of protons</li>
+</ul>
+The basic unit of neclaer masss is the unified atomic mass unit, $u$ or dalton, Da, which is one-twelfth the mass units of $^{12}$C. 
+
+<h3>Nuclear Forces</h3>
+
+It is important to note that not all combinations of $N$ and $Z$ are stable, where we define nucleons as either protons or neutrons. 
+For those that are stable, it is generally the case that $N \sim  Z$. 
+Given the positive charge of protons, it is clear that there much be an equal and opposite force that allows for the coulombic or electrostatic force to be overcome in the nuclear. 
+This is called the strong (nuclear) force. 
+This is one of four fundamental forces of nature, which we define now along with their relative strengths:
+<ul>
+<li>Strong (nuclear) force: 1, mediated by the pion</li>
+<li>Electromagnetic force: 10$^{-2}$, mediated by the photon</li>
+<li>Weak force: 10$^{-5}$</li>
+<li>Gravitational: 10$^{-39}$</li>
+</ul>
+The mediation particle carries 1 quantum of its respective force.
+
+<h3>Nuclear Masses</h3>
+
+Interestingly, if we add up the masses of protons, neutrons, and electrons in an atom, you will find that you are at more mass than the element's known mass. 
+This additional mass is converted into binding energy holding together the nucleus. 
+As a general principle, we have that the lowest energy configuration is the most stable. 
+Therefore, we can take the case that an atom must be relatively more stable, and have less energy, than the sum of its constituent parts. 
+Thus, we can use Eintsein's mass-energy equivalence of $E = mc^{2}$ to get the mass decrement between this sum $W$ and the mass given by Einsetin's relation as:
+\begin{equation}
+	\delta = W - M.
+\end{equation}
+We can then determine the binding energy, per nucleon, as;
+\begin{equation}
+	E_B = \left( \frac{W}{M} \right) c^2. 
+\end{equation}
+
+<h3>Models</h3>
+
+One model is the liquid-drop model, which assumes that all nucleons in a nucleus have equivalent states. 
+The model treats the binding between nucleons in a way similar to the binding between molecules in a liquid drop. 
+There are four effects of differing power laws that effect total binding energy:
+<ol>
+<li>volume energy</li>
+<li>surface energy</li>
+<li>excess neutron energy</li>
+<li>coulomb energy</li>
+</ol>
+We can write this as:
+\begin{equation}
+B(A, I) \sim \underbrace{A}_{\text{volume}} - \underbrace{A^{2 / 3}}_{\text{surface}} - \underbrace{I^{2}A^{-1}}_{\text{excess neutron}} - \underbrace{Z^{2}A^{-1 / 3}}_{\text{coulomb}} + \underbrace{\epsilon}_{\text{parity fudge factor}}.
+\end{equation}
+Here, we let $\epsilon$ be the even-odd fudge factor with the binding energy greatest for the even-even factor and least for the odd-odd factor, that is:
+\begin{equation}
+\epsilon(A, Z) = \begin{cases} \epsilon_0 & \text{ for even }Z, N, \\ 0 & \text{ for odd }A, \\ -\epsilon_0 & \text{ for odd } Z, N. \end{cases}
+\end{equation}
+The solution to this equation at constant $A$, that is for isobars, are hyperbolas in $I$. 
+For odd $A$, we get that there is a single energy well with a nuclei near the bottom. 
+For even $A$, we get that there are two energy wells, with the even one having less energy and is therefore more stable.
+These neuclei will decay into a stable number of neutrons. 
+This then shows the branched decay in which an unstable nucleus can branch into two possible daughters. 
+<p>
+Another model is the shell model, which uses Schrödinger's equation together with the Pauli exclusion principle that only one particle can have a distinct set of quantum numbers give the characteristics of each shell of the atom.
+Important to this is the total nuclear angular momentum, or spin or $j$, which is the sum of the intrinsic angular momentum for nucleons given as $0.5 \hbar$ and the orbital angular momentum which arises from the rotation of the nucleus $l$: $j = l \pm 0.5$.
+As an aside, we note that total angular momentum and magnetic moment of pairs of nucleons cancel because the vectors of each member pair are in opposite directions.
+</p>
+
+<h3>Magic Numbers</h3>
+We note that this model does not take into consideration is the even-odd effect. 
+From the chart of the nuclides, we get that even combinations are more likely to be stable than odd ones. 
+Additionally, we note that this model does not include the magic numbers, which are: 2, 8, 20, 28, 50, 82, and 126.
+The first part of this series turns out to be solutions to the Schrödinger equation for a three-dimensional harmonic oscillator, which fails for 28 and beyond as $f$ is the only allowable state in the fourth shell.
+We present the following observations:
+<ol>
+<li>Magic number nuclides are unusually common in nature</li>
+<li>There are many different nuclides in cases where $N$ or $Z$ are magic</li>
+<li>The heaviest stable nuclide occurs at $N=126$</li>
+<li>Nuclear properties change when a magic number is reached, like: spin, magnetic and quadrupole moment, and isomeric states. </li>
+<li>Neutron-capture cross-sections for magic number are anomalously low</li>
+<li>Neutron emission is delayed in fission product nuclei containing $N^\ast + 1$ neutrons for $N^\ast$ magic, for which the binding energy for the last neutron or proton drops</li>
+</ol>
+We note further that nuclei with magic numbers of $N, Z$ are stable and unreactive, analogous to the noble gases.
+Additionally, the properties of these nuclei can be dominated by the last nucleon, analogous to the valence electron.
+
+<h3>Decay</h3>
+
+We start with the decay equation:
+\begin{equation}
+	\frac{\textrm{d}N}{\textrm{d}t} = -\lambda N,
+\end{equation}
+which is mediated by a few kinds of decay, described below:
+
+<h4>Gamma decay</h4>
+
+A $\gamma$ ray is a high energy photon, which can be absorbed by nuclei to become excited, which subsequently decay, releasing this photon. 
+The reaction is written as:
+\begin{equation}
+Z^\ast \to  Z + \gamma.
+\end{equation}
+
+<h4>Alpha decay</h4>
+
+An $\alpha$ particle is simply a helium nucleus, a particularly stable configuration. 
+This decreases the mass of the parent nucleus by the mass of the $\alpha$ particle plus the kinetic energy of the $\alpha$ particle and the daughter nucleus, from conservation of momentum stemming from the recoil of the parent nucleus. 
+A subsequent $\gamma$ might occur, as the daughter is often excited.
+The "valley of stability" is traversed diagonally, 2:2, by this decay. 
+
+<h4>Beta decay</h4>
+
+This is the process by which the nucleus changes the charge but has no change in mass, which occurs when either an electron or positron is emitted from the nucleus (if $Z < N$ or $Z > N$, that is which side of the "valley" the parent is). 
+We call these $\beta^-$ and $\beta^+$ decay. Correspondingly, we have that a neutrino is released, to conserve energy, which is a massless neutral particle with 0.5 spin.
+The "valley of stability" is thus traversed orthogonally along either constant $Z$ or $N$. 
+$\beta$ decay involves the weak force, which transforms the proton into a neutron or vice versa, which is mediated by the $W$ boson (i.e., neutrino lost then converted to positron or antineutrino lost then converted to electron).
+
+<h4>Electron capture</h4>
+
+This is similar to $\beta^+$ decay, in which an electron is added to a nucleus to produce a nucleus which less mass than the parent, with the difference in mass being carried off as energy in a neutrino or a $\gamma$ ray. 
+There is a dependency on pressure here, which forces electrons closer to the nucleus, increasing probability of capture. 
+
+<h4>Spontaneous fission</h4>
+
+This is the process by which a nucleus splits into two or more fairly heavy daughter nuclei, which are of unequal size of ratio 1.45, in addition to releasing two free neutrons. 
+
+<hr style="width: 60em;">
+</div>
+</bodyo>
+</html>
