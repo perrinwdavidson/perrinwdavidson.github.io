@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.744: Lecture 2</title>
+
+<style>
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+th{font-weight: normal;}
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.744: Lecture 2</h1>
+<h2>Stellar Nucleosynthesis</h2>
+<hr style="width: 60em;">
+
+<h3>Nucleon Decay</h3>
+
+We consider the neutron decay into a proton:
+\begin{equation}
+n \to  p.
+\end{equation}
+We need to balance this, however, following:
+<ol>
+<li>charge</li>
+<li>baryons</li>
+<li>leptons</li>
+</ol>
+So, the above becomes:
+<table class="center"  border=1 frame=hsides rules=rows>
+<tr>
+	<th>$n$</th><th>$\to $</th><th>$p$</th><th>$+$</th><th>$e$</th><th>$+$</th><th>$\overline{\nu}_e$</th>
+</tr>
+<tr>
+	<th>$\circ$</th><th>$\to $</th><th>$1$</th><th></th><th>$-1$</th><th></th><th>$\circ$</th><th>(charge)</th>
+</tr>
+<tr>
+	<th>$1$</th><th>$\to $</th><th>$1$</th><th></th><th>$\circ$</th><th></th><th>$\circ$</th><th>(baryon numbers)</th>
+</tr>
+<tr>
+	<th>$\circ$</th><th>$\to $</th><th>$\circ$</th><th></th><th>$+1$</th><th></th><th>$-1$</th><th>(lepton numbers)</th>
+</tr>
+</table>
+Here, the antineutrino is $\overline{\nu}_e.$
+The etymology is that baryons comes from "heavy" and leptons means "light".
+
+<h3>Production of the Elements</h3>
+
+We start with the Big Bang, in which the produced elements were 75% H and 25% He. 
+This comes from a large production of $n$ and $p$, for which we note from above that the $n$ are unstable and decay, as well as a minor percentage of $p$, in so doing producing a smattering of other lighter elements, such as, in order of decreasing log mass fraction:
+<ul>
+<li>$^{4}\text{He}$</li>
+<li>$^{2}\text{H}$</li>
+<li>$^{3}\text{He}$</li>
+<li>$^{3}\text{H}$</li>
+<li>$^{7}\text{Be}$</li>
+<li>$^{7}\text{Li}$</li>
+<li>$^{6}\text{Li}$</li>
+</ul>
+We can tackle this quantitatively. 
+First, we note that:
+\begin{equation}
+^1_1\text{H} + ^1_1\text{H} \not\to ^2_2\text{He},
+\end{equation}
+given that the coulomb repulsion of like-charged particles is too strong. 
+However, we note that the above is akin to the opposite of our initial discussion, namely:
+\begin{equation}
+p \to  n + e^+ + \nu_e,
+\end{equation}
+where $e^+$ is a positron and $\nu_e$ is a neutrino. 
+Thus, we can get:
+\begin{equation}
+^1_1\text{H} + ^1_0n \to  ^2_1\text{H}.
+\end{equation}
+We can go down the ladder as follows:
+\begin{align}
+^2_1\text{H} + ^1_1\text{H} &\to  ^3_2\text{He}, \\
+^3_2\text{He} + ^3_2\text{He} &\to  ^4_2\text{He} + 2^1_1\text{H}, \\
+^4_2\text{He} + ^4_2\text{He} &\to  ^8_4\text{Be}, \\
+^8_4\text{Be} + ^4_2\text{He} &\to ^{12}_6\text{C}.
+\end{align}
+and so on.
+This is happening in a star, and only in those stars at which the $(T, P)$ is strong enough to produce these elements, i.e., overcome the repulsion.  
+We note that the Be production is not energetically favourable as it has a tendency to split into 2 helium, given the binding energy of Be is much smaller than He. 
+Once we get to the conditions to form $^{12}_6\text{C}$, we get the $\alpha$-ladder with the addition of the $\alpha$ particles:
+\begin{equation}
+^{12}_6\text{C} \to ^{16}_{8}\text{O} \to  ^{20}_{10}\text{Ne} \to \cdots
+\end{equation}
+These can be produced only in stars that are massive enough to produce the $T, P$ conditions, as stated above, but for those that are, we can get successive rings within the stars that are burning, from the outside in (with increasing mass):
+<ol>
+<li>H: 7 million years</li>
+<li>He: 500,000 years</li>
+<li>C: 600 years</li>
+<li>Ne: 1 year</li>
+<li>O: 6 months</li>
+<li>Si: 1 day</li>
+</ol>
+This occurs as it is energetically favourable to do so, that is we are on the left side of the energy binding curve, namely left of $^{56}$Fe. 
+At this point, we have reached the maximum binding energy, and it becomes energetically less favourable to produce elements. There is no energy to be gained from additional burning.
+We end stellar nucleosynthesis here. 
+As an aside, there is an inverse relationship between mass of star and a lifetime of star.
+
+<h3>C-N-O Cycle</h3>
+
+We have the following important synthesis cycle:
+\begin{equation}
+^{12}_6\text{C} \to ^{13}_7\text{N} \to  ^{13}_6\text{C} \to ^{14}_7\text{N} \to  ^{15}_8\text{O} \to ^{15}_7\text{N} \to ^{12}_6\text{C} + ^{4}_2\text{He}
+\end{equation}
+Therefore, we have a catalytic cycle that produces $\alpha$-particles that can be used to produce heavier and heavier elements. 
+We note that this only occurs in so called "Second Generation Stars", those that were formed after the first starts composed mainly of H and He exploded into supernovae after $^{56}$Fe conditions are reached.
+We note that when $^{56}$Fe can be broken down as follows:
+\begin{equation}
+^{56}\text{Fe}\to 13^{4}_2\text{He} + 4n,
+\end{equation}
+therefore these supernovae produce large numbers of $\alpha$-particles and neutrons. 
+
+<h3>Other Production Pathways: $s, r$ processes</h3>
+
+We have two different main pathways that produce most of our elements:
+<ul>
+<li>slow addition of neutrons: $s$-process, $t_{1 / 2} \sim 10^4$ years</li>
+<li>fast addition of neutrons: $r$-process, $t_{1 / 2} \sim 0.1$ seconds</li>
+</ul>
+First, the $s$-process follows along the stability line within the valley of stability.
+Second, the $r$-process overshoots the stability line, which will eventually decay back to the valley of stability. 
+We note from relative mass abundances that there are always two peaks, the $r$ peak and the $s$ peak, for which the $r$ process is always at lower masses. 
+This is because in the decay toward the stability line of the $r$-process, it eventually ends up at a lower mass than the slow addition. 
+We can also note that the isotopes on the neutron-rich side of the valley of stability were often created by $r$-processes, while those on the proton rich side were produces by $s$-processes.
+There is also shielding effects, in which $r$-process produced elements shield other elements from being produced by the same process, thus making these shielded elements to be produced by the $s$-process. 
+There is also the proton addition, or $p$-process, that can produce elements on the proton rich side, but these are low abundance and less favourable to make.
+<p>
+Fission is the last production pathway, that occurs when atoms get so big that they can spontaneously split a part and form two or more daughter particles with different masses, as discussed previously. 
+</p>
+
+<hr style="width: 60em;">
+</div>
+</body>
+</html>
