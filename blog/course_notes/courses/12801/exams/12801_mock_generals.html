@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>12.801: Mock Generals Question</title>
+
+<style>
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+th{font-weight: normal;}
+h1 {text-align: center;}
+h2 {text-align: center;}
+.center_div {
+  max-width: 60em;
+  margin: auto;
+}
+.center_text{
+  text-align: center;
+}
+figure {text-align: center;}
+figcaption {text-align: justify;}
+.definition {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.definition:before {
+content: "Definition. ";
+font-weight: bold;
+font-style: normal;
+}
+.definition[text]:before {
+content: "Definition (" attr(text) "). ";
+}
+.proof {
+display: block;
+font-style: normal;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.proof:before {
+content: "Proof. ";
+font-style: italic;
+}
+.claim {
+display: block;
+font-style: italic;
+padding-top: 1em;
+padding-bottom: 1em;
+}
+.claim:before {
+content: "Claim. ";
+font-weight: bold;
+font-style: normal;
+}
+.claim[text]:before {
+content: "Claim (" attr(text) "). ";
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+</head>
+<body>
+<div class="center_div">
+
+<h1>12.801: Mock Generals Question</h1>
+
+<hr style="width: 60em;">
+
+<p>
+<b>(a)</b>
+The leading order balances in the large-scale dynamics of the ocean are those that dictate the gyre circulation, as is shown in the map. 
+To get the forms of the equations that govern this motion, we start with deriving the Navier-Stokes equation, from which we will make assumptions using scaling rules to get to the main equations dictating our flow. 
+We start with Newton's Second Law, applied to a water parcel of finite volume $V = \delta x \delta y \delta z$ for $\delta_i$ the dimensions in the $x, y, z$ coordinate directions, respectively:
+\begin{equation}
+	\Sigma \underline{F} = m \underline{a} \sim \: [\text{N}],
+\end{equation}
+where we defined $\Sigma \underline{F}$ as the sum of all forces acting on the parcel. 
+However, we note that our interest lies in taking the volume of this water parcel to 0, i.e. infinitesimal. 
+To do this, we will divide through by $V$ to get:
+\begin{equation}
+\Sigma \underline{\mathcal{F}} = \rho \underline{a} \sim \: [\text{N m}^{-3}],
+\end{equation}
+where we have noted that $\rho = m / V$.
+Now, we start with the 3 leading forces in incompressible fluid motion:
+\begin{equation}
+\Sigma \underline{\mathcal{F}} = \mathcal{F}_{p} + \mathcal{F}_g + \mathcal{F}_v,
+\end{equation}
+and we go through each of these now:
+<ol>
+<li>
+	<b>Pressure Gradient Force:</b> $\mathcal{F}_p = -\nabla p$.
+</li>
+<li>
+	<b>Gravitational Force:</b> $\mathcal{F}_g = -g\rho \hat{k} = - \rho \nabla \Phi$ for $g$ the acceleration in vertical $\hat{k}$ direction and $\Phi$ the geopotential.
+</li>
+<li>
+	<b>Viscous Force:</b> $\mathcal{F}_v = \mu \Delta \underline{u}$, for $\underline{u}$ the fluid velocity, $\Delta$ the Laplacian operator, and $\mu$ the dynamic viscosity.
+</li>
+</ol>
+Now, we note that we are in the 
+
+</p>
+<p>
+<b>(b)</b>
+
+
+</p>
+<p>
+<b>(c)</b>
+
+
+</p>
+<hr style="width: 60em;">
+
+</div>
+</body>
+</html>
