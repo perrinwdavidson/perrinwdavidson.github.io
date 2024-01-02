@@ -14,8 +14,7 @@ background:#ffffff;
 }
 
 a{
-color:#750014;
-font-weight:bold;
+color:#ffffff;
 text-decoration:none;
 background-color:inherit;
 }
@@ -44,7 +43,7 @@ border:2px solid #750014;
 }
 
 #header{
-height:160px;
+height:180px;
 width:748px;
 margin:0px 1px 1px 1px;
 text-align:left;
@@ -134,10 +133,25 @@ background-color:inherit;
 #maincontent{
 float:left;
 text-align:right;
-width:275px;
+width:250px;
 font-size:0.9em;
-padding:20px 30px 0px 70px;
+padding:25px 30px 0px 70px;
 }
+
+#maincontent a{
+color:#750014;
+text-decoration:none;
+background-color:inherit;
+}
+#maincontent a:hover{color:inherit; text-decoration:underline; background-color:inherit;}
+
+#aboutpagecontent a{
+color:#750014;
+font-weight:bold;
+text-decoration:none;
+background-color:inherit;
+}
+#aboutpagecontent a:hover{color:inherit; text-decoration:underline; background-color:inherit;}
 
 #dhrcontent{
 float:left;
@@ -175,8 +189,8 @@ padding:40px 30px 40px 50px;
 float:left;
 text-align:justify;
 width:650px;
-font-size:0.9em;
-padding:0px 0px 40px 50px;
+font-size:1em;
+padding:20px 30px 0 50px;
 }
 
 #educationpagecontent{
@@ -193,7 +207,7 @@ margin:0 0 16px 0;
 font-size:1.4em;
 font-weight:normal;
 letter-spacing:-1px;
-color:#750014;
+color:#002d87;
 background-color:inherit;
 }
 
@@ -207,7 +221,7 @@ line-height:0.4em;
 
 #photo{
 float:left;
-padding:10px 0 0 0;
+padding:22px 0 0 0;
 line-height:0.4em;
 }
 
