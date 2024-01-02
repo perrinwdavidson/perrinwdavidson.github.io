@@ -68,6 +68,10 @@ color:inherit;
 font-weight:normal;
 }
 
+#header p{
+font-size:1em;
+}
+
 #navigation{
 height:2.0em;
 line-height:2.0em;
@@ -134,7 +138,7 @@ background-color:inherit;
 float:left;
 text-align:right;
 width:250px;
-font-size:0.9em;
+font-size:1em;
 padding:25px 30px 0px 70px;
 }
 
