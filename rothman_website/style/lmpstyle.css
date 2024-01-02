@@ -72,40 +72,6 @@ font-weight:normal;
 font-size:1em;
 }
 
-#navigation{
-height:2.0em;
-line-height:2.0em;
-width:748px;
-margin:0 1px;
-background:#750014;
-color:#ffffff;
-}
-
-#navigation li{
-float:left;
-list-style-type:none;
-border-right:1px solid #ffffff;
-white-space:nowrap;
-}
-
-#navigation li a{
-display:block;
-padding:0 11px;
-font-size:1.0em;
-font-weight:normal;
-text-decoration:none;
-background-color:#750014;
-color:#ffffff;
-}
-
-* html #navigation a {width:1%;}
-
-#navigation .selected,#navigation a:hover{
-background:#ffffff;
-color:#750014;
-text-decoration:none;
-}
-
 /**************** Content styles ****************/
 
 #content{
@@ -242,14 +208,14 @@ clear:both;
 width:748px;
 padding:0px 0px;
 margin:0 1px;
-font-size:0.8em;
-color:#f0f0f0;
-background:#001144;
+font-size:1em;
+color:#ffffff;
+background:#ffffff;
 }
 
 #footer p{padding:0; margin:0; text-align:center;}
-#footer a{color:#f0f0f0; background-color:inherit; font-weight:bold;}
-#footer a:hover{color:#ffffff; background-color:inherit; text-decoration: underline;}
+#footer a{color:#750014; background-color:inherit; font-weight:bold;}
+#footer a:hover{color:#750014; background-color:inherit; text-decoration: underline;}
 
 /**************** Misc classes and styles ****************/
 
